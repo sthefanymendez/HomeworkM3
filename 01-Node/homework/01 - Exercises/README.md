@@ -1,285 +1,230 @@
-# Henry
+# HW 01: Node | Ejercicios
 
-## Node Js Homework
+## **🕒 Duración estimada**
 
-## Filosofía UNIX
+x minutos
 
-La 'filosofía Unix' fue originada con las reflexiones de Ken Thompson sobre cómo diseñar un sistema operativo pequeño, capaz y con una interfaz de servicio limpia.
+---
 
-Doug McIlroy, el inventor de los Unix pipes y uno de los fundadores de la tradición Unix, decía:
+<br />
 
-    Lográ que cada programa haga una cosa bien. Para hacer un nuevo trabajo, creá un nuevo programa antes que complicar uno viejo agregando nuevas funciones.
-    Esperá que el output de cada programa se convierta en el input de otro todavía desconocido. No llenes el output de información extraña. Evitá los formatos de entrada en columnas o binarios. No insistas con inputs interactivos.
-    Diseñá y creá software, incluso sistemas operativos, que sean probados tempranamente (idealmente dentro de semanas). No dudes en descartar las partes torpes y reconstruirlas.
-    Usá herramientas para aligerar la tarea de programar, incluso si tenés que desviarte para construirlas. Descartá algunas de ellas después de haberlas usado.
+## **📌 INTRO**
 
-[Acá](https://www.youtube.com/watch?v=tc4ROCJYbm0) hay un video de los 70's para profundizar más en la filosofía Unix.
+En esta homework vas a implementar comandos bash comunes usando Node.js.
 
-## Archivos
+---
 
-Tenes creados dos archivos `bash.js` y `commands/index.js`. En estos dos archivos vas a escribir todo el código para realizar el homework.
+<br />
 
-## Objetivo del homework
+## **📍 CONSIGNA**
 
-En este homework vas a tener que implementar comandos bash (a.k.a terminal) comunes usando Node.js.
+Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
-Básicamente, cuando ejecutemos `node bash.js` vamos a obtener un `prompt` parecido al de la terminal de linux o git, en donde vamos a poder escribir una serie finita de comandos.
+---
 
-También, en el proceso de escribir tu propia shell, vas a descubrir tres cosas:
+<br />
 
-    Que tu terminal Bash es un entorno de programación y está impulsado por la Filosofía Unix. Deberás crear pequeños programas que pueden inter-operar entre ellos.
-    Aprenderás los beneficios y las contras de una plataforma asincrónica.
-    Descubrirás cómo componer y manejar operaciones paralelas que pueden completarse en cualquier momento.
+## **📖 Pasos básicos para realizar la homework**
 
-## Variable `process`
+🔹 Para poder ejecutar los `test` de esta homework, es necesario que abramos la terminal ubicados dentro de la carpeta `01 - Exercises`.
 
-Para realizar este homework, vamos a trabajar directament tomando `inputs` desde el teclado (como la terminal), y escribiendo el resultado de un comando en la pantalla `ouput`.
-
-Para hacer esto, vamos a usar los métodos dentro del objeto `process`. El objeto process es un objeto global y puede ser accedido desde cualquier parte. Es una instancia de `EventEmitter`. Contiene diversos métodos, eventos y propiedades que nos sirven no solo para obtener datos del proceso actual, sino también para controlarlo.
-
-Instrucciones para saber qué es la variable process:
-
-    En tu bash.js, hacé un console.log de la variable process. Al ser global está disponible en cualquier lugar de nuestro programa de Node y no necesita ser creada.
-    Logueá Object.keys(process) para ver una lista de todas las propiedades.
-
-#### STDIN y STDOUT
-
-Los métodos `stdin` y `stdout` viene de standard input y standard output. Estos métodos *conectan* el mundo exterior con el interior del programa de Node. Es decir, que podemos meter datos y sacar datos usandólos.
-
->De hecho, el console.log de Node es un pequeño wrapper alrededor de stdout.
-
-Veamos el siguente ejemplo:
-
-```js
-    // Output un prompt
-    process.stdout.write('prompt > ');
-    // El evento stdin 'data' se dispara cuando el user escribe una línea
-    process.stdin.on('data', function (data) {
-      var cmd = data.toString().trim(); // remueve la nueva línea
-      process.stdout.write('You typed: ' + cmd);
-      process.stdout.write('\nprompt > ');
-    });
-```
-
-Copia ese código en `bash.js` y ejecutalo con `node bash.js`.
-
-Cómo ven, lo primero que sale es `prompt >`, esto es porque stdout escribió eso en la consola.
-`stdin` es un poco más complejo, porque vos no sabés cuando alguien va a escribir algo. Como sabemos, estos métodos son instancias de `EventEmitter`, por lo que se comportan como los eventos que vimos en el browser. Lo que ocurre es que estamos poniendo un `Event Listener` en el stdin, y cada vez que llegan datos (este es el evento), se ejecuta la función que pasamos como callback.
-
-Nuestro proceso, esta vez, no termina inmediatamente. Eso es porque hemos registrado un listener a stdin, entonces Node asume que querés seguir esperando por otro input por parte del usuario. Si querés salir de tu proceso de Node, usá CTRL+C que es la forma normal de interrumpir cualquier proceso.
-
-## Creando Comandos
-
-### `pwd` y `date`
-
-Vamos a crear nuestros primeros comando en nuestra pequeña terminal. `pwd` imprime el directorio donde estás *parado*. Y `date` imprime la fecha actual.
-
->Podes probar esos comando en tu consola (los originales). Depende del sistema operativo podrías no tenerlos, pero no te preocupes, no cambia nada.
-
-Ahora, vamos a escribir código para poder implementar esos comandos en `bash.js`. Recordemos que el funcionamiento de una terminal es así:
-
-    - Muestra el `prompt`
-    - se queda esperando que ingreses un comando.
-    - ejecuta el comando e imprimi el resultado.
-    - vuelve al punto 1.
-
-Por lo tanto, vamos a recibir el comando en `data`, cuando se dispare el evento de que se escribió algo (cuando el usuario escriba algo y presione enter). Luego, vamos a tomar ese dato, y vamos a ver que escribió, y según el comando tipeado, vamos a mostrar algo.
-
-Abajo te muestro cómo quedaría y qué mostramos con el comando `date`.
-
-```js
-
-const commands = require('./commands');
-
-// Output un prompt
-process.stdout.write('prompt > ');
-// El evento stdin 'data' se dispara cuando el user escribe una línea
-process.stdin.on('data', function (data) {
-  var cmd = data.toString().trim(); // remueve la nueva línea
-  if(cmd === 'date') {
-    process.stdout.write(Date());  
-  }
-  if(cmd === 'pwd') {
-    ...
-  }
-  process.stdout.write('\nprompt > ');
-});
-```
-Ahora te toca implementar cómo mostrar el `pwd` (print working directory). Tip: buscá dentro dell objeto `process`.
-
-## Mejorando el Workflow
-
-Ahora que vamos a empezar a probar varias cosas, vamos a sentir que cerrar y ejecutar nuestro programa cada vez que hagamos un cambio es un trabajo insoportable.
-
-Por suerte, esto ya le pasó a otros, y crearon una solución. Se llama `nodemon`. Básicamente es un paquete de `npm` que podemos instalar con `npm install --save nodemon`. Y lo que hace es `watchear` por cambios en el código y reiniciar el programa cuando haya cambios.
-
-Para que funcione debemos agregar el siguiente script al `package.json` (para inicializar el `package.json` podes usar `npm init`):
-
-```
-    // package.json
-    ...
-    "scripts": {
-        "start": "nodemon bash.js",
-    ...
-```
-
-Para ejecutar el `bash.js` podes escribir el comando:
+-  Cuando te encuentres en esta carpeta, debes ejecutar el comando
 
 ```bash
-npm start
+npm install
 ```
 
-## Separando en módulos
+¡Listo! Ya puedes correr los test:
 
-De ver el código que tenemos en `bash.js` nos damos cuenta que si tuvieramos muchos comando sería muy díficil de gestionar, de hecho para agregar comandos ya estamos repitiendo código, y es algo que no deberíamos hacer. (Recuerden el código DRY - DO NOT REPEAT YOURSELF).
-
-Por lo tanto, vamos a crear un módulo en `commands/index.js` donde vamos a tener todos los comandos, y vamos a exportarlos.
-
-En nuestro `bash.js` vamos a importar estos comandos.
-
-Veamos que si exportamos cada comando con su nombre como propiedad de un objeto, luego podremos buscarlo muy fácilmente desde el `bash.js`.
-
-```js
-// commands/index.js
-
-module.exports = {
-    pwd: fn() {},
-    date: fn() {}
-}
+```bash
+npm test
 ```
 
-```js
-// bash.js
-const commands = require('./commands/index.js');
+Si deseas correr por test, puedes utilizar:
 
-const cmd = 'pwd';
-
-commands[cmd]() // la función dentro de la propiedad pwd
-
+```bash
+npm run test:01
 ```
 
-## Agregando Comandos
+---
 
-Ahora vas a agregar código para que tu `bash` pueda ejecutar los siguientes comandos:
+<br />
 
-### ls (list)
+## **ESTRUCTURA**
 
-Cada lenguaje de programación tiene una librería standard de módulos que hará tu trabajo mucho más fácil.
+🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-Uno de los más poderosos es el modulo `fs`. Éste permite acceder al sistema de archivos de la máquina de distintas formas.
+-  Una carpeta llamada `commands`.
+-  Una carpeta llamada `test`.
+-  Un archivo **bash.js**.
+-  Un archivo **package.json**.
+-  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
-Usá el modulo fs para implementar el siguiente comando ls:
+---
 
-    Creá una nueva función llamada ls en commands.js.
-    Cuando el usuario tipee ls, ejecutá la función ls.
+<br />
 
-No te olvides: fs no es global (como process) pero es un módulo. Esto significa que vas a necesitar requerirlo:
+## **👩‍💻 EJERCICIO 1**
 
-`var fs = require('fs');`
+### **PROCESS**
 
-Usá `fs.readdir` para obtener los archivos en el directorio:
+📍 Dirígete al archivo `bash.js`. Encontrarás las variables "**process**" y "**commands**" importados en este archivo. Trabajaremos con ambas.
 
-```js
-// commands/index.js
-...
-fs.readdir('.', function(err, files) {
-  if (err) throw err;
-  files.forEach(function(file) {
-    process.stdout.write(file.toString() + "\n");
-  })
-  process.stdout.write("prompt > ");
-});
-...
+📍 Lo que hay que hacer:
+
+1. Crea una función con el nombre `printOutput`. Esta función recibirá por parámetro un **output**. Dentro de ella tendrás que utilizar el método **stdout.write** del objeto `process` dos veces. La primera vez le pasarás como argumento el **output** recibido. La segundo vez el argumento deberá ser: "\nprompt > ".
+
+2. Dentro de este archivo utiliza el método **stdout.write** del objeto `process` pasándole como argumento el string: "prompt > ".
+
+3. Dentro de este archivo utiliza el método **stdin.on** del objeto `process` al cual le deberás pasar dos parámetros.
+
+   -  El primero debe ser el string: "data".
+
+   -  El segundo debe ser una función que recibe por parámetro `data`.
+
+      A) Dentro de la función crea una variable con el nombre "**args**". Esta variable debe contener un arreglo con cada uno de los caracteres de lo que se recibe por parámetro. Ten en cuenta que el parámetro que recibes no es un string, por lo que tendrás que convertirlo en uno. También ten en cuenta que si este string tiene espacios vacíos al comienzo o al final deberás eliminarlos.
+
+      B) Guarda en una variable llamada "**cmd**" el primer elemento del arreglo anterior.
+
+      C) Ahora verifica si dentro del objeto `commands` existe una propiedad con el valor que contiene la vairbale "**cmd**". En el caso que no existe, ejecuta la función `printOutput` con el texto "command not found: **_cmd_**". En el caso de que si exista, ejecuta el siguiente código:
+
+      ```bash
+      commands[cmd](printOutput, args);
+      ```
+
+---
+
+<br />
+
+## **👩‍💻 EJERCICIO 2**
+
+📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**request**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.
+
+📍 Lo que hay que hacer:
+
+### **PWD**
+
+*PWD* permitirá imprimir la ruta hacia el directorio en el que estás trabajando.
+1. Crea una función llamada `pwd`. Esta recibirá por parámetro el valor "print".
+2. Utiliza la función `print`. Como argumento pásale el objeto `process` siendo ejecutado con el método **cwd**.
+
+---
+
+<br />
+
+### **DATE**
+
+*DATE* imprimirá la fecha actual de tu máquina.
+1. Crea una función llamada `date`. Esta recibirá por parámetro el valor "print".
+2. Utiliza la función `print`. Como argumento pásale la función `Date` siendo ejecutada.
+
+---
+
+<br />
+
+### **ECHO**
+
+*ECHO* imprimirá el texto que escribas en la consola.
+1. Crea una función llamada `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
+
+```javascript
+args.join(' ');
 ```
 
-### echo
+---
 
-El comando `echo` básicamente manda los argumento al `stdout`.
-Si ejecutaras `echo hola`, va a salir un `hola` en la terminal. Podríamos decir que es el `console.log` de la terminal!
+<br />
 
-```js
-/// si ejecutas el comando echo deberias ver lo siguiente:
-    prompt > echo hello world
-    hello world
-```
+### **LS**
 
-Para este comando, vas a tener que modificar la forma en que parsear el input (`data`) dentro de la `función process.stdin.on('data', function (data) { ...`
+*LS* va a imprimir los archivos y carpetas que estén disponibles en tu directorio actual.
+1. Crea una función llamada `ls`. Esta recibirá por parámetro un valor: "print".
+2. Invoca el método `readdir` de la constante `fs` para leer los archivos actuales.  
+tendrás que pasarle como argumento un string con un valor de `.` (El punto hace referencia a tu directorio actual)  
+ y un callback, que recibirá a su vez 2 parámetros, `error` (Posible error que pueda devolver el callback)  
+ y `files` (un array de string conteniendo los archivos y carpetas encontrados).
+3. Si `fs.readdir` devuelve un error arrójalo. (Puedes usar `throw error`)
+4. Invoca la función `print` y pásale como argumentos los archivos encontrados.  
+*IMPORTANTE*: ¡Debes pasarlos como un string, sino se imprimirá un arreglo y arrojará un error!
 
-> Intenta hacer que `echo` también imprima variables del sistema
+---
 
-###  cat, head, y tail
+<br />
 
-Estos tres comandos sirven para leer archivos y mostrarlos por el `stdout`.
+### **CAT**
 
-* cat: muestra todo el contenido de un archivo, ej: `cat bash.js`.
-* head: muestra las primeras lineas de un archivo, no todo el archivo. ej: `head bash.js`
-* tail: muestra las últimas líneas de un archivo. ej: `tail bash.js`
+*CAT* Imprimirá en la consola cualquier archivo que le indiques. Recuerda que si quieres imprimir un archivo  
+por fuera del directorio que estás parado, deberás indicar la ruta hacia el mismo.
+1. Crea una función llamada `cat`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca el método `readFile` de `fs` y pásale los siguientes argumentos:
+  - `args` (El parámetro que recibes en la función `cat`)
+  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+  - Un callback con los parámetros `error` y `data`
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento el parámetro `data` (Que es el archivo encontrado)
 
-Refactoreá todas tus funciones existentes para tomar un parámetro explícito, aunque no lo usen.
+---
 
-¿Para qué? Estructurá a todos tus comandos de la misma manera (orden y tipo de parámetros). Así podés ejecutar a todos de la misma manera, sin saber a cuál estás llamando. Para la mayoría de las próximas funciones, nombrá ese parámetro file o filename.
+<br />
 
-### curl
+### **HEAD**
 
-`curl` es un comando útil para descargar páginas web. En vez de ejecutarse con el nombre de un archivo, se hace con una URL.
+*HEAD* Imprimirá las primeras *8* línea de cualquier archivo que indiques, ten en cuenta los mismos puntos  
+descritos en la función de *CAT* para utilizarlo correctamente.
+1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
+  - `args` (El parámetro que recibes en la función `cat`)
+  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+  - Un callback con los parámetros `error` y `data`
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento la primera línea del archivo `data` (¡Te toca pensar cómo hacerlo!)
 
-Deberás implementar curl usando el módulo `request` (vas a tener que instalarlo):
+---
 
-`npm install --save request`
+<br />
 
-También lo podés hacer por el módulo nativo http, pero es menos amigable.
+### **TAIL**
 
-Ahora que tenés `request` disponible para requerir, implementá el comando `curl`. `curl` hará un pedido GET de HTTP a un URL dado, e imprimirá el body del response del HTTP.
+*TAIL* Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas
+anotaciones descritas en el ejercicio de *CAT* para utilizarlo correctamente.
+1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
+  - `args` (El parámetro que recibes en la función `cat`)
+  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+  - Un callback con los parámetros `error` y `data`
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento la última línea del archivo `data` (¡Te toca también pensar cómo hacerlo!)
 
-ej: `curl http:www.google.com`
+---
 
+<br />
 
-## Refactoreando
+### **CURL**
 
-Bien, si llegaste hasta acá te habrás dado cuenta que hay muchas partes del código donde repetimos cosas. Ahora vamos a tomar el tiempo para refactorearlas.
+*CURL* Imprimirá cualquier respuesta de una url que le puedas proveer, tiene que tener el prefijo `https://` antes de  
+ingresar la dirección.
+1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca la función `request` que se encuentra importada más arriba y pásale los siguientes argumentos:
+- `args` (El parámetro que recibes en la función `curl`).
+- un callback con los parámetros `error`, `response`, `body`.
+*Nota* `response` no lo vas a utilizar en esta ocasión.
+3. Si `request` devuelve un error, arrojarlo (Puedes usar `throw error` como se mencionó antes).
+4. Invoca la función `print` y retorna `body` (La respuesta que brinda `curl`).
 
-Notarás estos patrones repetidos:
+---
 
-    - Ejecutar el trabajo del comando.
-    - Mostrar el resultado del comando.
-    - Mostrar el prompt y esperar al próximo comando.
+<br />
 
-Lo único que es propio de nuestra función es el paso 1. Los otros se repiten para cada comando.
+## **🔎 Recursos adicionales**
 
-Usá una función callback para remover los pasos 2 y 3. Creá una función `done` en bash.js que tome un argumento output.
+-  Documentación [**VARIABLES GLOBALES DE NODE**](https://apuntes.de/nodejs-desarrollo-web/globals/#gsc.tab=0)
+-  Documentación [**VARIABLE GLOBAL PROCESS**](https://nodejs.org/docs/latest-v16.x/api/process.html)
+-  Documentación [**NODE**](https://nodejs.org/en/docs/)
+-  Documentación [**FILE SYSTEM**](https://nodejs.org/api/fs.html)
 
-const done = function(output) {
-  // muestra el output
-  // muestra el prompt
-}
+---
 
-Ahora pasá `done` a cada una de las funciones de los comandos y reescribí los comandos para que creen el output pero que no lo impriman (no uses process.stdout). Luego de que se hayan completado, llamá a `done`.
+<br />
 
-Acá hay un ejemplo con ls:
-
-```js
-const commands = {
-  ls: function(file, done) {
-    var output = "";
-    fs.readdir('.', function(err, files) {
-      files.forEach(function(file) {
-        output += file.toString() + "\n";
-      })
-      done(output);
-    });
-  }
-}
-```
-
-### EXTRA CREDIT: Otros comandos útiles
-
-Probá implementar alguno de estos comandos.
-
-- `sort filename.txt`: Devuelve el archivo ordenado lexicográficamente por línea.
-- `wc filename.txt`: El wc de Unix imprime el conteo de líneas, palabras y caracteres de un archivo. El tuyo puede simplemente devolver el número de líneas.
-- `uniq filename.txt`: Si una línea en un archivo es la misma que la línea de arriba, la saca del resultado. Un archivo que esta ordenado( sort) y después filtrado por únicos ( uniq) te garantiza que no tendrá ni una sola línea duplicada.
-
-
-#### Materiales recomendados
-
-[Video: Philip Roberts: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ&feature=youtu.be&t=676)
+¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.
