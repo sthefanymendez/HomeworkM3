@@ -1,5 +1,5 @@
 const fs = require('fs');
-const request = require('request');
+const utils = require('../utils/request');
 const process = require('process');
 
 function pwd(print) {
@@ -11,45 +11,45 @@ function date(print) {
 }
 
 function echo(print, args) {
-   print(args.join(' '));
+   print(args);
 }
 
 function ls(print) {
    fs.readdir('.', function (err, files) {
       if (err) throw err;
-      print(files.join('\n'));
+      print(files.join(' '));
    });
 }
 
 function cat(print, args) {
-   fs.readFile(args[0], 'utf-8', (err, data) => {
+   fs.readFile(args, 'utf-8', (err, data) => {
       if (err) throw err;
       print(data);
    });
 }
 
 function head(print, args) {
-   fs.readFile(args[0], 'utf-8', (err, data) => {
+   fs.readFile(args, 'utf-8', (err, data) => {
       if (err) throw err;
-      print(data.split('\n').slice(0, 6).join('\n'));
+      print(data.split('\n').slice(0, 8).join('\n'));
    });
 }
 
 function tail(print, args) {
-   fs.readFile(args[0], 'utf-8', (err, data) => {
+   fs.readFile(args, 'utf-8', (err, data) => {
       if (err) {
          throw err;
       }
-      print(data.split('\n').slice(-5).join('\n'));
+      print(data.split('\n').slice(-7).join('\n'));
    });
 }
 
 function curl(print, args) {
-   request(args[0], function (err, response, body) {
+   utils.request(args, function (err, response) {
       if (err) {
          throw err;
       }
-      print(body);
+      print(response);
    });
 }
 
