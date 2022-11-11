@@ -74,6 +74,8 @@ npm run test:01
 
 📍 Dirígete al archivo `exercise-one.js`. Encontrarás las funciones "**problemA**, "**problemB**", "**problemC**", "**problemD**", "**problemE**","**problemF**", en este archivo. Trabajaremos en las seis.
 
+> Hint: exercisesUtils es una variable que viene del archivo `utils.js`, este archivo crea un `promisifiedReadFile`, lo necesitarás para los ejercicios.
+
 📍 Dentro de cada función verás realizada la versión callback, si deskipeas los tests, estos pasarán, sin embargo el objetivo de la homework es pasar estas funciones callbacks a la versión promisificada, así que debes comentar la función callback para crear la promesa.
 
 📍 Lo que hay que hacer:
@@ -121,13 +123,13 @@ npm run test:01
 6. Función problemF:
    Teniendo de base los ejercicios anteriores, en esta función debes:
 
-a. Leer y loguear la **stanza-03.txt**
+   a. Leer y loguear la **stanza-03.txt**
 
-b. Luego debe leer y la **stanza-04.txt**.
+   b. Luego debe leer y la **stanza-04.txt**.
 
-c. Loguea un error si llegara a suceder para cualquiera de las dos promesas anteriores: **stanza-03.txt** y **stanza-04.txt**.
+   c. Loguea un error si llegara a suceder para cualquiera de las dos promesas anteriores: **stanza-03.txt** y **stanza-04.txt**.
 
-d. En ambos caminos, tanto en la resolución de la promesa como en la rechazada debes loguear 'done' cuando haya terminado todo.
+   d. En ambos caminos, tanto en la resolución de la promesa como en la rechazada debes loguear 'done' cuando haya terminado todo.
 
 ---
 
@@ -135,120 +137,63 @@ d. En ambos caminos, tanto en la resolución de la promesa como en la rechazada 
 
 ## **👩‍💻 EJERCICIO 2**
 
-📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**request**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.
+📍 Dirígete al archivo `exercise-two.js`. Encontrarás las funciones "**problemA**, "**problemB**", "**problemC**", "**problemD**", "**problemE**", en este archivo. Trabajaremos en las cinco.
 
 📍 Lo que hay que hacer:
 
-### **PWD**
+1. Función problemA:
 
-1. Crea una función llamada `pwd`. Esta recibirá por parámetro el valor "print".
-2. Utiliza la función `print`. Como argumento pásale el objeto `process` siendo ejecutado con el método **cwd**.
+   a. Con el método **promisifiedReadFile** debes loguear la **stanza-01.txt** y la **stanza-02.txt** que se encuentran en la carpeta **poem-two**.
 
----
+   b. Por el momento ignora los errores.
 
-<br />
+   c. Las dos promesas deben ser resueltas simultáneamente en cualquier orden.
 
-### **DATE**
+   d. Por último debes loguear 'done' cuando ambas promesas hayan terminado.
 
-1. Crea una función llamada `date`. Esta recibirá por parámetro el valor "print".
-2. Utiliza la función `print`. Como argumento pásale la función `Date` siendo ejecutada.
+   > Hint: Puedes usar el método promise.all()
 
----
+2. Función problemB:
 
-<br />
+   a. Con el método **promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
 
-### **ECHO**
+   b. Por el momento ignora los errores.
 
-1. Crea una función llamada `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
+   c. Las promesas deben ser resueltas simultáneamente en cualquier orden.
 
-```javascript
-args.join(" ");
-```
+   d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
----
+   > Hint: Puedes utilizar el arreglo `filenames`.
 
-<br />
+3. Función problemC:
 
-### **LS**
+   a. Con el método **promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
 
-1. Crea una función llamada `ls`. Esta recibirá por parámetro un valor: "print".
-2. Dentro de esta función pega el siguiente código:
+   b. Por el momento ignora los errores.
 
-```javascript
-fs.readdir(".", function (err, files) {
-  if (err) throw err;
-  print(files.join("\n"));
-});
-```
+   c. Las promesas deben ser resueltas en orden y en serie, es decir, cada promesa se resuelve cuando la anterior haya terminado.
 
----
+   d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
-<br />
+4. Función problemD:
 
-### **CAT**
+   a. Con el método **promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
 
-1. Crea una función llamada `cat`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Dentro de esta función pega el siguiente código:
+   b. En este ejercicio debes tener en cuenta los errores.
 
-```javascript
-fs.readFile(args[0], "utf-8", (err, data) => {
-  if (err) throw err;
-  print(data);
-});
-```
+   c. Las promesas deben ser resueltas en orden y en serie, es decir, cada promesa se resuelve cuando la anterior haya terminado.
 
----
+   d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
-<br />
+5. Función problemE: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
 
-### **HEAD**
+   a. Retorna una instancia de `Promise`, la cual recibe una función.
 
-1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Dentro de esta función pega el siguiente código:
+   b. Esta función que recibe, tiene dos parámetros: resolve y reject.
 
-```javascript
-fs.readFile(args[0], "utf-8", (err, data) => {
-  if (err) throw err;
-  print(data.split("\n").slice(0, 6).join("\n"));
-});
-```
+   c. Del objeto `fs` llama el método `writeFile`, cual recibe como parámetro los mismos parámetros de la función `promisifiedWriteFile` agregando un tercer parámetro: la función para el error.
 
----
-
-<br />
-
-### **TAIL**
-
-1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Dentro de esta función pega el siguiente código:
-
-```javascript
-fs.readFile(args[0], "utf-8", (err, data) => {
-  if (err) {
-    throw err;
-  }
-  print(data.split("\n").slice(-5).join("\n"));
-});
-```
-
----
-
-<br />
-
-### **CURL**
-
-1. Crea una función llamada `head`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Dentro de esta función pega el siguiente código:
-
-```javascript
-request(args[0], function (err, response, body) {
-  if (err) {
-    throw err;
-  }
-  print(body);
-});
-```
+   d. Dentro de la función de error: si hay error que retorne el **reject** con la razón del rechazo, si no hay error que se resuelva con **resolve**
 
 ---
 
