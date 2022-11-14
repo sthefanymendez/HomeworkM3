@@ -78,6 +78,8 @@ npm run test:01
 
 📍 Dentro de cada función verás realizada la versión callback, si deskipeas los tests, estos pasarán, sin embargo el objetivo de la homework es pasar estas funciones callbacks a la versión promisificada, así que debes comentar la función callback para crear la promesa.
 
+📍 Cuando la consigna pida un catch para manejo de errores, asegúrate de verificar que funcione en ambos casos. Es decir, si la promesa se resuelve por el camino del error debería ingresar al catch y si se resuelve por el camino del éxito debería mostrar las stanzas cumpliendo con el orden especificado en la consigna.
+
 📍 Lo que hay que hacer:
 
 1. Función problemA:
@@ -109,6 +111,8 @@ npm run test:01
    b.Sin embargo, ten en cuenta los dos caminos en esta promesa: si se resuelve, llama el método **.then** y con la respuesta llama la función **blue**.
    c. Si no se resuelve, llama el handleError que ejecute la función `magenta` la cual se encuentra en el archivo **utils.js**.
 
+   > Hint: En caso de tener que lanzar un error deberías hacerlo con new Error() para que pase los tests correctamente.
+
 5. Función problemE:
    Teniendo de base los ejercicios anteriores, en esta función debes:
 
@@ -139,6 +143,10 @@ npm run test:01
 
 📍 Dirígete al archivo `exercise-two.js`. Encontrarás las funciones "**problemA**, "**problemB**", "**problemC**", "**problemD**", "**problemE**", en este archivo. Trabajaremos en las cinco.
 
+📍 Dentro de cada función verás realizada la versión callback, si deskipeas los tests, estos pasarán, sin embargo el objetivo de la homework es pasar estas funciones callbacks a la versión promisificada, así que debes comentar la función callback para crear la promesa.
+
+📍 Cuando la consigna pida un catch para manejo de errores, asegúrate de verificar que funcione en ambos casos. Es decir, si la promesa se resuelve por el camino del error debería ingresar al catch y si se resuelve por el camino del éxito debería mostrar las stanzas cumpliendo con el orden especificado en la consigna.
+
 📍 Lo que hay que hacer:
 
 1. Función problemA:
@@ -150,6 +158,8 @@ npm run test:01
    c. Las dos promesas deben ser resueltas simultáneamente en cualquier orden.
 
    d. Por último debes loguear 'done' cuando ambas promesas hayan terminado.
+
+   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
 
    > Hint: Puedes usar el método promise.all()
 
@@ -163,6 +173,8 @@ npm run test:01
 
    d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
+   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
+
    > Hint: Puedes utilizar el arreglo `filenames`.
 
 3. Función problemC:
@@ -175,6 +187,8 @@ npm run test:01
 
    d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
+   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
+
 4. Función problemD:
 
    a. Con el método **promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
@@ -185,6 +199,8 @@ npm run test:01
 
    d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
 
+   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
+
 5. Función problemE: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
 
    a. Retorna una instancia de `Promise`, la cual recibe una función.
@@ -193,7 +209,25 @@ npm run test:01
 
    c. Del objeto `fs` llama el método `writeFile`, cual recibe como parámetro los mismos parámetros de la función `promisifiedWriteFile` agregando un tercer parámetro: la función para el error.
 
-   d. Dentro de la función de error: si hay error que retorne el **reject** con la razón del rechazo, si no hay error que se resuelva con **resolve**
+   d. Dentro de la función de error: si hay error que retorne el **reject** con la razón del rechazo, si no hay error que se resuelva con **resolve**.
+
+   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
+
+---
+
+<br />
+
+## **🧠 Recuerda que...**
+
+- El código asincrónico es no-determinístico (los resultados no pueden ser determinados antes de tiempo)
+
+- Llamar a **.then** siempre devuelve una nueva promesa.
+
+- Para evitar el **callback hell** devuelve un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena debe recibir ese valor.
+
+- No olvides manejar los errores en el asincronismo, puedes hacerlo pasando un segundo parámetro **error handler** al .then.
+
+- También puedes manejar todos los errores en el asincronismo utilizando **.catch**.
 
 ---
 
@@ -201,13 +235,12 @@ npm run test:01
 
 ## **🔎 Recursos adicionales**
 
-- Documentación [**VARIABLES GLOBALES DE NODE**](https://apuntes.de/nodejs-desarrollo-web/globals/#gsc.tab=0)
-- Documentación [**VARIABLE GLOBAL PROCESS**](https://nodejs.org/docs/latest-v16.x/api/process.html)
-- Documentación [**NODE**](https://nodejs.org/en/docs/)
-- Documentación [**FILE SYSTEM**](https://nodejs.org/api/fs.html)
+- Documentación [**Promises**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+- Documentación [**Bluebird**](http://bluebirdjs.com/docs/api/new-promise.html)
 
 ---
 
 <br />
 
-¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.
+¡Listo! Aprendiste a promisificar, manejar asincronismo y errores, ahora vamos a implementar estos conocimientos en nuestra aplicación de integración.
