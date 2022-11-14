@@ -31,7 +31,7 @@ function cat(print, args) {
 function head(print, args) {
    fs.readFile(args, 'utf-8', (err, data) => {
       if (err) throw err;
-      print(data.split('\n').slice(0, 8).join('\n'));
+      print(data.split('\n')[0]);
    });
 }
 
@@ -40,7 +40,8 @@ function tail(print, args) {
       if (err) {
          throw err;
       }
-      print(data.split('\n').slice(-7).join('\n'));
+      const dataArr = data.split('\n');
+      print(dataArr[dataArr.length - 1].trim());
    });
 }
 
