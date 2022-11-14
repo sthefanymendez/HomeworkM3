@@ -56,7 +56,7 @@ describe('02 | Ejercicios', () => {
   });
 
   it('CAT - Debe imprimir el archivo provisto', (done) => {
-    commands.cat(index.print, 'prueba.js');
+    commands.cat(index.print, 'testingAux.js');
     const readFileCallback = readFileSpy.mock.calls[0][2];
     readFileCallback(null, `(function (args) {
       return function() {
@@ -78,17 +78,29 @@ describe('02 | Ejercicios', () => {
   });
 
   it('HEAD - Debe imprimir las primeras lineas del archivo provisto', (done) => {
-    commands.head(index.print, 'prueba.js');
+    commands.head(index.print, 'testingAux.js');
     const readFileCallback = readFileSpy.mock.calls[0][2];
-    readFileCallback(null, '(function (args) {');
+    readFileCallback(null, `(function (args) {
+      return function() {
+        for (let i = 0; i < Math.ceil(Math.random() * 100) + args.length; i += 1) {
+          return Math.pow(i, Infinity);
+        }
+      }
+    })()();`);
     expect(printSpy).toHaveBeenCalledWith(`(function (args) {`);
     done();
   });
 
   it('TAIL - Debe imprimir las ultimas lineas del archivo provisto', (done) => {
-    commands.tail(index.print, 'prueba.js');
+    commands.tail(index.print, 'testingAux.js');
     const readFileCallback = readFileSpy.mock.calls[0][2];
-    readFileCallback(null, '})()();');
+    readFileCallback(null, `(function (args) {
+      return function() {
+        for (let i = 0; i < Math.ceil(Math.random() * 100) + args.length; i += 1) {
+          return Math.pow(i, Infinity);
+        }
+      }
+    })()();`);
     expect(printSpy).toHaveBeenCalledWith(`})()();`);
     done();
   });
