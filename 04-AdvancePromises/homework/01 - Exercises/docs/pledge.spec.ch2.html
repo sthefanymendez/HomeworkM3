@@ -95,10 +95,8 @@ Capítulo 2: Adjuntando y llamando Promise Event Handlers
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Estamos comenzando a ver como una promesa puede ser manipulada
-a través  del executor. ¿Pero qué hace realmente una promesa?
-Al completar este capitulo, vas a aprender los fundamentos de
-como las promesas actuan con información eventual</p>
+              <p>Estamos comenzando a ver cómo una promesa puede ser manipulada
+a través  del executor. ¿Pero qué hace realmente una promesa? Al completar este capítulo, vas a aprender los fundamentos de cómo las promesas actúan con información eventual</p>
 
             </div>
             
@@ -117,10 +115,9 @@ como las promesas actuan con información eventual</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p><code>then</code> es el core del comportamiento de las promesas. De hecho,
-el P/A+ spec que foma los fundamentos del spec de ES6 solo cubre
+              <p><code>then</code> es el core del comportamiento de las promesas. De hecho, el P/A+ spec que forma los fundamentos del spec de ES6 sólo cubre
 este método. La función <code>then</code> es usada para registrar <em>handlers</em>
-si y cuando la promesa se completa o rechaza.</p>
+siempre y cuando la promesa se complete o rechaze.</p>
 
             </div>
             
@@ -150,9 +147,8 @@ si y cuando la promesa se completa o rechaza.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Esto es llamar <code>then</code> en la misma promesa multiples veces,
-el cual no es lo mismo que “chaining”. Vamos a ver promise
-chaining en el Cap. 4.</p>
+              <p>Esto es llamar <code>then</code> en la misma promesa múltiples veces,
+el cual no es lo mismo que “chaining”. Vamos a ver promise chaining en el Cap. 4.</p>
 
             </div>
             
@@ -184,8 +180,7 @@ chaining en el Cap. 4.</p>
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Ahora viene una de las partes mágicas de las promesas, la
-forma en que pueden disparar handlers para ambos, cuando se
-colocan y cuando ya han sido colocados.</p>
+forma en que pueden disparar handlers para ambos, cuando se colocan y cuando ya han sido colocados.</p>
 
             </div>
             
@@ -230,7 +225,7 @@ describe(<span class="hljs-string">'Una promise'</span>, <span class="hljs-funct
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Recomendado: agergá un método <code>._callHandlers</code> al prototipo de tu promesa</p>
+              <p>Recomendado: agrega un método <code>._callHandlers</code> al prototipo de tu promesa</p>
 
             </div>
             
@@ -306,12 +301,7 @@ describe(<span class="hljs-string">'Una promise'</span>, <span class="hljs-funct
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Hemos hecho algo elegante. El <code>.then</code> de la promesa puede adjuntar
-comportamiento antes y después de que la promesa este completada,
-y sabemos que las acciones van a correr cuando puedan. El método
-<code>.then</code> puede también ser llamado multiples veces, así podes adjuntar
-callbacks para correr en diferentes pares del código, y van a poder
-correr una vez la promesa se complete.</p>
+              <p>Hemos hecho algo elegante. El <code>.then</code> de la promesa puede adjuntar comportamiento antes y después de que la promesa este completada y sabemos que las acciones van a correr cuando puedan. El método <code>.then</code> puede también ser llamado múltiples veces, así podes adjuntar callbacks para correr en diferentes partes del código, y van a poder correr una vez la promesa se complete.</p>
 
             </div>
             

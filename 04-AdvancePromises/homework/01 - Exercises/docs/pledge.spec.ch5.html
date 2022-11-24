@@ -83,7 +83,7 @@ describe(<span class="hljs-string">'Capítulo 5: Métodos estáticos `.resolve` 
                          "Y8888P
 
 
-Capítulo 5: Credito Extra: Métodos estáticos `.resolve` y `.all`
+Capítulo 5: Crédito Extra: Métodos estáticos `.resolve` y `.all`
 ---------------------------------------------------------*/</span></pre></div></div>
             
         </li>
@@ -96,13 +96,7 @@ Capítulo 5: Credito Extra: Métodos estáticos `.resolve` y `.all`
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
               <p>Promises por si mismo tiene muchas ventajas sobre callbacks,
-principalmente cuando se trata con <em>composibilidad</em> - combinando
-y orquestrando múltiples resultados asincrónicos. Habiendo dicho
-eso, prácticamente cada libreria de promesas provee un par de
-helper functions para hacer la composición de promesas aún más
-fácil. En este capítulo vas a implementar dos de los mas cruciales
-metodos estáticos, tan utiles que son partes del ES6 spec para
-promesas (EcmaScript sigue, pero también va mas alla de, P/A+).</p>
+principalmente cuando se trata con <em>composibilidad</em> - combinando y orquestando múltiples resultados asincrónicos. Habiendo dicho eso, prácticamente cada librería de promesas provee un par de helper functions para hacer la composición de promesas aún más fácil. En este capítulo vas a implementar dos de los mas cruciales métodos estáticos, tan útiles que son partes del ES6 spec para promesas (EcmaScript sigue, pero también va más allá de, P/A+).</p>
 
             </div>
             
@@ -116,8 +110,7 @@ promesas (EcmaScript sigue, pero también va mas alla de, P/A+).</p>
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <p>NOTA ESPECIAL: La mejores soluciones para este capítulo NO LLAMAN
-<code>_internalResolve</code> <code>_internalReject</code> directamente. En cambio, pueden
-resolverse enteramente usando las partes públicas de tu libreria $Promise.
+<code>_internalResolve</code> <code>_internalReject</code> directamente. En cambio, pueden resolverse enteramente usando las partes públicas de tu librería $Promise.
 Recuerda: la función executor da acceso público al resolver / rejector.</p>
 
             </div>
@@ -140,7 +133,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = <span class="hljs-number">250</span>;
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p><code>$Promise.resolve</code> no es exactamente la misma cosa como un resolver,
-al menos no en Pledge (depende de tu implementación de la libreria
+al menos no en Pledge (depende de tu implementación de la librería
 de promises).</p>
 
             </div>
@@ -206,10 +199,8 @@ describe(<span class="hljs-string">'El método estático `$Promise.resolve`'</sp
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Como puedes ver, <code>$Promise.resolve</code> “normaliza” valores que puede
-o puede que no sean promesas. Los valores se convierten en promesas
-y las promesas se mantienen como promesas. ¿No estas seguro que algo
-es una promesa? Usa <code>$Promise.resolve</code>.</p>
+              <p>Como puedes ver, <code>$Promise.resolve</code> “normaliza” valores que puede que sean o no promesas. Los valores se convierten en promesas
+y las promesas se mantienen como promesas. ¿No estás seguro que algo es una promesa? Usa <code>$Promise.resolve</code>.</p>
 
             </div>
             
@@ -223,7 +214,7 @@ es una promesa? Usa <code>$Promise.resolve</code>.</p>
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Este spec debería ya funcionar si lo de arriba funciona.
-Lee a través de las assertions y tratá de entender que demuestran.</p>
+Lee a través de las assertions y trata de entender que demuestran.</p>
 
             </div>
             
@@ -259,10 +250,8 @@ Lee a través de las assertions y tratá de entender que demuestran.</p>
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Hemos “resuelto” pero igual terminado con una promesa rechazada.
-Asi que “resolve” realmente significa <em>intento</em> de completarla(fulfill).
-Eso funciona con valores normales, o promesas que ya estan completadas.
-Sin embargo, no podemos mentir y aclamar que una promesa ya rechazada
-es ahora mágicamente completada, sin haber manejado la razón de rechazo.</p>
+Así que “resolve” realmente significa <em>intento</em> de completarla(fulfill).
+Eso funciona con valores normales, o promesas que ya estan completadas. Sin embargo, no podemos mentir y aclamar que una promesa ya rechazada es ahora mágicamente completada, sin haber manejado la razón de rechazo.</p>
 
             </div>
             
@@ -279,9 +268,7 @@ es ahora mágicamente completada, sin haber manejado la razón de rechazo.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p><code>Promise.all</code> es uno de los métodos más útiles en cualquier async
-toolkit. El método <code>then</code> nos dió encadenamiento serial; <code>all</code> nos
-da espera paralela.</p>
+              <p><code>Promise.all</code> es uno de los métodos más útiles en cualquier async toolkit. El método <code>then</code> nos dio encadenamiento serial: <code>all</code> nos da espera paralela.</p>
 
             </div>
             
@@ -311,7 +298,7 @@ describe(<span class="hljs-string">'El método estático `$Promise.all`'</span>,
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>El <code>Promise.all</code> de ES6 acepta cualquier
-<a href="https://mzl.la/1SopN1G">iterable</a>, pero esto va mas alla del
+<a href="https://mzl.la/1SopN1G">iterable</a>, pero esto va más allá del
 scope de Pledge. Nuestro <code>.all</code> solo necesita soportar arreglos.</p>
 
             </div>
@@ -328,7 +315,7 @@ scope de Pledge. Nuestro <code>.all</code> solo necesita soportar arreglos.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Pasando un arreglo dentro de <code>$Promise.all</code> causa ningún error.</p>
+              <p>Pasando un arreglo dentro de <code>$Promise.all</code> no causa ningún error.</p>
 
             </div>
             
@@ -454,7 +441,7 @@ scope de Pledge. Nuestro <code>.all</code> solo necesita soportar arreglos.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
-              <p>la promesa debería completarse con valores (no una mezcla de promesas y valores).</p>
+              <p>La promesa debería completarse con valores (no una mezcla de promesas y valores).</p>
 
             </div>
             
@@ -493,10 +480,8 @@ scope de Pledge. Nuestro <code>.all</code> solo necesita soportar arreglos.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p>Oops! No estabas chequeando sincrónicamente <code>._value</code>, no? Eso no
-va a funcionar si una promesa sigue pendiente. ¿Recuerdas cómo
-acceder al eventual valor de la promesa? Vas a necesitar alterar
-o aumentar tu enfoque aquí.</p>
+              <p>Oops! No estabas chequeando sincrónicamente <code>._value</code>, no? Eso no va a funcionar si una promesa sigue pendiente. ¿Recuerdas cómo
+acceder al eventual valor de la promesa? Vas a necesitar alterar o aumentar tu enfoque aquí.</p>
 
             </div>
             
@@ -516,8 +501,7 @@ o aumentar tu enfoque aquí.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>la promesa debería completarse con valores…
-…una vez que esos valores existen</p>
+              <p>la promesa debería completarse con valores…una vez que esos valores existen</p>
 
             </div>
             
@@ -533,9 +517,7 @@ o aumentar tu enfoque aquí.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>No pushees valores simplemente en orden que van terminando.
-De alguna manera tenés que mantener rastro de que valores
-van donde en el arreglo final</p>
+              <p>No pushees valores simplemente en orden que van terminando. De alguna manera tienes que mantener rastro de qué valores van en el arreglo final</p>
 
             </div>
             
@@ -553,7 +535,7 @@ van donde en el arreglo final</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>la promesa debería completarse con valores, y en el
+              <p>La promesa debería completarse con valores, y en el
 orden correcto también!</p>
 
             </div>
@@ -586,7 +568,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
-              <p>la promesa que rechaza luego de un random delay</p>
+              <p>La promesa que rechaza luego de un random delay</p>
 
             </div>
             
@@ -603,7 +585,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
-              <p>un par de promesas que se van a completar en orden random</p>
+              <p>Un par de promesas que se van a completar en orden random</p>
 
             </div>
             
@@ -618,7 +600,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
-              <p>mandamos nuestra promesa condenada en algún lugar</p>
+              <p>Mandamos nuestra promesa condenada en algún lugar</p>
 
             </div>
             
@@ -634,7 +616,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
-              <p>espera por todo con $Promise.all</p>
+              <p>Espera por todo con $Promise.all</p>
 
             </div>
             
@@ -649,7 +631,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
-              <p>la promesa debería ser rechazada</p>
+              <p>La promesa debería ser rechazada</p>
 
             </div>
             
@@ -665,7 +647,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
-              <p>This probably already passes, but let’s be sure. We’re strict that way.</p>
+              <p>Esto probablemente ya está pasando, pero mejor aseurémonos. De esa manera somos estrictos.</p>
 
             </div>
             
@@ -681,7 +663,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
-              <p>las promesas que rechaza luego de un random delay</p>
+              <p>Las promesas que rechaza luego de un random delay</p>
 
             </div>
             
@@ -701,7 +683,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
-              <p>un par de promesas que se completan en orden random</p>
+              <p>Un par de promesas que se completan en orden random</p>
 
             </div>
             
@@ -716,7 +698,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
-              <p>mandamos nuestras promesas condenadas en algún lugar</p>
+              <p>Mandamos nuestras promesas condenadas en algún lugar</p>
 
             </div>
             
@@ -734,7 +716,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
-              <p>espera por todo con $Promise.all</p>
+              <p>Espera por todo con $Promise.all</p>
 
             </div>
             
@@ -749,7 +731,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
-              <p>la promesa debería ser rechazada con la primera razón.</p>
+              <p>La promesa debería ser rechazada con la primera razón.</p>
 
             </div>
             
@@ -765,14 +747,7 @@ orden correcto también!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
-              <p>Vamos! Como podemos ver, <code>Promise.all</code> hace bastante por nosotros.
-Basicamente, podemos dar <code>.all</code> un arreglo conteniendo cualquier
-mezcla de valores y promesas con tiempos aleatorios. En retorno,
-<code>.all</code> nos da una promesa para todos los valores eventuales,
-manteniendo el orden original del arreglo incluso si la promesa se
-completa en cualquier orden. Y si cualquiera de las promesas ingresadas
-falla, la promesa que retorna falla inmediatamente con la misma razón
-de rechazo.</p>
+              <p>Vamos! Como podemos ver, <code>Promise.all</code> hace bastante por nosotros. Básicamente, podemos dar <code>.all</code> a un arreglo conteniendo cualquier mezcla de valores y promesas con tiempos aleatorios. En retorno, <code>.all</code> nos da una promesa para todos los valores eventuales, manteniendo el orden original del arreglo incluso si la promesa se completa en cualquier orden. Y si cualquiera de las promesas ingresadas falla, la promesa que retorna falla inmediatamente con la misma razón de rechazo.</p>
 
             </div>
             
