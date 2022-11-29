@@ -95,9 +95,7 @@ Capítulo 3: Completando los Handlers: Rejection &amp; Catch
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Con <code>.resolve</code> enviando y <code>.then</code> actuando en data, tenemos
-una mayor parte de las promeses funcionando. Rejection es similar;
-termina la agregación de callback de promesas en este capítulo.</p>
+              <p>Con <code>.resolve</code> enviando y <code>.then</code> actuando en data, tenemos una mayor parte de las promeses funcionando. Rejection es similar, termina la adición de callback de promesas en este capítulo.</p>
 
             </div>
             
@@ -148,11 +146,7 @@ describe(<span class="hljs-string">'Otra promise'</span>, <span class="hljs-func
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>If you get “not a function” errors, think carefully about
-what happens when you call <code>.then</code>. What is getting added
-to the <code>handlerGroups</code>? What is your code trying to do with
-those <code>handlerGroups</code>? There is going to have to be some
-sort of “safety check” somewhere…</p>
+              <p>Si obtiene errores de "not a function", piense cuidadosamente en lo que sucede cuando llama a <code>.then</code>. ¿Qué se está agregando a  <code>handlerGroups</code>? ¿Qué está intentando hacer tu código con esos <code>handlerGroups</code>? Deben haber algunos, como una especie de "control de seguridad" en alguna parte...</p>
 
             </div>
             
@@ -218,7 +212,7 @@ sort of “safety check” somewhere…</p>
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>Esta parte es una demostración; con resolution y rejection
-funcionando, promeses pueden ser usadas como un reemplazo al callback</p>
+funcionando, las promesas pueden ser usadas como un reemplazo al callback</p>
 
             </div>
             
@@ -285,14 +279,14 @@ funcionando, promeses pueden ser usadas como un reemplazo al callback</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Un rápido desvío mientras estamos terminando rejections: agregá
+              <p>Un rápido desvío mientras estamos terminando rejections: agrega
 un método <code>.catch</code> a tu promise prototype. Las internas de este
-metodo pueden ser codeadas en una corta linea</p>
+método pueden ser codeadas en una línea corta</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-describe(<span class="hljs-string">"Un metodo `.catch`"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+describe(<span class="hljs-string">"Un método `.catch`"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
 
   <span class="hljs-keyword">var</span> promise;
   beforeEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
@@ -315,11 +309,10 @@ describe(<span class="hljs-string">"Un metodo `.catch`"</span>, <span class="hlj
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Este spec probablemente ya este pasando en este punto, porque
+              <p>Este spec probablemente ya esté pasando en este punto, porque
 por defecto todas las funciones devuelven <code>undefined</code>. Sin embargo,
-cuando empecemos Cap. 4, esto puede fallar. Si eso pasa, vas a tener
-que retornar aquí y arreglar <code>.catch</code> - esta vez, tomando los specs
-del Cap 4 en cuenta.</p>
+cuando empecemos el Cap. 4, esto puede fallar. Si eso pasa, vas a tener
+que regresar aquí y arreglar <code>.catch</code> - esta vez, tomando en cuenta los specs del Cap 4.</p>
 
             </div>
             
@@ -338,7 +331,7 @@ del Cap 4 en cuenta.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>debería ser visualmente identico (pero no son necesariamente ===):</p>
+              <p>Debería ser visualmente idéntico (pero no son necesariamente ===):</p>
 
             </div>
             
@@ -354,7 +347,7 @@ del Cap 4 en cuenta.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>La utilidad para simplificar el valor retornado. No siempre necesario, pero algunas soluciones validas no siempre funcionan con normal <code>toEqual</code>.</p>
+              <p>La utilidad para simplificar el valor retornado. No siempre es necesario, pero algunas soluciones válidas no siempre funcionan con normal <code>toEqual</code>.</p>
 
             </div>
             
@@ -381,11 +374,7 @@ del Cap 4 en cuenta.</p>
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Eso termina la adhesión y el disparador de nuestros handlers!
-En el siguiente capítulo, vamos a bucear en las profundidades
-de como <code>.then</code> chaining funciona realmente. Este comportamiento
-es lo que lleva a las promesas mas alla de ser solamente callbacks
-portables, los transforma en dinamicos, vesatiles poderosos, y
-manipulables máquinas.</p>
+En el siguiente capítulo, vamos a bucear en las profundidades de como <code>.then</code> chaining funciona realmente. Este comportamiento es lo que lleva a las promesas mas allá de ser solamente callbacks portables, los transforma en dinámicas, versátiles poderosas, y manipulables máquinas.</p>
 
             </div>
             

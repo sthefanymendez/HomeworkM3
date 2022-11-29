@@ -92,7 +92,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Vamos a construir una libreria de promesas similar a ES6, llamada
+              <p>Vamos a construir una librería de promesas similar a ES6, llamada
 pledge.js. Nuestras promesas van a llamarse “$Promise” para evitar disparar
 código existente del browser. Para concentrarte en los conceptos, pledge.js
 va usar muchas variables públicas y no ser obediente al standard.</p>
@@ -108,9 +108,7 @@ va usar muchas variables públicas y no ser obediente al standard.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Para ejecutar los spec, corre <code>npm test</code> en este directorio. Cuando pases un
-test, cambia el siguiente test pendiente a activo. Este spec es iterativo y
-opinionado; haz los tests en orden.</p>
+              <p>Para ejecutar los spec, corre <code>npm test</code> en este directorio. Cuando pases un test, cambia el siguiente test pendiente a activo. Este spec es iterativo y opinionado. Haz los tests en orden.</p>
 
             </div>
             
@@ -144,7 +142,7 @@ Chapter 1: Estructura básica y Cambios de Estado
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Comencemos con una parte esencial y empecemos a
-definir como se construye la promesa, el argumento <code>executor</code>,
+definir cómo se construye la promesa, el argumento <code>executor</code>,
 y resolution / rejection.</p>
 
             </div>
@@ -162,9 +160,7 @@ y resolution / rejection.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Incluso antes  de las ES6 <code>class</code>, devs normalmente llamaban ciertas
-funciones como “clases”. A pesar que JS no es un lenguaje basado en clases,
-todavía tendemos hablar en terminos de constructores e instancias</p>
+              <p>Incluso antes de las ES6 <code>class</code>, devs normalmente llamaban ciertas funciones como “clases”. A pesar que JS no es un lenguaje basado en clases,todavía tendemos hablar en términos de constructores e instancias.</p>
 
             </div>
             
@@ -184,8 +180,7 @@ describe(<span class="hljs-string">'La clase `$Promise`'</span>, <span class="hl
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>El único argumento de un contructor de una promesa es una función llamada
-el “executor”. Vamos a volver a esta función mas adelante.</p>
+              <p>El único argumento de un constructor de una promesa es una función llamada el “executor”. Vamos a volver a esta función más adelante.</p>
 
             </div>
             
@@ -244,8 +239,7 @@ describe(<span class="hljs-string">'Una instancia de promesa'</span>, <span clas
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Las promesas internamente tienen un estado (cambiando informacion), que a
-su vez afecta como se comporta. Promises son como una maquina de estado.</p>
+              <p>Las promesas internamente tienen un estado (van cambiando información), que a su vez afecta cómo se comporta. Promises son como una máquina de estado.</p>
 
             </div>
             
@@ -259,9 +253,7 @@ su vez afecta como se comporta. Promises son como una maquina de estado.</p>
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>JavaScript carece algunos controles de privacidad comparado a otros
-lenguajes. Una convención común es usar un esquema de nombres para
-marcar un método como “privado”. Comenzando métodos con un <code>._underscore</code>
-es una señal de esto.</p>
+lenguajes. Una convención común es usar un esquema de nombres para marcar un método como “privado”. Comenzando métodos con un <code>._underscore</code> es una señal de esto.</p>
 
             </div>
             
@@ -279,7 +271,7 @@ es una señal de esto.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Nota - las promesas no estan supuestas a tener un método resolver
+              <p>Nota: las promesas no están supuestas a tener un método resolver
 y rejector público. Sin embargo, esconder estas implementaciones puede
 ser complicado.</p>
 
@@ -322,12 +314,8 @@ ser complicado.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>¿Por qué no “resolved”? Esto va a ser visto en detalle en el Ch. 5,
-pero por ahora sabe que la terminología de P/A+ estricto dibuja una
-distinción entre “resolution” y “fullfillment”. Normalmente una
-promesa “resolved” esta también “fulfilled”, pero en un caso
-particular, una promesa “resolved” es realmente “rejectes”. No
-tenes que saber por qué aún.</p>
+              <p>¿Por qué no “resolved”? Esto va a ser visto en detalle en el Ch.5,
+pero por ahora sabe que la terminología de P/A+ estricto dibuja una distinción entre “resolution” y “fullfillment”. Normalmente una promesa “resolved” está también “fulfilled”, pero en un caso particular, una promesa “resolved” es realmente “rejectes”. No tenes que saber por qué aún.</p>
 
             </div>
             
@@ -384,8 +372,8 @@ tenes que saber por qué aún.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>Rejection y fulfillment son virtualmente idénticas. esto no deberia
-requerir mucho mas código</p>
+              <p>Rejection y fulfillment son virtualmente idénticas. Esto no debería
+requerir mucho más código</p>
 
             </div>
             
@@ -431,7 +419,7 @@ requerir mucho mas código</p>
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Si usaste el estado pending para los specs “no afecta un promesa ya
-completada /rechazada”, estos dos specs deberían ya estar pasando.</p>
+completada /rechazada”, estos dos specs deberían estar pasando.</p>
 
             </div>
             
@@ -463,10 +451,7 @@ completada /rechazada”, estos dos specs deberían ya estar pasando.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p>El constructor Promise toma un argumento (de hecho, ES6 Promise <em>tienen</em>
-que recibir este argumento, o arrojar un error): una función “executor”.
-El executro va a ser llamado con dos argumentos: un “resolver
-y un “rejector”</p>
+              <p>El constructor Promise toma un argumento, de hecho, ES6 Promise <em>tiene</em> que recibir este argumento, o arrojar un error: una función “executor”. El executor va a ser llamado con dos argumentos: un “resolver” y un “rejector”</p>
 
             </div>
             
@@ -479,16 +464,7 @@ y un “rejector”</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
-              <p>El executor es una forma para el creador de una nueva promesa de controlar
-el destino de esa promesa. Recuerda, <code>._internalResolve</code> es como nosotros
-estamos implementando nuestras promesas, pero los usuarios normalmente no
-pretendemos que tengan acceso a eso directmente. Esto es principalmente
-para prevenir abuso: promises son pretendidas para representar el
-resultado de una acción asincrónica, pero si <em>cualquiera</em> puede llamar
-<code>.internalResolve</code>, no podemos confiar más que la promesa se coloca por
-el async original. Dado que el executor solo corre cuando la promesa es
-construida, el acceso al resolver y rejector es naturalmente limitado,
-haciendo la promesa más confiable.</p>
+              <p>El executor es una forma para el creador de una nueva promesa de controlar el destino de esa promesa. Recuerda, <code>._internalResolve</code> es como nosotros estamos implementando nuestras promesas, pero los usuarios normalmente no pretendemos que tengan acceso a eso directamente. Esto es principalmente para prevenir abuso: promises son pretendidas para representar el resultado de una acción asincrónica, pero si <em>cualquiera</em> puede llamar <code>.internalResolve</code>, no podemos confiar más que la promesa se coloca por el async original. Dado que el executor sólo corre cuando la promesa es construida, el acceso al resolver y rejector es naturalmente limitado, haciendo la promesa más confiable.</p>
 
             </div>
             
@@ -530,9 +506,7 @@ describe(<span class="hljs-string">'La función executor'</span>, <span class="h
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>Para este punto puedes intentar una aproximación, solo para ser bloqueado
-por errores como “cannot read X of undefined”. Piensa cuidadosamente;
-puedes tener un problema con el <em>contexto</em> (el keyword <code>this</code>)</p>
+              <p>Para este punto puedes intentar una aproximación, solo para ser bloqueado por errores como “cannot read X of undefined”. Piensa cuidadosamente; puedes tener un problema con el <em>contexto</em> (el keyword <code>this</code>)</p>
 
             </div>
             
@@ -554,8 +528,8 @@ puedes tener un problema con el <em>contexto</em> (el keyword <code>this</code>)
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>No hagas trampa! La función resolver y rejector provistar al executor
-deberian ser (o llamar) a los metodos resolve y reject internos. Después
-de todo, trabajaste muy duro para asegurarte <code>._internalResolve</code> y
+deberían ser (o llamar) a los métodos resolve y reject internos. Después
+de todo, trabajaste muy duro para asegurarte de que <code>._internalResolve</code> y
 <code>._internalReject</code> funcionan apropiadamente.</p>
 
             </div>
@@ -615,7 +589,7 @@ de todo, trabajaste muy duro para asegurarte <code>._internalResolve</code> y
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>De nuevo, la resolución y el rechazo son basicamente lo mismo.</p>
+              <p>De nuevo, la resolución y el rechazo son básicamente lo mismo.</p>
 
             </div>
             
@@ -680,8 +654,7 @@ de todo, trabajaste muy duro para asegurarte <code>._internalResolve</code> y
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Esta parte debería pasar si hiciste lo de arriba correctamente.
-Seguí la lógica:</p>
+              <p>Esta parte debería pasar si hiciste lo de arriba correctamente. Sigue la lógica:</p>
 
             </div>
             
@@ -715,11 +688,7 @@ Seguí la lógica:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
-              <p>A este punto tenemos unos hechos básicos establecidos. Una promesa empieza
-con un estado <em>pending</em> y ningun valor. En un punto, la promesa puede estar
-<em>fulfilled</em> con data, o <em>rejected</em> con una razón. Una vez <em>colocada</em> (
-fulfilled o rejected), una promesa esta trabada en ese estado y no puede ser
-cambiada.</p>
+              <p>A este punto tenemos unos hechos básicos establecidos. Una promesa empieza con un estado <em>pending</em> y ningún valor. En un punto, la promesa puede estar <em>fulfilled</em> con data, o <em>rejected</em> con una razón. Una vez <em>colocada</em> (fulfilled o rejected), una promesa esta trabada en ese estado y no puede ser cambiada.</p>
 
             </div>
             

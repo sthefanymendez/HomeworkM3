@@ -96,14 +96,9 @@ Capítulo 4: Las Promises pueden retornar valores y conectarse entre ellas
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
               <p>Un aspecto crucial de las promises es que <code>.then</code> siempre
-retorna una nueva promesa. Cuando los valores son retornados
-por el handler de promise A, son exportados y representados
-por la promesa B retornada. Esto lleva a un comportamiento
-remarcadamente versatil: Elegir cuando atrapar los errores,
-conectando promesas juntas, fácilmente pasar alrededor valores
-de las promesas y actuar sobre ellos cuando sea conveniente…
-incluso retornar nuevos valores.
-Este capitulo puede ser dificultoso.</p>
+retorna una nueva promesa. Cuando los valores son retornados por el handler de promise A, son exportados y representados por la promesa B retornada. Esto lleva a un comportamiento remarcadamente versátil: Elegir cuando atrapar los errores,
+conectando promesas juntas, fácilmente pasar alrededor valores de las promesas y actuar sobre ellos cuando sea conveniente… incluso retornar nuevos valores.
+Este capítulo puede ser dificultoso.</p>
 
             </div>
             
@@ -132,14 +127,13 @@ describe(<span class="hljs-string">'por una dada promiseA (pA)'</span>, <span cl
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Nuestras promise padres deben mantener algún tipo de
-referencia a la promesa de abajo (downstreamPromise)
-en orden de controlar el chaining</p>
+              <p>Nuestras promesas padres deben mantener algún tipo de
+referencia a la promesa de abajo (downstreamPromise) en orden de controlar el chaining</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  it(<span class="hljs-string">'`.then` agregá una nueva promesa a su handlerGroups'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  it(<span class="hljs-string">'`.then` agrega una nueva promesa a su handlerGroups'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
     promiseA.then();
     <span class="hljs-keyword">var</span> groups = promiseA._handlerGroups;
     expect( groups[<span class="hljs-number">0</span>].downstreamPromise <span class="hljs-keyword">instanceof</span> $<span class="hljs-built_in">Promise</span> ).toBe( <span class="hljs-literal">true</span> );</pre></div></div>
@@ -171,9 +165,7 @@ en orden de controlar el chaining</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Pasar esto puede romper tu <code>.catch</code> del capítulo 3. Si eso pasase,
-vas a tener que ir para atras y arreglar <code>.catch</code>, tomando este
-spec en cuenta.</p>
+              <p>Pasar esto puede romper tu <code>.catch</code> del capítulo 3. Si eso pasase, vas a tener que ir para atrás y arreglar el <code>.catch</code>, tomando este spec en cuenta.</p>
 
             </div>
             
@@ -192,7 +184,7 @@ spec en cuenta.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Esta sección esta detallada en la Promises Flowchart. Referíte al PDF.</p>
+              <p>Esta sección está detallada en la Promises Flowchart. Referíte al PDF.</p>
 
             </div>
             
@@ -250,8 +242,7 @@ spec en cuenta.</p>
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Lo de arriba es una pista; de ahora en adelante vamos a usar
-este matcher personalizado.
-Ignorá el <code>done</code>, necesario porque Jasmine no soporta async matchers.</p>
+este matcher personalizado. Ignorá el <code>done</code>, es necesario porque Jasmine no soporta async matchers.</p>
 
             </div>
             
@@ -354,13 +345,7 @@ este matcher personalizado.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>¿Por qué completado? Esto es similar a <code>try</code>-<code>catch</code>. Si la
-promiseA es rechazada (equivalente a un <code>try</code> fallido), pasamos
-la razón al error handler de promiseA (equivalente a <code>catch</code>).
-Ahora hemos manejado el error correctamente, entonces promiseB
-debería representar el error handler retornando algo útil, no un
-nuevo error. promiseB solo rechazaría si el error handler por si
-mismo falla de alguna forma (el cual ya fue abordado en un test previo).</p>
+              <p>¿Por qué completado? Esto es similar a <code>try</code>-<code>catch</code>. Si la promiseA es rechazada (equivalente a un <code>try</code> fallido), pasamos la razón al error handler de promiseA (equivalente a <code>catch</code>). Ahora hemos manejado el error correctamente, entonces promiseB debería representar el error handler retornando algo útil, no un nuevo error. promiseB solo rechazaría si el error handler por si mismo falla de alguna forma (el cual ya fue abordado en un test previo).</p>
 
             </div>
             
@@ -379,8 +364,7 @@ mismo falla de alguna forma (el cual ya fue abordado en un test previo).</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Excepciones causan que la promesa retornado sea rechazada con un error
-Pista: vas a necesitar usar <code>try</code> &amp; <code>catch</code> para hacer que esto funcione</p>
+              <p>Excepciones que causan que la promesa retornada sea rechazada con un error. Pista: vas a necesitar usar <code>try</code> &amp; <code>catch</code> para hacer que esto funcione</p>
 
             </div>
             
@@ -407,8 +391,7 @@ Pista: vas a necesitar usar <code>try</code> &amp; <code>catch</code> para hacer
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>¿Qué pasa si promiseA retorna una promesaZ? Podrías manejar pZ
-como un valor normal, pero luego vas a tener que empezar escribiendo
-<code>.then</code> dentro de <code>.then</code>. En cambio, queremos hacer promiseB ser pZ
+como un valor normal, pero luego vas a tener que empezar escribiendo <code>.then</code> dentro de <code>.then</code>. En cambio, queremos hacer promiseB ser pZ
 copiando el comportamiento de pZ - a.k.a asimilación. EStos cuatro
 tests pueden causar dolores de cabeza</p>
 
@@ -479,9 +462,7 @@ requeriría muchos mas specs. Pero no vamos a ser tan estrictos.</p>
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Todo los specs de arriba colocan su promesa LUEGO de retornar
-la nueva promesa. Pero por supuesto podés conectar en promesas
-ya colocadas! Tu solución puede ya estar pasando esto.
-Pero quizás no…</p>
+la nueva promesa. Pero por supuesto podés conectar en promesas ya colocadas! Tu solución puede ya estar pasando.Pero quizás no…</p>
 
             </div>
             
@@ -644,11 +625,7 @@ Pero quizás no…</p>
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Wow! Si llegaste tan lejos, felicitaciones. Hemos omitido ciertos
-detalles (por ejemplo: los handlers debén siempre ser llamados en
-un verdadero async wrapper), pero haz construido una libreria de
-promesas con la mayoría del comportamiento standard. En el siguiente
-capítulo (opcional, pero recomendado), va a añadir algunos métodos
-comunes de la libreria que hacen trabajar con promesas más fácil
+detalles (por ejemplo: los handlers debén siempre ser llamados en un verdadero async wrapper), pero haz construido una libreria de promesas con la mayoría del comportamiento standard. En el siguiente capítulo (opcional, pero recomendado), va a añadir algunos métodos comunes de la librería que hacen trabajar con promesas más fácil
 y prolijo.</p>
 
             </div>
