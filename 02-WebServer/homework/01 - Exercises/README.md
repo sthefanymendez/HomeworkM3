@@ -1,399 +1,266 @@
-![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
+# HW 01: WEB SERVER | Ejercicios
 
-<table class="hide" width="100%" style='table-layout:fixed;'>
-  <tr>
-   <td>
-    <a href="https://airtable.com/shrBpWkYV4K12PPNZ?prefill_clase=03-WebServer">
-   <img src="https://static.thenounproject.com/png/204643-200.png" width="100"/>
-   <br>
-   Hacé click acá para dejar tu feedback sobre esta clase.
-    </a>
-   </td>
-              <td>
-     <a href="https://quiz.soyhenry.com/evaluation/new/606e31b2656c8d23c2e60ecb">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/HSQuiz.svg/768px-HSQuiz.svg.png" width="100" height="100"/>
-      <br>
-      Hacé click acá completar el quiz teórico de esta lecture.
-     </a>
-  </td>
-  </tr>
-</table>
+## **🕒 Duración estimada**
 
-# Web Server
+x minutos
 
-#### Armando un Servidor Web con Nodejs
+---
 
-## Qué es un servidor web, exactamente?
+<br />
 
-Un servidor web es cualquier computadora o sistema que procese solicitudes (requests) y que devuelva una respuesta (response) a través de un protocolo de red.
+## **📌 INTRO**
 
-### Modelo cliente servidor
+En esta homework crearás un servidor básico con distintas rutas que cumplirán funcionalidades específicas.
 
-![client-server](/_src/assets/03-WebServer/csmodel.png)
+---
 
-Este es el modelo simplificado de cualquier consulta a un servidor web.
+<br />
 
-El cliente pide un recurso o servicio a un servidor, usando un mensaje en un formato standart (HTTP). El servidor recibe el mensaje, lo decodifica, realiza el servicio que se le pidió y devuelve el resultado en el mismo formato.
+## **📍 CONSIGNA**
 
-## Qué necesitamos que tenga un servidor web en Node
+Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
-* Maneras de organizar nuestro código para que sea reusable
-  * Nodejs Modules
-* Poder leer y escribir archivos ( input/output)
-  * streams y pipes
-* Leer y escribir en Bases de Datos
-* Poder enviar y recibir datos de internet
-* Poder interpretar los formatos estándares
-  * http_parser
-* Alguna forma de manejar procesos que lleven mucho tiempo
-  * Naturaleza asincrónica de javascript, callbacks
+---
 
-### Entendiendo el protocolo HTTP
+<br />
 
-Nodejs viene preparado para poder leer e interpretar el contenido de un mensaje HTTP. Lo logra con la librería [http_parser](https://github.com/nodejs/http-parser), qué es un programa hecho en C y que está embebido en Node.
+## **📖 Pasos básicos para realizar la homework**
 
-Usando esta librería de C, Nodejs tiene módulos que nos ayudan a manejar de manera fácil request y reponses HTTP.
+📍 Para iniciar, debes pararte sobre la carpeta `01 - Excercises`. Dentro de ella escribe los comandos:
 
-# Empezemos a construir un server básico
-
-```javascript
-var http = require('http'); // importamos el módulo http para poder trabajar con el protocolo
-
-http.createServer( function(req, res){ // Creamos una serie de events listener, que van a escuchar por requests que ocurren en este socket
- //Para crear un response empezamos escribiendo el header
- res.writeHead(200, { 'Content-Type':'text/plain' }) //Le ponemos el status code y algunos pair-values en el header
- res.end('Hola, Mundo!\n');
-
-
-}).listen(1337, '127.0.0.1'); //Por último tenemos que especificar en que puerto y en qué dirección va a estar escuchando nuestro servidor
+```bash
+npm install
+npm test
 ```
 
-Para probar el código, corremos el código usando `node app.js`. Primero notamos que a diferencia de otro código que podamos haber corrido, este programa no termina su ejecución, esto sucede porque el servidor está hecho de manera que se quede escuchando indefinidamente por requests en el puerto y dirección especificadas.
+Si deseas correr por test, puedes utilizar:
 
-Ahora, para ver si está funcionando como esperábamos vamos a ir al browser y en la barra de dirección escribrimos `localhost:1337`, de esta forma el browser va a ser un request al socket donde dejamos escuchando nuestro server.
-
-![Server-Running](/_src/assets/03-WebServer/serverRunning.png)
-
-Como vemos el servidor respondió con el texto que especificamos en nuestro código!
-
-De hecho, usando las developer tools, podemos ver el request HTTP que hizo el server:
-
-![Server-Network](/_src/assets/03-WebServer/serverNetwork.png)
-
-## ¿Qué más podemos hacer, ahora que tenemos un server corriendo?
-
-### Enviando HTML
-
-Ahora vamos a mejorar el servidor para que no sólo devuelva texto plano, sino que devuelva HTML.
-Podríamos incluir el html como string dentro del código del servidor, pero eso sería engorroso de manejar.
-
-Por lo que vamos a crear un nuevo archivo HTML muy simple llamado `index.html` al que vamos a leer con el servidor.
-
-```html
- <!DOCTYPE html>
- <html>
- <head>
-  <title>Prueba!</title>
- </head>
- <body>
-  <h1>Hola, Mundo!</h1>
-  <p>Bienvenidos!</p>
- </body>
- </html>
- ```
-
-Como dijimos que vamos a tener que **leer** el archivo, vamos a necesitar el módulo *fs* de nodejs.
-
-```javascript
-var fs   = require('fs');
+```bash
+npm run test:01
 ```
 
-Además ahora tenemos que cambiar la propiedad `Content-type` de `text/text` a `text/html` para que el browser sepa que le estamos enviando un archivo que contiene html y no sólo texto plano. *__¿Qué pasaría si no cambiaramos esta propiedad?__*
+Con este comando podrás levantar el servidor y comprobar que todo funciona correctamente:
 
-Ahora vamos a usar el método `readFileSync` de `fs` para leer el archivo `index.html` que habiamos creado y lo guardamos en una nueva variable que llamaremos `html`.
-
-__En este caso particular usaremos el método de lectura sincrónico para no complicar el código__
-
-Una vez leído el archivo, vamos a poder enviarlo como argumento del método `end`.
-
-```javascript
-var http = require('http');
-var fs   = require('fs'); //Importamos el módulo fs que nos permite leer y escribir archivos del file system
-
-http.createServer( function(req, res){ 
- 
- res.writeHead(200, { 'Content-Type':'text/html' })
- var html = fs.readFileSync(__dirname +'/html/index.html');
- res.end(html);
-
-
-}).listen(1337, '127.0.0.1');
+```bash
+npm start
 ```
 
-Corremos el servidor con `node` y vemos el nuevo resultado:
+---
 
-![Server-con-Html](/_src/assets/03-WebServer/serverConHtml.png)
+<br />
 
-Como vemos, cuando le llegó el request al server, este leyó el archivo html y lo envió. El browser interpretó que el contenido era `text/html` y lo renderizó como tal.
+## **ESTRUCTURA**
 
-### Contenido Dinámico: **Templates**
+🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-Si quisieramos que el contenido del html no sea estático podriamos, por ejemplo, hacer que el html varie según una variable. Veamos como podemos lograr eso.
+-  Una carpeta llamada `images`.
+-  Un archivo **server.js**.
+-  Un archivo **package.json**.
+-  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
-Primero vamos a crear un nuevo html al que llamaremos `template.html`. Y vamos a agregar un placeholder (en este caso particular encerramos una palabra con `{}` ), lo que haremos luego será buscar en el archivo lo que esté encerrado en `{}` y reemplazarlo por el contenido la variable que elijamos.
+---
 
-```html
- <!DOCTYPE html>
- <html>
- <head>
-  <title>Prueba!</title>
- </head>
- <body>
-  <h1>Hola, {nombre}!</h1>
-  <p>Bienvenidos!</p>
- </body>
- </html>
- ```
+<br />
 
-Esta idea, de tener placeholders que luego serán reemplazados por contenido que esté en una variable es conocido como **Templates**. Existen varios _lenguajes_ de templating que trabajan con este concepto. Más adelante veremos algunos de ellos.
+## **👩‍💻 EJERCICIO 1**
 
-Ahora volvamos al código del servidor. Ahora, antes de enviar el html leído del archivo lo vamos a tener que parsear, por eso vamos a tener que tratar el archivo como una `String` y no como un `Buffer`, por lo que agregaremos el argumento `'utf-8' a la función`readFileSync`, para que el buffer sea codificado a una String.
+### **SERVER RAISE**
 
-Luego, vamos a crear la variable que va a tener el texto que queremos que se reemplaze en nuestro template. Por ejemplo: `var nombre = 'Soy Henry'`.
+📍 Dirígete al archivo `server.js`. Allí encontrarás las variables **fs** y **http** importadas.
 
-Ahora vamos a usar el método `replace` del objeto `String`, para que cuando encuentre el placeholder antes definido ( _{nombre}_ ) lo reemplaze por el contenido de nuestra variable `nombre`.
+📍 Lo que hay que hacer:
 
-Finalmente, enviamos lo que está en la variable `html` en el response.
+1. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
 
-```javascript
-var http = require('http');
-var fs   = require('fs'); //Importamos el módulo fs que nos permite leer y escribir archivos del file system
+2. El callback que tendrás que pasarle recibirá dos parámetros (**req** (_request_) y **res** (_response_)).
 
-http.createServer( function(req, res){ 
- 
- res.writeHead(200, { 'Content-Type':'text/html' })
- var html = fs.readFileSync(__dirname +'/html/template.html', 'utf8'); //Codificamos el buffer para que sea una String
- var nombre = 'Soy Henry'; //Esta es la variable con la que vamos a reemplazar el template
- html = html.replace('{nombre}', nombre); // Usamos el método replace es del objeto String
- res.end(html);
+3. Dentro de esta función deberás utilizar el objeto **fs** y acceder a su propiedad "**_readfile_**". De esta manera podremos leer algunos archivos externos que podremos manejar dentro de nuestras rutas.
 
+4. La propiedad "**_readfile_**" recibe dos parámetros:
 
-}).listen(1337, '127.0.0.1');
-```
+   -  **String:** este string será una ruta. Piensa que dentro de la propiedad **url** del parámetro **req** recibirás el nombre de la imagen que te piden. Por lo que en este string tendrás que acceder a la carpeta "_**images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_".
 
-Si todo funcionó bien, al recibir el request el server leerá el archivo html, reemplazará el contenido de la variable dentro del placeholder que habíamos definido. Luego enviará el resultado al browser por lo que deberíamos ver lo siguente:
+   -  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de esta función tendrás que crear una lógica que, en el caso de que haya un error responda con un status 404, un tipo de contenido igual a texto plano, y que la respuesta sea el string "_image not found_". En el caso de que no haya error la respuesta tendrá un status 200, con un tipo de contenido igual a "**_image/jpeg_**" y finalmente devolviendo el parámetro **data**.
 
-![Server-Template](/_src/assets/03-WebServer/serverTemplate.png)
+5. Luego de realizar todos estos pasos, inmediatamente después de la propiedad "**_createServer_**" deberás ingresar a la propiedad "**_listen_**". A esta le debes pasar como primero parámetro el número `3000` (nuestro puerto), y como segundo parámetro el string `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
 
-### Devolviendo JSON
+## **👩‍💻 EJERCICIO 1**
 
-Como sabemos, existen servidores cuyas URLS no nos devuelven un archivo HTML, si no que nos devuelven datos en formato JSON. Comunmente estos _endpoints_ son parte de un **API**.
+### **PROCESS**
 
-Veamos como podríamos modificar nuestro servidor para que se comporte como lo haría un endpoint de un API.
+📍 Dirígete al archivo `bash.js`. Encontrarás las variables "**process**" y "**commands**" importados en este archivo. Trabajaremos con ambas.  
+También estará la función `bash` que es la que ejecutará tu terminal.
 
-Como vimos antes, lo primero que debemos cambiar es el header que indica el tipo de contenido que estamos devolviendo, ahora vamos a cambiar el `content-type` a `application/json`, que es el **MIME TYPE** para JSON.
+📍 Lo que hay que hacer:
 
-Ahora, en vez de leer de un archivo, vamos a crear algo de datos. Por ejemplo, podemos crear un objeto:
+1. Crea una función con el nombre `print`. Esta función recibirá por parámetro un **output**. Dentro de ella tendrás que utilizar el método **stdout.write** del objeto `process` dos veces. La primera vez le pasarás como argumento el **output** recibido. La segundo vez el argumento deberá ser: "\nprompt > ".
 
-```javascript
-var obj = {
- nombre: 'Juan',
- apellido: 'Perez'
-};
-```
+2. Luego, dentro de la función `bash` utiliza el método **stdout.write** del objeto `process` pasándole como argumento el string: "prompt > ".
 
-Antes de enviar el objeto, debemos convertir el contenido a un String con formato JSON. Para esto vamos a usar la función `stringify` del objeto `JSON`, el cuál transforma un objeto a un string con notación JSON.
+3. Agrega también dentro `bash` el método **stdin.on** del objeto `process` al cual le deberás pasar dos parámetros.
 
-El proceso de transformar un objeto a un formato que pueda ser transferido o guardado se conoce como **SERIALIZE**. En este caso transformamos un objeto que estaba en memoria en un string con formato JSON que puede ser enviado por internet. Otros ejemplo de formatos pueden ser CSV, XML, etc.
-El proceso inverso (el de transformar de un formato a un objeto en memoria) se conoce como **DESERIALIZE**.
+   -  El primero debe ser el string: "data".
 
-```javascript
-var http = require('http');
-var fs   = require('fs');
+   -  El segundo debe ser una función que recibe por parámetro `data`.
 
-http.createServer( function(req, res){ 
- 
- res.writeHead(200, { 'Content-Type':'application/json' }) //Vamos a devolver texto en formato JSON
- var obj = {
-  nombre: 'Juan',
-  apellido: 'Perez'
- }; //Creamos un objeto de ejemplo para enviar como response
- 
- res.end( JSON.stringify(obj) ); //Antes de enviar el objeto, debemos parsearlo y transformarlo a un string JSON
+      A) Dentro de la función crea una variable con el nombre "**args**".Ten en cuenta que el parámetro que recibes no es un string, por lo que tendrás que convertirlo en uno. También ten en cuenta que si este string tiene espacios vacíos al comienzo o al final deberás eliminarlos.
 
-}).listen(1337, '127.0.0.1');
-```
+      B) Guarda en una variable llamada "**cmd**" la primer palabra del string, la cuál representará el comando ingresado.
 
-De nuevo, corremos el servidor y vamos al browser a probar nuestro nuevo endpoint.
+      C) Ahora verifica si dentro del objeto `commands` existe una propiedad con el valor que contiene la variable "**cmd**". En el caso que no existe, ejecuta la función `print` con el texto "command not found: **_cmd_**". En el caso de que si exista, ejecuta el siguiente código:
 
-![Server-Template](/_src/assets/03-WebServer/jsonServer.png)
+      ```bash
+      commands[cmd](print, args);
+      ```
 
-Como vemos, nuestro servidor nos devolvió correctamente el objeto que habiamos creado.
+---
 
-### Creando más de un Endpoint: **Routing**
+<br />
 
-Todos los ejemplos anteriores de servidores mantiene una sola ruta, es decir, que cualquier request que llegué al servidor va a ser servida de la misma forma ( _Prueben desde el browser hacer request a un path distinto, por ejemplo: `http://localhost:1337/index/` o `http://localhost:1337/hola.jpg`_). Esto se debe a que en ningún momento en nuestro código nos fijamos qué URL está pidiendo el request, simplemente le devolvemos lo mismo a cualquier request!
+## **👩‍💻 EJERCICIO 2**
 
-Ahora veremos como podemos mapear distintos requests HTML a distintos contenidos en el servidor, este proceso de mapeo es conocido como **ROUTING**.
+📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**request**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.  
+También estarán 8 funciones que deberás completar, junto a su `module.exports` al final del archivo.
 
-Para hacerlo vamos a tener que examinar en cada request que llega la URL a la que quiere acceder, para eso vamos a hacer uso del objeto `req` que vive dentro de la función `createServer`. Ese objeto tiene toda la información del request que llegó, en este caso nos interesa la URL, ese dato lo encontraremos en `req.url`.
+📍 Lo que hay que hacer:
 
-Para este ejemplo vamos a agregar dos rutas, la primera _'/'_ en la que devolveremos el html leyendo del archivo como hicimos al princio, y la segunda _'/api'_ en la que devolveremos el objeto JSON.
+### **PWD**
 
-Como dijimos la propiedad `req.url` contiene la URL del request, por la tanto nos fijaremos en su contenido para decidir qué queremos devolver:
+_PWD_ permitirá imprimir la ruta hacia el directorio en el que estás trabajando.
+
+1. Completa la función `pwd`. Esta recibirá por parámetro el valor "print".
+2. Utiliza la función `print`. Como argumento pásale el objeto `process` siendo ejecutado con el método **cwd**.
+
+---
+
+<br />
+
+### **DATE**
+
+_DATE_ imprimirá la fecha actual de tu máquina.
+
+1. Completa la función `date`. Esta recibirá por parámetro el valor "print".
+2. Utiliza la función `print`. Como argumento pásale la función `Date` siendo ejecutada.
+
+---
+
+<br />
+
+### **ECHO**
+
+_ECHO_ imprimirá el texto que escribas en la consola.
+
+1. Completa la función `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
 
 ```javascript
-var http = require('http');
-var fs   = require('fs');
-
-http.createServer( function(req, res){ 
- if( req.url === '/'){ //Si la URL es / devolvemos el HTML
-  res.writeHead(200, { 'Content-Type':'text/html' })
-  var html = fs.readFileSync(__dirname +'/html/index.html');
-  res.end(html);
- }
- if(req.url === '/api'){ //Si la URL es /api devolvemos el objeto
-  res.writeHead(200, { 'Content-Type':'application/json' })
-  var obj = {
-   nombre: 'Juan',
-   apellido: 'Perez'
-  }; 
-  res.end( JSON.stringify(obj) );
- } 
-}).listen(1337, '127.0.0.1');
+args.join(' ');
 ```
 
-Ahora corramos el servidor, y probemos los distintos endpoints en el browser.
+---
 
-Vamos a 'localhost:1337/':
+<br />
 
-![Slash-Server](/_src/assets/03-WebServer/slashServer.png)
+### **LS**
 
-Nos devolvió el HTML, como esperabamos!
+_LS_ va a imprimir los archivos y carpetas que estén disponibles en tu directorio actual.
 
-Ahora a 'localhost:1337/':
+1. Completa la función `ls`. Esta recibirá por parámetro un valor: "print".
+2. Invoca el método `readdir` de la constante `fs` para leer los archivos actuales.  
+   tendrás que pasarle como argumento un string con un valor de `.` (El punto hace referencia a tu directorio actual)  
+    y un callback, que recibirá a su vez 2 parámetros, `error` (Posible error que pueda devolver el callback)  
+    y `files` (un array de string conteniendo los archivos y carpetas encontrados).
+3. Si `fs.readdir` devuelve un error arrójalo. (Puedes usar `throw error`)
+4. Invoca la función `print` y pásale como argumentos los archivos encontrados.  
+   _IMPORTANTE_: ¡Debes pasarlos como un string, sino se imprimirá un arreglo y arrojará un error!
 
-![Api-Server](/_src/assets/03-WebServer/apiserver.png)
+---
 
-:D
+<br />
 
-__¿Qué pasa ahora con los demás endpoints, por ejemplo 'localhost:1337/hola/como/va'? Por qué el servidor se comporta de esa forma?__
+### **CAT**
 
-### Manejando las URLs que no existen
+_CAT_ Imprimirá en la consola cualquier archivo que le indiques. Recuerda que si quieres imprimir un archivo  
+por fuera del directorio que estás parado, deberás indicar la ruta hacia el mismo.
 
-Todos sabemos que cuando ingresamos una URL que no existe en la web terminamos obteniendo el error **404**, que es el código que define el error 'Not Found' dentro del standart HTTP.
+1. Completa la función `cat`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca el método `readFile` de `fs` y pásale los siguientes argumentos:
 
-Entonces, agreguemos a nuestro server la funcionalidad que si la URL del request no coincide con ninguna de las que habiamos ruteado que devuelva el error 404. Vamos a agregar un `else if` y luego un `else` para asegurnos que sólo se ejecute la porción de código que queremos en cada caso:
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
 
-```javascript
-var http = require('http');
-var fs   = require('fs');
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento el parámetro `data` (Que es el archivo encontrado)
 
-http.createServer( function(req, res){ 
- if( req.url === '/'){
-  res.writeHead(200, { 'Content-Type':'text/html' })
-  var html = fs.readFileSync(__dirname +'/html/index.html');
-  res.end(html);
- }else if(req.url === '/api'){
-  res.writeHead(200, { 'Content-Type':'application/json' })
-  var obj = {
-   nombre: 'Juan',
-   apellido: 'Perez'
-  }; 
-  res.end( JSON.stringify(obj) );
- } else{
-  res.writeHead(404); //Ponemos el status del response a 404: Not Found
-  res.end(); //No devolvemos nada más que el estado.
- }
- 
-}).listen(1337, '127.0.0.1');
-```
+---
 
-Ahora, si probamos desde el browser una URL que _no existe_, por ejemplo `http://localhost:1337/hola/como/va` obtenemos el siguiente resultado:
+<br />
 
-![404-Server](/_src/assets/03-WebServer/404server.png)
+### **HEAD**
 
-Copado, no?
+_HEAD_ Imprimirá las primeras _8_ línea de cualquier archivo que indiques, ten en cuenta los mismos puntos  
+descritos en la función de _CAT_ para utilizarlo correctamente.
 
-Ya pudimos armar nuestro propio servidor con algunos endpoints. Pero no les parece que si nuestro servidor tuviera muchas endpoints el código se haría muy engorroso y díficil de mantener? Por suerte hay gente que ya se topó con estos problemas y escribieron código que les ayuda a simplificar esta tarea.
+1. Completa la función `head`. Esta recibirá por parámetro dos valores: "print" y "args".
+2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
 
-# RESTful API
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
 
-## API (Aplication Programming Interface)
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento la primera línea del archivo `data` (¡Te toca pensar cómo hacerlo!)
 
-Una API es a un software o aplicación lo que una interfaz gráfica es al manejo de una computadora, es decir, una API nos facilita la comunicación con el software. Lo hace __abstrayendo__ la implementación subyacente y mostrando solamente las acciones que son útiles para el desarrollador. De esta forma, al reducir el nivel de complejidad aparente de un software, bajan la carga de _entendimiento_ que tienen que tener los desarrolladores antes de utilizar ciertas tecnologías.
+---
 
-Ahora están de moda las API webs, pero existen de todo tipo y en casi todos los tipos de software:
+<br />
 
-### En Librerías y Frameworks
+### **TAIL**
 
-Cada vez que usemos una librería o un framework y vamos a su documentación es muy probable que nos encontremos un link a su API (si la librería o framework está bien documentado). En ella vamos a encontrar la descripción, la forma de usar y el comportamiento esperado de las tareas que realiza esa librería.
-Según el tipo de lenguaje que usemos, la documentación de las API puede variar, por ejemplo: para lenguajes de scripting como `Lua` las api pueden consistir en describir funciones y rutinas con fines específicos, pero en lenguajes orientas a objetos como `java`, la api puede describir una serie de _clases_ y sus respectivos _métodos_.
+_TAIL_ Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas anotaciones descritas en el ejercicio de _CAT_ para utilizarlo correctamente.
 
-### Sistemas Operativos
+1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
+2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
 
-Un API tambien puede especificar la interfaz entre una aplicación y el sistema operativo. De hecho, puede servir para mantener compatibilidad hacia atrás, ya que podemos espcificar distintas versiónes del API y mantener varias implementaciones. Por ejemplo, Microsoft Windows mantiene API de compatibilidad para ejecutar programas viejos sobre los nuevos sistemas operativos Windows, le llaman _Modo de Compatibilidad_.
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
 
-### Apis Remotas
+3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
+4. Invoca la función `print` y pásale como argumento la última línea del archivo `data` (¡Te toca también pensar cómo hacerlo!)
 
-Una API remota les permite a los desarrolladores manipular recursos remotos a traves de un _protocolo_ (no necesariamente HTTP). Por ejemplo, existen API que nos dejan hacer queries a distintos tipos de bases de datos que en general se encuentran en hosts remotos.
+---
 
-### Web APIS
+<br />
 
-Cuando la usamos en la web, van a estar montadas sobre el protocolo `http`, por lo tanto podríamos decir que una API web es un set de tipos de mensajes HTTPs posibles, junto con la descripción el formato de la eventual respuesta de esos mensajes ( en general la respuesta es en JSON o XML ). Históricamente el término Web api es similar a _web services_. La forma de implementar y de usar estos web services fue cambiando de paradigma, actualmente se usa el diseño tipo REST, y en general en una web se consumen más de un API y se combinan sus resultados en una sóla página.
+### **CURL**
 
-#### Endpoints
+_CURL_ Imprimirá cualquier respuesta de una url que le puedas proveer, tiene que tener el prefijo `https://` antes de  
+ingresar la dirección.
 
-Un endpoint en un web api especifica donde están los recursos que pueden ser accedidos desde afuera de la API. Por ejemplo: `https://api.punkapi.com/v2/beers` especifica un endpoint de la API de `Punk Api`.
+1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
+2. Invoca la función `request` que se encuentra importada más arriba y pásale los siguientes argumentos:
 
-> Noten que esta API tiene la versión, por lo tanto ofrece compatibilidad hacia atrás.
+-  `args` (El parámetro que recibes en la función `curl`).
+-  un callback con los parámetros `error`, `response`, `body`. _Nota_ `response` no lo vas a utilizar en esta ocasión.
 
-## REST
+3. Si `request` devuelve un error, arrojarlo (Puedes usar `throw error` como se mencionó antes).
+4. Invoca la función `print` y retorna `body` (La respuesta que brinda `curl`).
 
-Rest es una estilo arquitectura o forma de diseñar el backend de una aplicación que viva en internet. REST viene de "REpresentational State Transfer" y está basado fuertemente en cómo trabaja HTTP, que es el protocolo que usamos comunmente en la web.
+---
 
-Como sabemos, HTTP es un protocolo basado en el modelo cliente servidor, quienes intercambian mensajes basados en ciertas acciones. Por ejemplo, un mensaje HTTP tipo GET realizado a la URL `http://example.com/`.
+<br />
 
-está basado en recursos y no en acciones.
+## **🔎 Recursos adicionales**
 
-Vamos a ver
+-  Documentación [**VARIABLES GLOBALES DE NODE**](https://apuntes.de/nodejs-desarrollo-web/globals/#gsc.tab=0)
+-  Documentación [**VARIABLE GLOBAL PROCESS**](https://nodejs.org/docs/latest-v16.x/api/process.html)
+-  Documentación [**NODE**](https://nodejs.org/en/docs/)
+-  Documentación [**FILE SYSTEM**](https://nodejs.org/api/fs.html)
 
-# Concepto
+---
 
-# Características
+<br />
 
-## Cliente - Servidor
-
-La arquitectura REST utiliza los conceptos del modelo cliente servidor en el sentido de separar las inquietudes de la interfaz de usuario con las inquietudes del manejo y guardado de datos. Esto ayuda a que cada componente pueda evolucionar de manera separada, acomodanse a como cambian hoy en día las interfaces en internet.
-
-## Stateless
-
-La comunicación entre el cliente y el servidor se logra sin que el servidor tenga guardado ningún contexto del cliente entre requests. Cada request del cliente contiene toda la información necesaria para que el servidor pueda contestar correctamente al request.
-
-## Cacheable
-
-En esta arquitectura, cada recurso tiene que estar marcado como cacheable o no. En el primer caso para ayudar al servidor a realizar menos trabajo y aumentar la performance y en el segundo para que no lleguen al cliente recursos con datos inapropiados.
-
-## Sistema de capas
-
-Un cliente no debería ser capaz de distinguir si se está conectado directamente con le servidor, o está pasando por un intermediario antes de llegar a él. Estos servidores intermediarios pueden ayudar a aumentar la performance implementando servicios de load-balancing, shared caches, etc...
-
-## Interface Uniforme
-
-El diseño de una interfaz uniforme es fundamental para la arquitectura, hacerlo bien simplifica mucho la arquitectura y la hace modular, logrando asi que pueda evolucionar o escalar para parte por separado. Las características que deben tener las interfaces uniformes son:
-
-* __Identificación de recursos__: Cada recurso tiene que ser identificado en el request, por ejemplo a través de un _URI_. El recurse per se también está separado de su representación, la que es enviada al cliente; esta puede ser, por ejemplo, el mismo recurso representado en: JSON, XML, HTML, etc...
-* __Manipulación de recursos a través de representaciones__: Cuando un cliente tiene la _representación_ de un recursos, deberá tener la suficiente información para _modificar_ o _eliminar_ ese __recurso__.
-* __Mensajes descriptivos__: Cada mensaje deberá contener suficiente información para describir cómo procesar el mensaje. En una API web, esto se traduce a mapear rutas con los verbos _HTTP_.
-* __Hypermedia as the engine of application state(HATEOAS_)__: Un cliente REST debería ser capaz de_navegar_y_descubrir_todas las acciones posibles de hacer a un recurso luego de interactuar con él. Es similar a cuando entramos a una web desde una_URL_y la web misma nos provee los_links_para que sigamos navegando. En la arquitectura REST debería ocurrir lo mismo, cada respuesta debería contener_links_  o información a las siguientes acciones que se pueden tomar.
-
-## Otras Arquitecturas
-
-REST no es la única forma de diseñar tu API, existen otras. Cada una será mejor o peor según el problema a resolver y un poco por el gusto del programador. Veamos algunas que están pisando fuerte pero todavía no son las más usadas:
-
-* __[JSON API](http://jsonapi.org/)__: Es una especificación, al igual que REST. Está pensada para minimizar el número de requests y la cantidad de datos que se transmiten por la red.
-* __[GraphQL](http://graphql.org/)__: Es en realidad una librería que ofrece un nuevo __lenguaje__ para hacer consultas a nuestra API. Cambia un poco el concepto de endpoints, y los embebe en esta nueva forma de hacer queries. Todavía es nuevo, pero está tomando tracción rápidamente.
-
-## Homework
-
-Completa la tarea descrita en el archivo [README](https://github.com/soyHenry/FT-M3/tree/master/03-WebServer/homework/Beatles)
+¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.
