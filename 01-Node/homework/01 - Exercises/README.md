@@ -16,7 +16,7 @@ En esta homework vas a implementar comandos bash comunes usando Node.js.
 
 <br />
 
-## **📍 CONSIGNA**
+## **📖 CONSIGNA**
 
 Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
@@ -24,11 +24,11 @@ Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
 <br />
 
-## **📖 Pasos básicos para realizar la homework**
+## **✅ Pasos básicos para realizar la homework**
 
 🔹 Para poder ejecutar los `test` de esta homework, es necesario que abras la terminal dentro de la carpeta `01 - Exercises`.
 
--  Cuando te encuentres en esta carpeta, debes ejecutar el comando
+Cuando te encuentres en esta carpeta, debes ejecutar el comando
 
 ```bash
 npm install
@@ -59,8 +59,8 @@ npm run test:01
 -  Un archivo **bash.js**.
 -  Un archivo **package.json**.
 -  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
-- Una carpeta llamada `utils` (no tocar, ya que dentro hay un archivo utilizado para los tests).
-- Un archivo **prueba.js** (Tampoco tocarlo a este archivo, que se utiliza para testear tu código también).
+-  Una carpeta llamada `utils` (no tocar, ya que dentro hay un archivo utilizado para los tests).
+-  Un archivo **prueba.js** (Tampoco tocarlo a este archivo, que se utiliza para testear tu código también).
 
 ---
 
@@ -108,7 +108,8 @@ También estarán 8 funciones que deberás completar, junto a su `module.exports
 
 ### **PWD**
 
-*PWD* permitirá imprimir la ruta hacia el directorio en el que estás trabajando.
+_PWD_ permitirá imprimir la ruta hacia el directorio en el que estás trabajando.
+
 1. Completa la función `pwd`. Esta recibirá por parámetro el valor "print".
 2. Utiliza la función `print`. Como argumento pásale el objeto `process` siendo ejecutado con el método **cwd**.
 
@@ -118,7 +119,8 @@ También estarán 8 funciones que deberás completar, junto a su `module.exports
 
 ### **DATE**
 
-*DATE* imprimirá la fecha actual de tu máquina.
+_DATE_ imprimirá la fecha actual de tu máquina.
+
 1. Completa la función `date`. Esta recibirá por parámetro el valor "print".
 2. Utiliza la función `print`. Como argumento pásale la función `Date` siendo ejecutada.
 
@@ -128,7 +130,8 @@ También estarán 8 funciones que deberás completar, junto a su `module.exports
 
 ### **ECHO**
 
-*ECHO* imprimirá el texto que escribas en la consola.
+_ECHO_ imprimirá el texto que escribas en la consola.
+
 1. Completa la función `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
 2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
 
@@ -142,15 +145,16 @@ args.join(' ');
 
 ### **LS**
 
-*LS* va a imprimir los archivos y carpetas que estén disponibles en tu directorio actual.
+_LS_ va a imprimir los archivos y carpetas que estén disponibles en tu directorio actual.
+
 1. Completa la función `ls`. Esta recibirá por parámetro un valor: "print".
 2. Invoca el método `readdir` de la constante `fs` para leer los archivos actuales.  
-tendrás que pasarle como argumento un string con un valor de `.` (El punto hace referencia a tu directorio actual)  
- y un callback, que recibirá a su vez 2 parámetros, `error` (Posible error que pueda devolver el callback)  
- y `files` (un array de string conteniendo los archivos y carpetas encontrados).
+   tendrás que pasarle como argumento un string con un valor de `.` (El punto hace referencia a tu directorio actual)  
+    y un callback, que recibirá a su vez 2 parámetros, `error` (Posible error que pueda devolver el callback)  
+    y `files` (un array de string conteniendo los archivos y carpetas encontrados).
 3. Si `fs.readdir` devuelve un error arrójalo. (Puedes usar `throw error`)
 4. Invoca la función `print` y pásale como argumentos los archivos encontrados.  
-*IMPORTANTE*: ¡Debes pasarlos como un string, sino se imprimirá un arreglo y arrojará un error!
+   _IMPORTANTE_: ¡Debes pasarlos como un string, sino se imprimirá un arreglo y arrojará un error!
 
 ---
 
@@ -158,13 +162,16 @@ tendrás que pasarle como argumento un string con un valor de `.` (El punto hace
 
 ### **CAT**
 
-*CAT* Imprimirá en la consola cualquier archivo que le indiques. Recuerda que si quieres imprimir un archivo  
+_CAT_ Imprimirá en la consola cualquier archivo que le indiques. Recuerda que si quieres imprimir un archivo  
 por fuera del directorio que estás parado, deberás indicar la ruta hacia el mismo.
+
 1. Completa la función `cat`. Esta recibirá por parámetro dos valores: "print" y "args".
 2. Invoca el método `readFile` de `fs` y pásale los siguientes argumentos:
-  - `args` (El parámetro que recibes en la función `cat`)
-  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
-  - Un callback con los parámetros `error` y `data`
+
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
+
 3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
 4. Invoca la función `print` y pásale como argumento el parámetro `data` (Que es el archivo encontrado)
 
@@ -174,13 +181,16 @@ por fuera del directorio que estás parado, deberás indicar la ruta hacia el mi
 
 ### **HEAD**
 
-*HEAD* Imprimirá las primeras *8* línea de cualquier archivo que indiques, ten en cuenta los mismos puntos  
-descritos en la función de *CAT* para utilizarlo correctamente.
+_HEAD_ Imprimirá las primeras _8_ línea de cualquier archivo que indiques, ten en cuenta los mismos puntos  
+descritos en la función de _CAT_ para utilizarlo correctamente.
+
 1. Completa la función `head`. Esta recibirá por parámetro dos valores: "print" y "args".
 2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
-  - `args` (El parámetro que recibes en la función `cat`)
-  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
-  - Un callback con los parámetros `error` y `data`
+
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
+
 3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
 4. Invoca la función `print` y pásale como argumento la primera línea del archivo `data` (¡Te toca pensar cómo hacerlo!)
 
@@ -190,13 +200,15 @@ descritos en la función de *CAT* para utilizarlo correctamente.
 
 ### **TAIL**
 
-*TAIL* Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas
-anotaciones descritas en el ejercicio de *CAT* para utilizarlo correctamente.
+_TAIL_ Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas anotaciones descritas en el ejercicio de _CAT_ para utilizarlo correctamente.
+
 1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
 2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
-  - `args` (El parámetro que recibes en la función `cat`)
-  - Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
-  - Un callback con los parámetros `error` y `data`
+
+-  `args` (El parámetro que recibes en la función `cat`)
+-  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
+-  Un callback con los parámetros `error` y `data`
+
 3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
 4. Invoca la función `print` y pásale como argumento la última línea del archivo `data` (¡Te toca también pensar cómo hacerlo!)
 
@@ -206,13 +218,15 @@ anotaciones descritas en el ejercicio de *CAT* para utilizarlo correctamente.
 
 ### **CURL**
 
-*CURL* Imprimirá cualquier respuesta de una url que le puedas proveer, tiene que tener el prefijo `https://` antes de  
+_CURL_ Imprimirá cualquier respuesta de una url que le puedas proveer, tiene que tener el prefijo `https://` antes de  
 ingresar la dirección.
+
 1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
 2. Invoca la función `request` que se encuentra importada más arriba y pásale los siguientes argumentos:
-- `args` (El parámetro que recibes en la función `curl`).
-- un callback con los parámetros `error`, `response`, `body`.
-*Nota* `response` no lo vas a utilizar en esta ocasión.
+
+-  `args` (El parámetro que recibes en la función `curl`).
+-  un callback con los parámetros `error`, `response`, `body`. _Nota_ `response` no lo vas a utilizar en esta ocasión.
+
 3. Si `request` devuelve un error, arrojarlo (Puedes usar `throw error` como se mencionó antes).
 4. Invoca la función `print` y retorna `body` (La respuesta que brinda `curl`).
 
@@ -231,4 +245,4 @@ ingresar la dirección.
 
 <br />
 
-¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.
+¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.🥳

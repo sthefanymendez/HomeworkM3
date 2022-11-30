@@ -1,4 +1,4 @@
-# HW 01: WEB SERVER | Ejercicios
+# HW 02: WEB SERVER | Ejercicios
 
 ## **🕒 Duración estimada**
 
@@ -16,7 +16,7 @@ En esta homework crearás un servidor básico con distintas rutas que cumplirán
 
 <br />
 
-## **📍 CONSIGNA**
+## **📖 CONSIGNA**
 
 Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
@@ -24,9 +24,11 @@ Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
 <br />
 
-## **📖 Pasos básicos para realizar la homework**
+## **✅ Pasos básicos para realizar la homework**
 
-📍 Para iniciar, debes pararte sobre la carpeta `01 - Excercises`. Dentro de ella escribe los comandos:
+🔹 Para iniciar, debes pararte sobre la carpeta `01 - Excercises`.
+
+Dentro de ella escribe los comandos:
 
 ```bash
 npm install
@@ -53,8 +55,9 @@ npm start
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
--  Una carpeta llamada `images`.
+-  Una carpeta llamada `utils`.
 -  Un archivo **server.js**.
+-  Un archivo **.gitignore**.
 -  Un archivo **package.json**.
 -  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
@@ -70,48 +73,17 @@ npm start
 
 📍 Lo que hay que hacer:
 
-1. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
+1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3000`.
 
-2. El callback que tendrás que pasarle recibirá dos parámetros (**req** (_request_) y **res** (_response_)).
+2. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
 
-3. Dentro de esta función deberás utilizar el objeto **fs** y acceder a su propiedad "**_readfile_**". De esta manera podremos leer algunos archivos externos que podremos manejar dentro de nuestras rutas.
+3. El callback/función que debes pasarle recibe dos parámetros (**req** (_request_) y **res** (_response_)). Dentro de esta función debes escribir:
 
-4. La propiedad "**_readfile_**" recibe dos parámetros:
+```javascript
+console.log(`Server raised in port ${PORT}`);
+```
 
-   -  **String:** este string será una ruta. Piensa que dentro de la propiedad **url** del parámetro **req** recibirás el nombre de la imagen que te piden. Por lo que en este string tendrás que acceder a la carpeta "_**images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_".
-
-   -  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de esta función tendrás que crear una lógica que, en el caso de que haya un error responda con un status 404, un tipo de contenido igual a texto plano, y que la respuesta sea el string "_image not found_". En el caso de que no haya error la respuesta tendrá un status 200, con un tipo de contenido igual a "**_image/jpeg_**" y finalmente devolviendo el parámetro **data**.
-
-5. Luego de realizar todos estos pasos, inmediatamente después de la propiedad "**_createServer_**" deberás ingresar a la propiedad "**_listen_**". A esta le debes pasar como primero parámetro el número `3000` (nuestro puerto), y como segundo parámetro el string `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
-
-## **👩‍💻 EJERCICIO 1**
-
-### **PROCESS**
-
-📍 Dirígete al archivo `bash.js`. Encontrarás las variables "**process**" y "**commands**" importados en este archivo. Trabajaremos con ambas.  
-También estará la función `bash` que es la que ejecutará tu terminal.
-
-📍 Lo que hay que hacer:
-
-1. Crea una función con el nombre `print`. Esta función recibirá por parámetro un **output**. Dentro de ella tendrás que utilizar el método **stdout.write** del objeto `process` dos veces. La primera vez le pasarás como argumento el **output** recibido. La segundo vez el argumento deberá ser: "\nprompt > ".
-
-2. Luego, dentro de la función `bash` utiliza el método **stdout.write** del objeto `process` pasándole como argumento el string: "prompt > ".
-
-3. Agrega también dentro `bash` el método **stdin.on** del objeto `process` al cual le deberás pasar dos parámetros.
-
-   -  El primero debe ser el string: "data".
-
-   -  El segundo debe ser una función que recibe por parámetro `data`.
-
-      A) Dentro de la función crea una variable con el nombre "**args**".Ten en cuenta que el parámetro que recibes no es un string, por lo que tendrás que convertirlo en uno. También ten en cuenta que si este string tiene espacios vacíos al comienzo o al final deberás eliminarlos.
-
-      B) Guarda en una variable llamada "**cmd**" la primer palabra del string, la cuál representará el comando ingresado.
-
-      C) Ahora verifica si dentro del objeto `commands` existe una propiedad con el valor que contiene la variable "**cmd**". En el caso que no existe, ejecuta la función `print` con el texto "command not found: **_cmd_**". En el caso de que si exista, ejecuta el siguiente código:
-
-      ```bash
-      commands[cmd](print, args);
-      ```
+4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
 
 ---
 
@@ -119,134 +91,146 @@ También estará la función `bash` que es la que ejecutará tu terminal.
 
 ## **👩‍💻 EJERCICIO 2**
 
-📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**request**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.  
-También estarán 8 funciones que deberás completar, junto a su `module.exports` al final del archivo.
+### **ENDPOINTS - API (json)**
+
+📍 Dirígete al archivo `server.js`. Dentro de la función callback que le pasamos a "**_createServer_**" comenzaremos a crear nuestras primeras rutas. En este ejercicio crearemos una ruta que responde información a partir de un JSON.
 
 📍 Lo que hay que hacer:
 
-### **PWD**
+1. Debajo del `console.log`, crea un condicional que verifique si `req.url` es igual a "_/api_".
 
-_PWD_ permitirá imprimir la ruta hacia el directorio en el que estás trabajando.
+2. En el caso de que esto sea verdadero llamaremos a la propiedad **readFile** del objeto **fs**. Esta propiedad recibe dos parámetros.
 
-1. Completa la función `pwd`. Esta recibirá por parámetro el valor "print".
-2. Utiliza la función `print`. Como argumento pásale el objeto `process` siendo ejecutado con el método **cwd**.
+   -  Por un lado un string con la ruta del archivo que necesitamos. En este caso el archivo es `dogsData.json` dentro de la carpeta "utils".
 
----
+   -  El segundo parámetro es un callback/función. Esta función recibe dos parámetros: `err` y `data`. El primero nos avisará si la librería _FileSystem_ tuvo un problema para leer el archivo. El segundo será la información del archivo si es que la librería logra leerlo correctamente. Es por esto que, dentro de esta función crearemos un condicional.
 
-<br />
+      -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`json not found`".
 
-### **DATE**
+      -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `application/json`, y finalmente el parámetro **data**.
 
-_DATE_ imprimirá la fecha actual de tu máquina.
-
-1. Completa la función `date`. Esta recibirá por parámetro el valor "print".
-2. Utiliza la función `print`. Como argumento pásale la función `Date` siendo ejecutada.
+3. Fuera de la función **readFile** pero dentro del condicional padre escribe la palabra `return` sola. De esta manera no continuará ejecutándose nada por debajo.
 
 ---
 
 <br />
 
-### **ECHO**
+## **⛔️ STOP**
 
-_ECHO_ imprimirá el texto que escribas en la consola.
+### **PROBEMOS EL END-POINT**
 
-1. Completa la función `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
+Hasta ahora ya creamos nuestra primera ruta que nos responde con un JSON. Para probarlo:
 
-```javascript
-args.join(' ');
-```
+1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
 
----
+2. Dirígete a tu navegador e ingresá a la URL: `http://localhost:3000/api`.
 
-<br />
+3. ¡Listo! Construiste tu primera ruta 😁. Debería quedate algo como esto:
 
-### **LS**
+<img src="./utils/images/jsonExample.png" alt="" />
 
-_LS_ va a imprimir los archivos y carpetas que estén disponibles en tu directorio actual.
-
-1. Completa la función `ls`. Esta recibirá por parámetro un valor: "print".
-2. Invoca el método `readdir` de la constante `fs` para leer los archivos actuales.  
-   tendrás que pasarle como argumento un string con un valor de `.` (El punto hace referencia a tu directorio actual)  
-    y un callback, que recibirá a su vez 2 parámetros, `error` (Posible error que pueda devolver el callback)  
-    y `files` (un array de string conteniendo los archivos y carpetas encontrados).
-3. Si `fs.readdir` devuelve un error arrójalo. (Puedes usar `throw error`)
-4. Invoca la función `print` y pásale como argumentos los archivos encontrados.  
-   _IMPORTANTE_: ¡Debes pasarlos como un string, sino se imprimirá un arreglo y arrojará un error!
+> **[NOTA]:** si quieres ver la información ordenada como en la imagen puedes instala la extensión de chrome [**JSON Formatter**](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=es).
 
 ---
 
 <br />
 
-### **CAT**
+## **👩‍💻 EJERCICIO 3**
 
-_CAT_ Imprimirá en la consola cualquier archivo que le indiques. Recuerda que si quieres imprimir un archivo  
-por fuera del directorio que estás parado, deberás indicar la ruta hacia el mismo.
+### **ENDPOINTS - ALL DOGS (html)**
 
-1. Completa la función `cat`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Invoca el método `readFile` de `fs` y pásale los siguientes argumentos:
+📍 Seguimos en el archivo `server.js`. Dentro de la función callback que le pasamos a "**_createServer_**" crearemos una nueva ruta. Esta nos permitirá ver un archivo html. Puedes codearla debajo de la anterior.
 
--  `args` (El parámetro que recibes en la función `cat`)
--  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
--  Un callback con los parámetros `error` y `data`
+📍 Lo que hay que hacer:
 
-3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
-4. Invoca la función `print` y pásale como argumento el parámetro `data` (Que es el archivo encontrado)
+1. Declarar un condicional que verifique si `req.url` es igual "_/allDogs_".
 
----
+2. En el caso de que esto sea verdadero, volveremos a utilizar la propiedad _readFile_ del objeto **fs**.
 
-<br />
+3. Este callback recibirá tres parámetros.
 
-### **HEAD**
+   -  **String:** este string debe ser la ruta que dirija al archivo `utils/allDogs.html`.
 
-_HEAD_ Imprimirá las primeras _8_ línea de cualquier archivo que indiques, ten en cuenta los mismos puntos  
-descritos en la función de _CAT_ para utilizarlo correctamente.
+   -  **String:** este string debe decir `UTF8`.
 
-1. Completa la función `head`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
+   -  **Callback:** esta función recibe dos parámetros: `err` y `data`. Dentro de la función crearemos un condicional:
 
--  `args` (El parámetro que recibes en la función `cat`)
--  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
--  Un callback con los parámetros `error` y `data`
+      -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`html not found`".
 
-3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
-4. Invoca la función `print` y pásale como argumento la primera línea del archivo `data` (¡Te toca pensar cómo hacerlo!)
+      -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `text/html`, y finalmente el parámetro **data**.
+
+4. Por último, fuera de la función **readFile** pero dentro del condicional padre escribe la palabra `return` sola.
 
 ---
 
 <br />
 
-### **TAIL**
+## **⛔️ STOP**
 
-_TAIL_ Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas anotaciones descritas en el ejercicio de _CAT_ para utilizarlo correctamente.
+### **PROBEMOS EL ENDPOINT**
 
-1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
-2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
+Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
--  `args` (El parámetro que recibes en la función `cat`)
--  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
--  Un callback con los parámetros `error` y `data`
+1. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000/allDogs`.
 
-3. Si `fs.readFile` devuelve un error arrójalo. (Puedes usar `throw error` como se mencionó antes)
-4. Invoca la función `print` y pásale como argumento la última línea del archivo `data` (¡Te toca también pensar cómo hacerlo!)
+2. ¡Listo! Ya puedes ver a todos nuestros amigos doges. Debería quedate algo como esto:
+
+<img src="./utils/images/allDogs.png" alt="" />
 
 ---
 
 <br />
 
-### **CURL**
+## **👩‍💻 EJERCICIO 4**
 
-_CURL_ Imprimirá cualquier respuesta de una url que le puedas proveer, tiene que tener el prefijo `https://` antes de  
-ingresar la dirección.
+### **ENDPOINTS - DOG (img)**
 
-1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
-2. Invoca la función `request` que se encuentra importada más arriba y pásale los siguientes argumentos:
+📍 Seguimos en el archivo `server.js`. Dentro de la función callback que le pasamos a "**_createServer_**" crearemos nuestra última ruta. Esta nos permitirá ver una imagen. Puedes codearla debajo de la anterior.
 
--  `args` (El parámetro que recibes en la función `curl`).
--  un callback con los parámetros `error`, `response`, `body`. _Nota_ `response` no lo vas a utilizar en esta ocasión.
+📍 Lo que hay que hacer:
 
-3. Si `request` devuelve un error, arrojarlo (Puedes usar `throw error` como se mencionó antes).
-4. Invoca la función `print` y retorna `body` (La respuesta que brinda `curl`).
+1. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
+
+   -  El primero será un string con la ruta donde se encuentran nuestras imágenes. Dentro de `req.url` recibirás el nombre de la imagen que quieres visualizar. Por lo que en este string tendrás que acceder a la carpeta "_**utils/images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_". Te quedaría lo siguiente:
+
+      ```javascript
+      `./utils/images/${req.url}.jpg`;
+      ```
+
+   -  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de la función tendrás que crear un condicional.
+
+      -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`image not found`".
+
+      -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `image/jpeg`, y finalmente el parámetro **data**.
+
+---
+
+<br />
+
+## **⛔️ STOP**
+
+### **PROBEMOS EL ENDPOINT**
+
+Hasta ahora ya contruiste un endpoint que muestra a nuestro amiguito en el navegador, ¿Aún no lo viste?
+
+1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
+
+2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000`.
+
+3. Para ver a nuestro amigo simplemente agrega una barra (`/`) al final de la URL e intenta agregar alguno de estos nombres:
+
+-  arcoiris
+-  asiatico
+-  badboy
+-  code
+-  debil
+-  musculoso
+-  pancito
+-  resaca
+
+Deberías ver algo como esto:
+
+<img src="./utils/images/dog.png" alt="" />
 
 ---
 
@@ -254,13 +238,12 @@ ingresar la dirección.
 
 ## **🔎 Recursos adicionales**
 
--  Documentación [**VARIABLES GLOBALES DE NODE**](https://apuntes.de/nodejs-desarrollo-web/globals/#gsc.tab=0)
--  Documentación [**VARIABLE GLOBAL PROCESS**](https://nodejs.org/docs/latest-v16.x/api/process.html)
--  Documentación [**NODE**](https://nodejs.org/en/docs/)
+-  Documentación [**¿QUÉ ES UN SERVIDOR WEB?**](https://developer.mozilla.org/es/docs/Learn/Common_questions/What_is_a_web_server)
+-  Documentación [**CONTENT-TYPE**](https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
 -  Documentación [**FILE SYSTEM**](https://nodejs.org/api/fs.html)
 
 ---
 
 <br />
 
-¡Listo! Aprendiste a crear los comandos más básicos de una terminal bash.
+¡Listo! Aprendiste a crear un servidor y rutas con información de tipo **HTML**, **IMÁGENES** y **JSON** 🥳.
