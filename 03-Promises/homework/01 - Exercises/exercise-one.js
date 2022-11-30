@@ -29,13 +29,16 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  readFile("poem-one/stanza-01.txt", function (err, stanza) {
-    console.log("-- A. callback version --");
-    blue(stanza);
+  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+    console.log("--Versión callback--");
+    exerciseUtils.blue(stanza);
   });
 
   // promise version
   // Tu código acá:
+  // exerciseUtils
+  //   .promisifiedReadFile("poem-one/stanza-01.txt")
+  //   .then((stanza) => exerciseUtils.blue(stanza));
 }
 
 function problemB() {

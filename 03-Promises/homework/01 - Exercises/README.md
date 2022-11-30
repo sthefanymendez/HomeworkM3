@@ -243,4 +243,6 @@ npm run test:01
 
 <br />
 
-¡Listo! Aprendiste a promisificar, manejar asincronismo y errores, ahora vamos a implementar estos conocimientos en nuestra aplicación de integración.
+¡Listo! Aprendiste a promisificar, manejar asincronismo y errores, ahora vamos a implementar estos conocimientos en nuestra aplicación de integración. ✨🚀
+
+Dirígete a la carpeta 📂 "02 - Integration" y continúa desarrollando la app de Rick & Morty 🤩 ---

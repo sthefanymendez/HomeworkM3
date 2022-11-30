@@ -23,6 +23,7 @@ x minutos
 
 Al finalizar esta homework habrás:
 
+- Aprendido a desarrollar una API.
 - Aprendido a crear un servidor con express y configurarlo.
 - Aprendido a crear middlewares.
 - Aprendido a definir las rutas en nuestro servidor.
