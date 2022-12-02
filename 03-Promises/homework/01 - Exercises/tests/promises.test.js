@@ -58,8 +58,8 @@ describe("01 | Ejercicios (poem-one)", () => {
       expect(blue).toHaveBeenCalledWith(stanzas[2]);
       blue.mockRestore();
       promisifiedReadFileSpy.mockRestore();
-      done();
-    });
+      done()
+    })
   });
 
   it("Problem C | Consologuea la segunda y tercer stanza versión promisificada", (done) => {
@@ -68,12 +68,97 @@ describe("01 | Ejercicios (poem-one)", () => {
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemC();
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
-    promisifiedReadfileAux.then(() => {
-      expect(blue).toHaveBeenCalledWith(stanzas[1]);
-      expect(blue).toHaveBeenCalledWith(stanzas[2]);
-      promisifiedReadFileSpy.mockRestore();
-      blue.mockRestore();
-      done();
-    });
+    promisifiedReadfileAux
+      .then(() => {
+        expect(blue).toHaveBeenCalledWith(stanzas[1]);
+        return promisifiedReadFileSpy.mock.results[1].value;
+      })
+      .then(() => {
+        expect(blue).toHaveBeenCalledWith(stanzas[2]);
+        blue.mockRestore();
+        promisifiedReadFileSpy.mockRestore();
+        done();
+      })
   });
+
+  it("Problem D | Consologuea la cuarta stanza versión promisificada o un error", (done) => {
+    jest.setTimeout(500);
+    const blue = jest.spyOn(utils, "blue");
+    const magenta = jest.spyOn(utils, "magenta");
+    const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
+    problemD();
+    const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
+    promisifiedReadfileAux
+      .then((stanza) => {
+        expect(stanza === stanzas[3]).toBe(true)
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      })
+      .catch((error) => {
+        expect(magenta).toHaveBeenCalledWith(new Error(error));
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      })
+  })
+
+  it("Problem E | Consologuea la tercer stanza y luego la cuarta stanza o su respectivo error, versión promisificada", (done) => {
+    jest.setTimeout(500);
+    const blue = jest.spyOn(utils, "blue");
+    const magenta = jest.spyOn(utils, "magenta");
+    const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
+    problemE();
+    const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
+    promisifiedReadfileAux
+      .then((stanza) => {
+        expect(stanza === stanzas[2]).toBe(true);
+        return promisifiedReadFileSpy.mock.results[1].value;
+      })
+      .then((stanza) => {
+        expect(stanza === stanzas[3]).toBe(true);
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      })
+      .catch((error) => {
+        expect(magenta).toHaveBeenCalledWith(new Error(error));
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      });
+  });
+
+  it("Problem F | Consologuea la tercer stanza y luego la cuarta stanza o un error para cualquiera de los casos, versión promisificada", (done) => {
+    jest.setTimeout(500);
+    const blue = jest.spyOn(utils, "blue");
+    const magenta = jest.spyOn(utils, "magenta");
+    const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
+    problemE();
+    const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
+    promisifiedReadfileAux
+      .then((stanza) => {
+        expect(stanza === stanzas[2]).toBe(true);
+        return promisifiedReadFileSpy.mock.results[1].value;
+      })
+      .then((stanza) => {
+        expect(stanza === stanzas[3]).toBe(true);
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      })
+      .catch((error) => {
+        expect(magenta).toHaveBeenCalledWith(new Error(error));
+        promisifiedReadFileSpy.mockRestore();
+        magenta.mockRestore();
+        blue.mockRestore();
+        done();
+      });
+  })
+  
 });

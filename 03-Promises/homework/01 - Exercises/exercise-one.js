@@ -1,7 +1,6 @@
 "use strict";
 
-var Promise = require("bluebird"),
-  exerciseUtils = require("./utils");
+var exerciseUtils = require("./utils");
 
 // var readFile = exerciseUtils.readFile,
 //   promisifiedReadFile = exerciseUtils.promisifiedReadFile,
@@ -106,73 +105,68 @@ function problemD() {
 
   // promise version
   // Tu código acá:
-  exerciseUtils
-    .promisifiedReadFile("poem-one/stanza-04.txt")
-    .then((stanza) => exerciseUtils.blue(stanza));
-  // .catch(err => exerciseUtils.magenta(new Error(err)))
+  exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt")
+    .then(stanza => exerciseUtils.blue(stanza))
+    .catch(err => exerciseUtils.magenta(new Error(err)))
 }
 
 function problemE() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-    console.log("-- E. callback version (stanza three) --");
-    if (err) return exerciseUtils.magenta(new Error(err));
-    exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile(
-      "poem-one/wrong-file-name.txt",
-      function (err2, stanza4) {
-        console.log("-- E. callback version (stanza four) --");
-        if (err2) return exerciseUtils.magenta(new Error(err2));
-        exerciseUtils.blue(stanza4);
-      }
-    );
-  });
+  // exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+  //   console.log("-- E. callback version (stanza three) --");
+  //   if (err) return exerciseUtils.magenta(new Error(err));
+  //   exerciseUtils.blue(stanza3);
+  //   exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
+  //     console.log("-- E. callback version (stanza four) --");
+  //     if (err2) return exerciseUtils.magenta(new Error(err2));
+  //     exerciseUtils.blue(stanza4);
+  //   });
+  // });
 
   // promise version
   // Tu código acá:
-  Promise.all([
-    exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt"),
-    exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt"),
-  ])
-    .then((stanzas) => stanzas.forEach((stanza) => exerciseUtils.blue(stanza)))
-    .catch((err) => exerciseUtils.magenta(new Error(err)));
+  exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
+    .then(stanza3 => {
+      exerciseUtils.blue(stanza3)
+      exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt")
+        .then(stanza4 => {
+          exerciseUtils.blue(stanza4)
+        })
+        .catch(err => exerciseUtils.magenta(new Error(err)))
+    })
 }
 
 function problemF() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-    console.log("-- F. callback version (stanza three) --");
-    if (err) {
-      exerciseUtils.magenta(new Error(err));
-      console.log("-- F. callback version done --");
-      return;
-    }
-    exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile(
-      "poem-one/wrong-file-name.txt",
-      function (err2, stanza4) {
-        console.log("-- F. callback version (stanza four) --");
-        if (err2) exerciseUtils.magenta(new Error(err2));
-        else exerciseUtils.blue(stanza4);
-        console.log("-- F. callback version done --");
-      }
-    );
-  });
+  // exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+  //   console.log("-- F. callback version (stanza three) --");
+  //   if (err) {
+  //     exerciseUtils.magenta(new Error(err));
+  //     console.log("-- F. callback version done --");
+  //     return;
+  //   }
+  //   exerciseUtils.blue(stanza3);
+  //   exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
+  //     console.log("-- F. callback version (stanza four) --");
+  //     if (err2) exerciseUtils.magenta(new Error(err2));
+  //     else exerciseUtils.blue(stanza4);
+  //     console.log("-- F. callback version done --");
+  //   });
+  // });
 
   // promise version
   // Tu código acá:
-  exerciseUtils
-    .promisifiedReadFile("poem-one/stanza-03.txt")
-    .then((stanza3) => {
-      exerciseUtils.blue(stanza3);
-      return exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt");
-    })
-    .then((stanza4) => {
-      exerciseUtils.blue(stanza4);
-      console.log("done");
-    })
-    .catch((err) => {
-      exerciseUtils.magenta(new Error(err));
-      console.log("done");
-    });
+  exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
+  .then(stanza3 => {
+    exerciseUtils.blue(stanza3)
+    return exerciseUtils.promisifiedReadFile('poem-one/wrong-file-name.txt')
+  })
+  .then(stanza4 => {
+    exerciseUtils.blue(stanza4)
+    console.log('done')
+  })
+  .catch(err => {
+    exerciseUtils.magenta(new Error(err))
+    console.log('done')
+  })
 }

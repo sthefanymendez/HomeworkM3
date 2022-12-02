@@ -1,28 +1,27 @@
 "use strict";
 
-var fs = require("fs");
-var Promise = require("bluebird");
-var chalk = require("chalk");
+var fs = require('fs');
+// var Promise = require('bluebird');
+var chalk = require('chalk');
 
 var utils = {};
 
 utils.readFile = function (filename, callback) {
-  var randExtraTime = Math.random() * 200;
-  setTimeout(function () {
-    fs.readFile(filename, function (err, buffer) {
-      if (err) callback(err);
-      else callback(null, buffer.toString());
-    });
-  }, randExtraTime);
+	var randExtraTime = Math.random() * 200;
+	setTimeout(function () {
+		fs.readFileSync(filename, function (err, buffer) {
+			if (err) callback(err);
+			else callback(null, buffer.toString());
+		});
+	}, randExtraTime);
 };
 
 utils.promisifiedReadFile = function (filename) {
-  return new Promise(function (resolve, reject) {
-    utils.readFile(filename, function (err, str) {
-      if (err) reject(err);
-      else resolve(str);
-    });
-  });
+	return new Promise(function (resolve, reject) {
+		let readFileSync = fs.readFileSync(filename);
+		if(!readFileSync) return reject('File not found')
+		resolve(readFileSync.toString())
+	});
 };
 
 utils.blue = function (text) {

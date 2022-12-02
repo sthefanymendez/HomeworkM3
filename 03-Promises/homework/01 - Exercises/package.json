@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "async": "^3.2.3",
-    "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "jest": "^27.5.1"
   }
