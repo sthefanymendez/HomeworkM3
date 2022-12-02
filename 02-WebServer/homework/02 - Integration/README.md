@@ -40,7 +40,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 ### **Crea tu primer server**
 
-Crea la ruta `rickandmorty`en el que basados en el archivo `data.js` obtenga el personaje por id.
+Crea la ruta `rickandmorty` en el que basados en el archivo `data.js` obtenga el personaje por id.
 
 <br />
 
