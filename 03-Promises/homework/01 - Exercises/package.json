@@ -4,16 +4,14 @@
   "description": "",
   "scripts": {
     "test": "jest --verbose --detectOpenHandles --forceExit",
-    "test:01": "jest --verbose --detectOpenHandles --forceExit tests/01.test.js",
+    "test:callback": "jest --verbose --detectOpenHandles --forceExit tests/callbacks.test.js",
+    "test:promises": "jest --verbose --detectOpenHandles --forceExit tests/promises.test.js",
     "test:02": "jest --verbose --detectOpenHandles --forceExit tests/02.test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "async": "^3.2.3",
-    "bluebird": "^3.7.2",
-    "chai": "^4.3.6",
-    "chai-spies": "^1.0.0",
     "chalk": "^4.1.0",
     "jest": "^27.5.1"
   }
