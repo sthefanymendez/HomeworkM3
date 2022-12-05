@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 var fs = require('fs');
-var Promise = require('bluebird');
+// var Promise = require('bluebird');
 var chalk = require('chalk');
 
 var utils = {};
@@ -18,19 +18,18 @@ utils.readFile = function (filename, callback) {
 
 utils.promisifiedReadFile = function (filename) {
 	return new Promise(function (resolve, reject) {
-		utils.readFile(filename, function (err, str) {
-			if (err) reject(err);
-			else resolve(str);
-		});
+		let readFileSync = fs.readFileSync(filename);
+		if(!readFileSync) return reject('File not found')
+		resolve(readFileSync.toString())
 	});
 };
 
 utils.blue = function (text) {
-	console.log(chalk.blue(text));
+  console.log(chalk.blue(text));
 };
 
 utils.magenta = function (text) {
-	console.error(chalk.magenta(text));
+  console.error(chalk.magenta(text));
 };
 
 module.exports = utils;
