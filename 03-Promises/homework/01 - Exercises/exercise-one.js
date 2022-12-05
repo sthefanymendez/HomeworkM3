@@ -89,11 +89,14 @@ function problemC() {
 
 function problemD() {
   // callback version
-  exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err, stanza4) {
-    console.log("-- D. callback version (stanza four) --");
-    if (err) exerciseUtils.magenta(new Error(err));
-    else exerciseUtils.blue(stanza4);
-  });
+  exerciseUtils.readFile(
+    "poem-one/wrong-file-name.txt",
+    function (err, stanza4) {
+      console.log("-- D. callback version (stanza four) --");
+      if (err) exerciseUtils.magenta(new Error(err));
+      else exerciseUtils.blue(stanza4);
+    }
+  );
 
   // promise version
   // Tu código acá:
@@ -117,48 +120,51 @@ function problemE() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
-  //   .then(stanza3 => {
-  //     exerciseUtils.blue(stanza3)
-  //     exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt")
-  //       .then(stanza4 => {
-  //         exerciseUtils.blue(stanza4)
+  // exerciseUtils
+  //   .promisifiedReadFile("poem-one/stanza-03.txt")
+  //   .then((stanza3) => {
+  //     exerciseUtils.blue(stanza3);
+  //     exerciseUtils
+  //       .promisifiedReadFile("poem-one/wrong-file-name.txt")
+  //       .then((stanza4) => {
+  //         exerciseUtils.blue(stanza4);
   //       })
-  //       .catch(err => exerciseUtils.magenta(new Error(err)))
-  //   })
+  //       .catch((err) => exerciseUtils.magenta(new Error(err)));
+  //   });
 }
 
 function problemF() {
   // callback version
-  // exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-  //   console.log("-- F. callback version (stanza three) --");
-  //   if (err) {
-  //     exerciseUtils.magenta(new Error(err));
-  //     console.log("-- F. callback version done --");
-  //     return;
-  //   }
-  //   exerciseUtils.blue(stanza3);
-  //   exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
-  //     console.log("-- F. callback version (stanza four) --");
-  //     if (err2) exerciseUtils.magenta(new Error(err2));
-  //     else exerciseUtils.blue(stanza4);
-  //     console.log("-- F. callback version done --");
-  //   });
-  // });
+  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+    console.log("-- F. callback version (stanza three) --");
+    if (err) {
+      exerciseUtils.magenta(new Error(err));
+      console.log("-- F. callback version done --");
+      return;
+    }
+    exerciseUtils.blue(stanza3);
+    exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
+      console.log("-- F. callback version (stanza four) --");
+      if (err2) exerciseUtils.magenta(new Error(err2));
+      else exerciseUtils.blue(stanza4);
+      console.log("-- F. callback version done --");
+    });
+  });
 
   // promise version
   // Tu código acá:
-  exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
-  .then(stanza3 => {
-    exerciseUtils.blue(stanza3)
-    return exerciseUtils.promisifiedReadFile('poem-one/wrong-file-name.txt')
-  })
-  .then(stanza4 => {
-    exerciseUtils.blue(stanza4)
-    console.log('done')
-  })
-  .catch(err => {
-    exerciseUtils.magenta(new Error(err))
-    console.log('done')
-  })
+  // exerciseUtils
+  //   .promisifiedReadFile("poem-one/stanza-03.txt")
+  //   .then((stanza3) => {
+  //     exerciseUtils.blue(stanza3);
+  //     return exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt");
+  //   })
+  //   .then((stanza4) => {
+  //     exerciseUtils.blue(stanza4);
+  //     console.log("done");
+  //   })
+  //   .catch((err) => {
+  //     exerciseUtils.magenta(new Error(err));
+  //     console.log("done");
+  //   });
 }
