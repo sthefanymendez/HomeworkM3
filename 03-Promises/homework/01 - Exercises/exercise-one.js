@@ -111,11 +111,14 @@ function problemE() {
     console.log("-- E. callback version (stanza three) --");
     if (err) return exerciseUtils.magenta(new Error(err));
     exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
-      console.log("-- E. callback version (stanza four) --");
-      if (err2) return exerciseUtils.magenta(new Error(err2));
-      exerciseUtils.blue(stanza4);
-    });
+    exerciseUtils.readFile(
+      "poem-one/wrong-file-name.txt",
+      function (err2, stanza4) {
+        console.log("-- E. callback version (stanza four) --");
+        if (err2) return exerciseUtils.magenta(new Error(err2));
+        exerciseUtils.blue(stanza4);
+      }
+    );
   });
 
   // promise version
@@ -143,12 +146,17 @@ function problemF() {
       return;
     }
     exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
-      console.log("-- F. callback version (stanza four) --");
-      if (err2) exerciseUtils.magenta(new Error(err2));
-      else exerciseUtils.blue(stanza4);
-      console.log("-- F. callback version done --");
-    });
+    exerciseUtils.readFile(
+      "poem-one/wrong-file-name.txt",
+      function (err2, stanza4) {
+        console.log("-- F. callback version (stanza four) --");
+        if (err2) return exerciseUtils.magenta(new Error(err2));
+        else {
+          exerciseUtils.blue("asdasd");
+          console.log("-- F. callback version done --");
+        }
+      }
+    );
   });
 
   // promise version
