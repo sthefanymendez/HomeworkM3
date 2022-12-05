@@ -9,7 +9,7 @@ var utils = {};
 utils.readFile = function (filename, callback) {
 	var randExtraTime = Math.random() * 200;
 	setTimeout(function () {
-		fs.readFileSync(filename, function (err, buffer) {
+		fs.readFile(filename, function (err, buffer) {
 			if (err) callback(err);
 			else callback(null, buffer.toString());
 		});
