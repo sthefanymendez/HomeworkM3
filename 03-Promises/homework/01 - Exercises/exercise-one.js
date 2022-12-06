@@ -2,11 +2,6 @@
 
 var exerciseUtils = require("./utils");
 
-// var readFile = exerciseUtils.readFile,
-//   promisifiedReadFile = exerciseUtils.promisifiedReadFile,
-//   blue = exerciseUtils.blue,
-//   magenta = exerciseUtils.magenta;
-
 var args = process.argv.slice(2).map(function (st) {
   return st.toUpperCase();
 });
