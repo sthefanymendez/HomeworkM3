@@ -1,38 +1,21 @@
-const fs = require('fs');
-const utils = require('../utils/request');
-const process = require('process');
+const fs = require("fs");
+const utils = require("../utils/request");
+const process = require("process");
 
-function pwd(print) {
-}
+function pwd() {}
 
-function date(print) {
-}
+function date() {}
 
-function echo(print, args) {
-}
+function echo() {}
 
-function ls(print) {
-}
+function ls() {}
 
-function cat(print, args) {
-}
+function cat() {}
 
-function head(print, args) {
-}
+function head() {}
 
-function tail(print, args) {
-}
+function tail() {}
 
-function curl(print, args) {
-}
+function curl() {}
 
-module.exports = {
-   pwd,
-   date,
-   echo,
-   ls,
-   cat,
-   head,
-   tail,
-   curl,
-};
+module.exports = {};
