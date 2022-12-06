@@ -62,4 +62,43 @@ En el archivo App.js, donde tienes dentro de la función **onSearch**, cambia la
 
 ---
 
+### **👩‍💻 EJERCICIO 4**
+
+Dentro de tu carpeta **back** debes crear una nueva carpeta con el nombre **src**. Dentro de esta carpeta, a su vez, deberás crear:
+
+-  Un archivo llamado `app.js`.
+-  Una carpeta llamada `controllers`.
+-  Una carpeta llamada `routes`.
+-  Una carpeta llamada `utils`.
+
+</br >
+
+---
+
+### **👩‍💻 EJERCICIO 5**
+
+En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
+
+```bash
+    npm init
+```
+
+De esta manera crearás un archivo `package.json`.
+
+En este sólo deberás instalarle las librerías **axios** y **nodemon** de la siguiente manera:
+
+```bash
+    npm install axios nodemon
+```
+
+Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
+
+```javascript
+    "start": "nodemon ./src/routes/server.js",
+```
+
+</br >
+
+---
+
 Hemos terminado por ahora!! 🥳 más adelante crearemos más rutas para nuestro frontend. 🚀
