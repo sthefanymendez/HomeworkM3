@@ -101,7 +101,7 @@ También estará la función `bash` que es la que ejecutará tu terminal.
 
 ## **👩‍💻 EJERCICIO 2**
 
-📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**request**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.  
+📍 Dirígete al archivo `commands/index.js`. Encontrarás las variables "**utils**", "**process**" y "**fs**" importadas en este archivo. Trabajaremos con ambas.  
 También estarán 8 funciones que deberás completar, junto a su `module.exports` al final del archivo.
 
 📍 Lo que hay que hacer:
