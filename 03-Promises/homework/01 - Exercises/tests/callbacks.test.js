@@ -40,6 +40,8 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemA();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemA | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
     readFileCallback(null, stanzas[0]);
     expect(blue).toHaveBeenCalledWith(stanzas[0]);
@@ -53,10 +55,13 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemB();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemB | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
+    const readFileCallbackTwo = readFileSpy.mock.calls[1][1];
     readFileCallback(null, stanzas[1]);
-    readFileCallback(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[1]);
+    readFileCallbackTwo(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[2]);
     blue.mockRestore();
     readFileSpy.mockRestore();
@@ -68,10 +73,13 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemC();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemC | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
+    const readFileCallbackTwo = readFileSpy.mock.calls[1][1];
     readFileCallback(null, stanzas[1]);
-    readFileCallback(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[1]);
+    readFileCallbackTwo(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[2]);
     blue.mockRestore();
     readFileSpy.mockRestore();
@@ -84,6 +92,8 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     const magenta = jest.spyOn(utils, "magenta");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemD();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemD | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
     readFileCallback(null, stanzas[3]);
     expect(blue).toHaveBeenCalledWith(stanzas[3]);
@@ -101,12 +111,17 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     const magenta = jest.spyOn(utils, "magenta");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemE();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemE | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
+    const readFileCallbackTwo = readFileSpy.mock.calls[1][1];
     readFileCallback(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[2]);
-    readFileCallback(null, stanzas[3]);
-    expect(blue).toHaveBeenCalledWith(stanzas[3]);
     readFileCallback("Error", null);
+    expect(magenta).toHaveBeenCalledWith(new Error("Error"));
+    readFileCallbackTwo(null, stanzas[3]);
+    expect(blue).toHaveBeenCalledWith(stanzas[3]);
+    readFileCallbackTwo("Error", null);
     expect(magenta).toHaveBeenCalledWith(new Error("Error"));
     blue.mockRestore();
     magenta.mockRestore();
@@ -115,18 +130,22 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
   });
 
   it("Problem F | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error. En ambos casos, al finalizar se debe consologuear 'done'", (done) => {
-    //CHECK, PASA SI ROMPEMOS FUNCION
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
     const readFileSpy = jest.spyOn(utils, "readFile");
     problemF();
+    if (readFileSpy.mock.calls.length === 0)
+      return done(new Error("problemF | No se llamo a readFile"));
     const readFileCallback = readFileSpy.mock.calls[0][1];
+    const readFileCallbackTwo = readFileSpy.mock.calls[1][1];
     readFileCallback(null, stanzas[2]);
     expect(blue).toHaveBeenCalledWith(stanzas[2]);
-    readFileCallback(null, stanzas[3]);
-    expect(blue).toHaveBeenCalledWith(stanzas[3]);
     readFileCallback("Error", null);
+    expect(magenta).toHaveBeenCalledWith(new Error("Error"));
+    readFileCallbackTwo(null, stanzas[3]);
+    expect(blue).toHaveBeenCalledWith(stanzas[3]);
+    readFileCallbackTwo("Error", null);
     expect(magenta).toHaveBeenCalledWith(new Error("Error"));
     blue.mockRestore();
     magenta.mockRestore();
