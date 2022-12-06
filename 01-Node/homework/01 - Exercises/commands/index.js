@@ -1,66 +1,21 @@
-const fs = require('fs');
-const utils = require('../utils/request');
-const process = require('process');
+const fs = require("fs");
+const utils = require("../utils/request");
+const process = require("process");
 
-function pwd(print) {
-   print(process.cwd());
-}
+function pwd() {}
 
-function date(print) {
-   print(Date());
-}
+function date() {}
 
-function echo(print, args) {
-   print(args);
-}
+function echo() {}
 
-function ls(print) {
-   fs.readdir('.', function (err, files) {
-      if (err) throw err;
-      print(files.join(' '));
-   });
-}
+function ls() {}
 
-function cat(print, args) {
-   fs.readFile(args, 'utf-8', (err, data) => {
-      if (err) throw err;
-      print(data);
-   });
-}
+function cat() {}
 
-function head(print, args) {
-   fs.readFile(args, 'utf-8', (err, data) => {
-      if (err) throw err;
-      print(data.split('\n')[0]);
-   });
-}
+function head() {}
 
-function tail(print, args) {
-   fs.readFile(args, 'utf-8', (err, data) => {
-      if (err) {
-         throw err;
-      }
-      const dataArr = data.split('\n');
-      print(dataArr[dataArr.length - 1].trim());
-   });
-}
+function tail() {}
 
-function curl(print, args) {
-   utils.request(args, function (err, response) {
-      if (err) {
-         throw err;
-      }
-      print(response);
-   });
-}
+function curl() {}
 
-module.exports = {
-   pwd,
-   date,
-   echo,
-   ls,
-   cat,
-   head,
-   tail,
-   curl,
-};
+module.exports = {};
