@@ -14,7 +14,6 @@ const {
   problemBx,
   problemCx,
   problemDx,
-  problemEx,
 } = require("../exercise-two");
 
 let fs = require("fs");
