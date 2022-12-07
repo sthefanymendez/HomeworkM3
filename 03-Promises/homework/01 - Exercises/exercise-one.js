@@ -29,9 +29,6 @@ function problemA() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-01.txt")
-  //   .then((stanza) => exerciseUtils.blue(stanza));
 }
 
 function problemB() {
@@ -45,12 +42,6 @@ function problemB() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-02.txt")
-  //   .then((stanza) => exerciseUtils.blue(stanza));
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-03.txt")
-  //   .then((stanza) => exerciseUtils.blue(stanza));
 }
 
 function problemC() {
@@ -64,16 +55,6 @@ function problemC() {
 
   // promise version (hint: don't need to nest `then` calls)
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-02.txt")
-  //   .then((stanza2) => {
-  //     exerciseUtils.blue(stanza2);
-  //     return exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt");
-  //   })
-  //   .then((stanza3) => {
-  //     exerciseUtils.blue(stanza3);
-  //     console.log("done");
-  //   });
 }
 
 function problemD() {
@@ -88,10 +69,6 @@ function problemD() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/wrong-file-name.txt")
-  //   .then((stanza) => exerciseUtils.blue(stanza))
-  //   .catch((err) => exerciseUtils.magenta(new Error(err)));
 }
 
 function problemE() {
@@ -110,17 +87,6 @@ function problemE() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-03.txt")
-  //   .then((stanza3) => {
-  //     exerciseUtils.blue(stanza3);
-  //     exerciseUtils
-  //       .promisifiedReadFile("poem-one/wrong-file-name.txt")
-  //       .then((stanza4) => {
-  //         exerciseUtils.blue(stanza4);
-  //       })
-  //       .catch((err) => exerciseUtils.magenta(new Error(err)));
-  //   });
 }
 
 function problemF() {
@@ -139,18 +105,4 @@ function problemF() {
 
   // promise version
   // Tu código acá:
-  // exerciseUtils
-  //   .promisifiedReadFile("poem-one/stanza-03.txt")
-  //   .then((stanza3) => {
-  //     exerciseUtils.blue(stanza3);
-  //     return exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt");
-  //   })
-  //   .then((stanza4) => {
-  //     exerciseUtils.blue(stanza4);
-  //     console.log("done");
-  //   })
-  //   .catch((err) => {
-  //     exerciseUtils.magenta(new Error(err));
-  //     console.log("done");
-  //   });
 }

@@ -40,7 +40,7 @@ let stanzasTwo = fs
     return fs.readFileSync(path.join(dirpathTwo, filename)).toString();
   });
 
-xdescribe("01 | Ejercicios - Callbacks (Poem-one)", () => {
+describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
   afterAll(async () => {
     await new Promise((resolve) => setTimeout(() => resolve(), 250));
   });
@@ -146,7 +146,7 @@ xdescribe("01 | Ejercicios - Callbacks (Poem-one)", () => {
     done();
   });
 
-  it("Problem F | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error. En ambos casos, al finalizar se debe consologuear 'done'", (done) => {
+  it("Problem F | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
@@ -201,7 +201,7 @@ describe("01 | Ejercicios - Callbacks (Poem-two)", () => {
     done();
   });
 
-  it("Problem B | Consologuea todos los stanzas que se encuentren en poem-two", (done) => {
+  it("Problem B | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -238,7 +238,7 @@ describe("01 | Ejercicios - Callbacks (Poem-two)", () => {
     done();
   });
 
-  it("Problem C | Consologuea todos los stanzas que se encuentren en poem-two", (done) => {
+  it("Problem C | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
