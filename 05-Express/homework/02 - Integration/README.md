@@ -1,0 +1,145 @@
+# HW 05: Express | Integración
+
+## **Duración estimada 🕒**
+
+x minutos
+
+<br />
+
+---
+
+## **Rick & Morty App**
+
+### **INTRO**
+
+En base a lo practicado en la homework Exercises, vamos a crear rutas con sus respectivas solicitudes HTTP que se van a ir guardando en un array que simulará nuestra base de datos. En esta homework consumiremos la información de la API de Rick & Morty que luego enviaremos a nuestro frontend.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 1**
+
+### **Crear Package.json**
+
+1. En la terminal de tu proyecto Rick & Morty coloca el comando `npm init`.
+
+2. Paso a paso irá preguntando datos a llenar tales como:
+
+   - name: back
+   - version: viene por default "1.0.0"
+   - description: si deseas agregar una descripción
+   - main o entry point: index.js
+   - test command: jest tests
+   - git repository: es opcional
+   - keywords: []
+   - author: henry
+   - license: viene por default (ISC) Internet Systems Consortium
+
+3. Para finalizar la terminal te mostrará una descripción de toda la configuración que realizaste y te preguntará si todo está ok, en caso de ser así, digita `yes`.
+
+Listoo!!🥳 haz creado el package.json de tu aplicación. Continuemos...
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 2**
+
+### **Instalar Express**
+
+1. Ahora sí!! ya tenemos creado nuestro package.json por lo que puedes ejecutar el comando en la terminal `npm install express`.
+
+2. Corrobora que se ha instalado abriendo tu archivo package.json dentro de `dependencies`, sección que se ha creado automáticamente cuando instalaste express o también puedes verla dentro de la carpeta node_modules.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 3**
+
+### **Crear servidor con Express**
+
+1. Anteriormente habías creado tu servidor con node puro en el archivo app.js, ahora lo cambiaremos para utilizar directamente el framework Express.
+
+2. Define una constante que llamada `express` y en ella guarda la función `require` que incluya el módulo **express**, de esta forma podemos usar el paquete **Express** que instalamos.
+
+3. Define una segunda constante llamada `app` en la que guardes la ejecución de express, ello se encarga de manjar las solicitudes y respuestas cliente-servidor.
+
+```javascript
+const express = require("express");
+const app = express();
+```
+
+😎 Acabas de crear tu servidor con Express!!
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 4**
+
+### **Crear Rutas**
+
+1. Anteriormente habíamos creado una ruta get que obtiene el personaje de Rick and Morty por **id** mediante un archivo que tenemos llamado `data.js`, bien vamos a modificarlo:
+
+a. En app tenemos los métodos HTTP listos para utilizar, por ende si nesitamos conseguir la data, necesitamos el método get, este método recibe dos parámetros: el objeto `request` de ahora en más **req** y el objeto `response` de ahora en más **res**.
+
+b. Ahora, en vez de consumir los datos de **data.js**, lo vamos a hacer de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`
+
+c. Crea la ruta **get/`rickandmorty`/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
+
+- id
+- name
+- species
+- gender
+- image
+
+2. Crea una segunda ruta **get/`rickandmorty`/detail/{detailId}**, obtén los datos de la API https://rickandmortyapi.com/api/character/{detailId} y envíalo al componente Detail.jsx:
+
+- name
+- status
+- species
+- gender
+- origin
+- image
+
+> Hint: Recuerda que los llamados a la API son asíncronos.
+
+3. Define una constante llamada `fav` que sea un arreglo vacío y crea las siguientes rutas:
+
+a. **GET/`rickandmorty`/fav**, que obtenga los personajes guardados en el arreglo **fav**.
+
+b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
+
+c. **DELETE/`rickandmorty`/fav**, que elimine el personaje en el arreglo **fav**
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 5**
+
+### **Iniciar servidor**
+
+Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 6**
+
+### **Conectar rutas con frontend**
+
+Por último, recordemos que en el front habíamos configurado la ruta para que consuma los datos desde nuestro servidor.
+
+Ahora dirígete a la carpeta **front** y haz los siguiente cambios:
+
+- En el componente Detail donde llamamos a la API de Rick & Morty, cambia la ruta get que actualmente llama a la ruta **https://rickandmortyapi.com/api/character/** que está en este momento por esta: ` http://localhost:3001/rickandmorty/detail`
+
+- En la action para agregar favorito, ahora debes enviar los personajes al endpoint **POST/`rickandmorty`/fav**.
+
+- En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint **DELETE/`rickandmorty`/fav**.
+
+✨✨Llegamos al final de esta homework creamos nuestro servidor y dos rutas para nuestro front!! 🚀🚀
