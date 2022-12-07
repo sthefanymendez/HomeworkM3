@@ -38,13 +38,19 @@ describe("01 | Ejercicios (poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemA();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemA | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
-    promisifiedReadfileAux.then(() => {
-      expect(blue).toHaveBeenCalledWith(stanzas[0]);
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      done();
-    });
+    promisifiedReadfileAux
+      .then(() => {
+        expect(blue).toHaveBeenCalledWith(stanzas[0]);
+        blue.mockRestore();
+        promisifiedReadFileSpy.mockRestore();
+        done();
+      })
+      .catch((error) => {
+        return done(new Error(error));
+      });
   });
 
   it("Problem B | Consologuea la segunda y tercer stanza versión promisificada", (done) => {
@@ -52,14 +58,20 @@ describe("01 | Ejercicios (poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemB();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemB | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
-    promisifiedReadfileAux.then(() => {
-      expect(blue).toHaveBeenCalledWith(stanzas[1]);
-      expect(blue).toHaveBeenCalledWith(stanzas[2]);
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      done()
-    })
+    promisifiedReadfileAux
+      .then(() => {
+        expect(blue).toHaveBeenCalledWith(stanzas[1]);
+        expect(blue).toHaveBeenCalledWith(stanzas[2]);
+        blue.mockRestore();
+        promisifiedReadFileSpy.mockRestore();
+        done();
+      })
+      .catch((error) => {
+        return done(new Error(error));
+      });
   });
 
   it("Problem C | Consologuea la segunda y tercer stanza versión promisificada", (done) => {
@@ -67,6 +79,8 @@ describe("01 | Ejercicios (poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemC();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemC | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
     promisifiedReadfileAux
       .then(() => {
@@ -79,6 +93,9 @@ describe("01 | Ejercicios (poem-one)", () => {
         promisifiedReadFileSpy.mockRestore();
         done();
       })
+      .catch((err) => {
+        return done(new Error(err));
+      });
   });
 
   it("Problem D | Consologuea la cuarta stanza versión promisificada o un error", (done) => {
@@ -87,10 +104,12 @@ describe("01 | Ejercicios (poem-one)", () => {
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemD();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemD | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
     promisifiedReadfileAux
       .then((stanza) => {
-        expect(stanza === stanzas[3]).toBe(true)
+        expect(stanza === stanzas[3]).toBe(true);
         promisifiedReadFileSpy.mockRestore();
         magenta.mockRestore();
         blue.mockRestore();
@@ -102,8 +121,8 @@ describe("01 | Ejercicios (poem-one)", () => {
         magenta.mockRestore();
         blue.mockRestore();
         done();
-      })
-  })
+      });
+  });
 
   it("Problem E | Consologuea la tercer stanza y luego la cuarta stanza o su respectivo error, versión promisificada", (done) => {
     jest.setTimeout(500);
@@ -111,6 +130,8 @@ describe("01 | Ejercicios (poem-one)", () => {
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     problemE();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemE | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
     promisifiedReadfileAux
       .then((stanza) => {
@@ -138,7 +159,9 @@ describe("01 | Ejercicios (poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    problemE();
+    problemF();
+    if (promisifiedReadFileSpy.mock.calls.length === 0)
+      return done(new Error("problemF | No se llamo a promisifiedReadFile"));
     const promisifiedReadfileAux = promisifiedReadFileSpy.mock.results[0].value;
     promisifiedReadfileAux
       .then((stanza) => {
@@ -159,6 +182,5 @@ describe("01 | Ejercicios (poem-one)", () => {
         blue.mockRestore();
         done();
       });
-  })
-  
+  });
 });
