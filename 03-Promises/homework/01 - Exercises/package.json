@@ -5,8 +5,7 @@
   "scripts": {
     "test": "jest --verbose --detectOpenHandles --forceExit",
     "test:callback": "jest --verbose --detectOpenHandles --forceExit tests/callbacks.test.js",
-    "test:promises": "jest --verbose --detectOpenHandles --forceExit tests/promises.test.js",
-    "test:02": "jest --verbose --detectOpenHandles --forceExit tests/02.test.js"
+    "test:promises": "jest --verbose --detectOpenHandles --forceExit tests/promises.test.js"
   },
   "author": "",
   "license": "ISC",

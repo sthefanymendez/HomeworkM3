@@ -114,7 +114,7 @@ npm run test:promises
 
    a. Leer y loguear la **stanza-03.txt**
 
-   b. Luego debe leer y la **stanza-04.txt**.
+   b. Luego debe leer y loguear la **stanza-04.txt**.
 
    c. Loguea un error si llegara a suceder para cualquiera de las dos promesas anteriores: **stanza-03.txt** y **stanza-04.txt**
 

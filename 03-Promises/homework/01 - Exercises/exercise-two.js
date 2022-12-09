@@ -1,24 +1,17 @@
 "use strict";
 
-var Promise = require("bluebird"),
-  async = require("async"),
-  exerciseUtils = require("./utils");
-
-var readFile = exerciseUtils.readFile,
-  promisifiedReadFile = exerciseUtils.promisifiedReadFile,
-  blue = exerciseUtils.blue,
-  magenta = exerciseUtils.magenta;
+var exerciseUtils = require("./utils");
 
 var args = process.argv.slice(2).map(function (st) {
   return st.toUpperCase();
 });
 
 module.exports = {
-  problemA: problemA,
-  problemB: problemB,
-  problemC: problemC,
-  problemD: problemD,
-  problemE: problemE,
+  problemAx: problemA,
+  problemBx: problemB,
+  problemCx: problemC,
+  problemDx: problemD,
+  problemEx: problemE,
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
@@ -29,19 +22,12 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  async.each(
-    ["poem-two/stanza-01.txt", "poem-two/stanza-02.txt"],
-    function (filename, eachDone) {
-      readFile(filename, function (err, stanza) {
-        console.log("-- A. callback version --");
-        blue(stanza);
-        eachDone();
-      });
-    },
-    function (err) {
-      console.log("-- A. callback version done --");
-    }
-  );
+  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+    exerciseUtils.blue(stanza);
+  });
+  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza) {
+    exerciseUtils.blue(stanza);
+  });
 
   // promise version
   // Tu código acá:
@@ -52,20 +38,12 @@ function problemB() {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
-  // callback version
-  async.each(
-    filenames,
-    function (filename, eachDone) {
-      readFile(filename, function (err, stanza) {
-        console.log("-- B. callback version --");
-        blue(stanza);
-        eachDone();
-      });
-    },
-    function (err) {
-      console.log("-- B. callback version done --");
-    }
-  );
+  // callback version logeamos todos los versos
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+    });
+  });
 
   // promise version
   // Tu código acá:
@@ -77,19 +55,11 @@ function problemC() {
   });
 
   // callback version
-  async.eachSeries(
-    filenames,
-    function (filename, eachDone) {
-      readFile(filename, function (err, stanza) {
-        console.log("-- C. callback version --");
-        blue(stanza);
-        eachDone();
-      });
-    },
-    function (err) {
-      console.log("-- C. callback version done --");
-    }
-  );
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+    });
+  });
 
   // promise version
   // Tu código acá:
@@ -103,21 +73,12 @@ function problemD() {
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
-  async.eachSeries(
-    filenames,
-    function (filename, eachDone) {
-      readFile(filename, function (err, stanza) {
-        console.log("-- D. callback version --");
-        if (err) return eachDone(err);
-        blue(stanza);
-        eachDone();
-      });
-    },
-    function (err) {
-      if (err) magenta(new Error(err));
-      console.log("-- D. callback version done --");
-    }
-  );
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+      if (err) exerciseUtils.magenta(new Error(err));
+    });
+  });
 
   // promise version
   // Tu código acá:
