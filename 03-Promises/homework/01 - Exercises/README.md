@@ -28,22 +28,22 @@ Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
 🔹 Para poder ejecutar los `test` de esta homework, es necesario que abramos la terminal ubicados dentro de la carpeta `01 - Exercises`.
 
-- Cuando te encuentres en esta carpeta, debes ejecutar el comando
+-  Cuando te encuentres en esta carpeta, debes ejecutar el comando
 
 ```bash
 npm install
 ```
 
-¡Listo! Ya puedes correr los test:
+¡Listo! Para correr los tests de los ejercicios hechos con **callbacks** utiliza el comando:
 
 ```bash
-npm test
+npm run test:callback
 ```
 
-Si deseas correr por test, puedes utilizar:
+Cuando termines el ejercicio y quieras testear tu promesa, utiliza el comando:
 
 ```bash
-npm run test:01
+npm run test:promises
 ```
 
 ---
@@ -54,15 +54,15 @@ npm run test:01
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-- Una carpeta llamada `poem-one`.
-- Una carpeta llamada `poem-two`.
-- Una carpeta llamada `tests`
-- Un archivo `demo-poem.txt`.
-- Un archivo `demo.js`.
-- Un archivo `exercise-one.js`
-- Un archivo `exercise-two.js`
-- Un archivo `utils.js`
-- Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+-  Una carpeta llamada `poem-one`.
+-  Una carpeta llamada `poem-two`.
+-  Una carpeta llamada `tests`
+-  Un archivo `demo-poem.txt`.
+-  Un archivo `demo.js`.
+-  Un archivo `exercise-one.js`
+-  Un archivo `exercise-two.js`
+-  Un archivo `utils.js`
+-  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
 ---
 
@@ -96,8 +96,7 @@ npm run test:01
 
    b.En cada una, llama el método **.then** que también recibe una respuesta que si resuelve llamamos nuevamente la función **blue**.
 
-3. Función problemC:
-   En este ejercicio el objetivo es leer y loguear del poema uno, la **stanza-02.txt** y después leer y loguear la **stanza-03.txt**, luego debes loguear 'done' cuando ambas promesas hayan terminado, ignora por este ejercicio los errores:
+3. Función problemC: En este ejercicio el objetivo es leer y loguear del poema uno, la **stanza-02.txt** y después leer y loguear la **stanza-03.txt**, luego debes loguear 'done' cuando ambas promesas hayan terminado, ignora por este ejercicio los errores:
 
    a. Nuevamente utiliza el método **promisifiedReadFile**, el cual reciba como parámetro la **stanza-02.txt**.
 
@@ -107,14 +106,11 @@ npm run test:01
 
 4. Función problemD:
 
-   a.Vuelve a utilizar el método **promisifiedReadFile** y pasa como parámetro **poem-one/wrong-file-name.txt** que loguea el error o también puedes loguear **stanza-04.txt**.
-   b.Sin embargo, ten en cuenta los dos caminos en esta promesa: si se resuelve, llama el método **.then** y con la respuesta llama la función **blue**.
-   c. Si no se resuelve, llama el handleError que ejecute la función `magenta` la cual se encuentra en el archivo **utils.js**.
+   a.Vuelve a utilizar el método **promisifiedReadFile** y pasa como parámetro **poem-one/wrong-file-name.txt** que loguea el error o también puedes loguear **stanza-04.txt**. b.Sin embargo, ten en cuenta los dos caminos en esta promesa: si se resuelve, llama el método **.then** y con la respuesta llama la función **blue**. c. Si no se resuelve, llama el handleError que ejecute la función `magenta` la cual se encuentra en el archivo **utils.js**.
 
    > Hint: En caso de tener que lanzar un error deberías hacerlo con new Error() para que pase los tests correctamente.
 
-5. Función problemE:
-   Teniendo de base los ejercicios anteriores, en esta función debes:
+5. Función problemE: Teniendo de base los ejercicios anteriores, en esta función debes:
 
    a. Leer y loguear la **stanza-03.txt**
 
@@ -124,8 +120,7 @@ npm run test:01
 
    > Hint: Puedes usar el método `catch` que reciba la función magenta, la cual mostrará el error.
 
-6. Función problemF:
-   Teniendo de base los ejercicios anteriores, en esta función debes:
+6. Función problemF: Teniendo de base los ejercicios anteriores, en esta función debes:
 
    a. Leer y loguear la **stanza-03.txt**
 
@@ -219,15 +214,15 @@ npm run test:01
 
 ## **🧠 Recuerda que...**
 
-- El código asincrónico es no-determinístico (los resultados no pueden ser determinados antes de tiempo)
+-  El código asincrónico es no-determinístico (los resultados no pueden ser determinados antes de tiempo)
 
-- Llamar a **.then** siempre devuelve una nueva promesa.
+-  Llamar a **.then** siempre devuelve una nueva promesa.
 
-- Para evitar el **callback hell** devuelve un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena debe recibir ese valor.
+-  Para evitar el **callback hell** devuelve un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena debe recibir ese valor.
 
-- No olvides manejar los errores en el asincronismo, puedes hacerlo pasando un segundo parámetro **error handler** al .then.
+-  No olvides manejar los errores en el asincronismo, puedes hacerlo pasando un segundo parámetro **error handler** al .then.
 
-- También puedes manejar todos los errores en el asincronismo utilizando **.catch**.
+-  También puedes manejar todos los errores en el asincronismo utilizando **.catch**.
 
 ---
 
@@ -235,9 +230,9 @@ npm run test:01
 
 ## **🔎 Recursos adicionales**
 
-- Documentación [**Promises**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+-  Documentación [**Promises**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-- Documentación [**Bluebird**](http://bluebirdjs.com/docs/api/new-promise.html)
+-  Documentación [**Bluebird**](http://bluebirdjs.com/docs/api/new-promise.html)
 
 ---
 

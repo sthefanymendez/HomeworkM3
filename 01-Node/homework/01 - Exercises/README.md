@@ -224,11 +224,11 @@ ingresar la dirección.
 1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
 2. Invoca la función `request` que se encuentra importada más arriba y pásale los siguientes argumentos:
 
--  `args` (El parámetro que recibes en la función `curl`).
--  un callback con los parámetros `error`, `response`, `body`. _Nota_ `response` no lo vas a utilizar en esta ocasión.
+   -  `args` (El parámetro que recibes en la función `curl`).
+   -  un callback con los parámetros `error` y `response`.
 
 3. Si `request` devuelve un error, arrojarlo (Puedes usar `throw error` como se mencionó antes).
-4. Invoca la función `print` y retorna `body` (La respuesta que brinda `curl`).
+4. Invoca la función `print` pasándole como argumento el parámetro `response`.
 
 ---
 
