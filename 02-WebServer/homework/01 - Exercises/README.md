@@ -85,6 +85,8 @@ console.log(`Server raised in port ${PORT}`);
 
 4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
 
+> **[NOTA:]** Este primer ejercicio no lleva testing. De aquí en adelante sí!
+
 ---
 
 <br />
