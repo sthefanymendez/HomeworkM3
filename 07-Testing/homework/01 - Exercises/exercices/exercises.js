@@ -1,22 +1,15 @@
-var multiplicar = (num) => {
-   return n * num;
+var multiplicarPorTres = (num) => {
+   return 3 * num;
 };
 
 var nuevaPropiedad = (object) => {
-   object.nuevaPropiedad = 'Nuevo Valor';
+   object.nuevaPropiedad = 'Nuevo valor';
    return object;
 };
 
 const returnTruth = (truth) => {
-   return truth === 'Verdadero' ? truth : truth;
-};
-
-const returnValue = (value) => {
-   return typeof value === 'null' ? value : value;
-};
-
-var sizeOfNumber = (option) => {
-   return option === 'A' ? 1 : option === 'B' ? 3 : option === 'C' ? 6 : 9;
+   if (typeof truth !== 'boolean') return 'No es booleano';
+   return truth ? 'Verdadero' : 'Falso';
 };
 
 var nuevaFrase = (name, lastname, age) => {
@@ -37,12 +30,10 @@ var nuevoArreglo = (option) => {
    return arr;
 };
 
-exports.module = {
-   multiplicar,
+module.exports = {
+   multiplicarPorTres,
    nuevaPropiedad,
    returnTruth,
-   returnValue,
-   sizeOfNumber,
    nuevaFrase,
    nuevoArreglo,
 };

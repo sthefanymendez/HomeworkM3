@@ -191,7 +191,11 @@ Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
 📍 Lo que hay que hacer:
 
-1. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
+1. Declarar un condicional que verifique si `req.url` es igual "_/picture_".
+
+2. En el caso de que esto sea verdadero, volveremos a utilizar la propiedad _readFile_ del objeto **fs**.
+
+3. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
 
    -  El primero será un string con la ruta donde se encuentran nuestras imágenes. Dentro de `req.url` recibirás el nombre de la imagen que quieres visualizar. Por lo que en este string tendrás que acceder a la carpeta "_**utils/images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_". Te quedaría lo siguiente:
 
