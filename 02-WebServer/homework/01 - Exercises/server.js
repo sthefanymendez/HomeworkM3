@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 /* ⚠️ NO MODIFICAR NADA POR ENCIMA DE ESTA LÍNEA ⚠️ */
 /* Aquí debajo puedes escribir tu servidor */
-const PORT = 3000;
+const PORT = 3001;
 
 http
    .createServer(function (req, res) {
@@ -34,14 +34,16 @@ http
          return;
       }
 
-      fs.readFile(`./utils/images/${req.url}.jpg`, (err, data) => {
-         if (err) {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('image not found');
-         } else {
-            res.writeHead(200, { 'Content-Type': 'image/jpeg' });
-            res.end(data);
-         }
-      });
+      if (req.url === '/picture') {
+         fs.readFile(`./utils/images/${req.url}.jpg`, (err, data) => {
+            if (err) {
+               res.writeHead(404, { 'Content-Type': 'text/plain' });
+               res.end('image not found');
+            } else {
+               res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+               res.end(data);
+            }
+         });
+      }
    })
-   .listen(PORT, '127.0.0.1');
+   .listen(PORT, 'localhost');
