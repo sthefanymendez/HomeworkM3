@@ -3,7 +3,7 @@
 ## **📌 Temas de la homework**
 
 - Async Await
-- try/catch
+- Try Catch
 
 <br />
 
