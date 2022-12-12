@@ -73,7 +73,7 @@ npm start
 
 📍 Lo que hay que hacer:
 
-1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3000`.
+1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3001`.
 
 2. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
 
@@ -83,7 +83,7 @@ npm start
 console.log(`Server raised in port ${PORT}`);
 ```
 
-4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
+4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `localhost` (para indicarle que el puerto es de nuestra PC).
 
 > **[NOTA:]** Este primer ejercicio no lleva testing. De aquí en adelante sí!
 
@@ -125,7 +125,7 @@ Hasta ahora ya creamos nuestra primera ruta que nos responde con un JSON. Para p
 
 1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
 
-2. Dirígete a tu navegador e ingresá a la URL: `http://localhost:3000/api`.
+2. Dirígete a tu navegador e ingresá a la URL: `http://localhost:3001/api`.
 
 3. ¡Listo! Construiste tu primera ruta 😁. Debería quedate algo como esto:
 
@@ -173,7 +173,7 @@ Hasta ahora ya creamos nuestra primera ruta que nos responde con un JSON. Para p
 
 Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
-1. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000/allDogs`.
+1. Dirígete a tu navegador e ingresá a la url: `http://localhost:3001/allDogs`.
 
 2. ¡Listo! Ya puedes ver a todos nuestros amigos doges. Debería quedate algo como esto:
 
@@ -221,7 +221,7 @@ Hasta ahora ya contruiste un endpoint que muestra a nuestro amiguito en el naveg
 
 1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
 
-2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000`.
+2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3001`.
 
 3. Para ver a nuestro amigo simplemente agrega una barra (`/`) al final de la URL e intenta agregar alguno de estos nombres:
 

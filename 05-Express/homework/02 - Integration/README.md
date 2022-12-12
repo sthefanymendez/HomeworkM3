@@ -20,32 +20,6 @@ En base a lo practicado en la homework Exercises, vamos a crear rutas con sus re
 
 ### **👩‍💻 EJERCICIO 1**
 
-### **Crear Package.json**
-
-1. En la terminal de tu proyecto Rick & Morty coloca el comando `npm init`.
-
-2. Paso a paso irá preguntando datos a llenar tales como:
-
-   - name: back
-   - version: viene por default "1.0.0"
-   - description: si deseas agregar una descripción
-   - main o entry point: index.js
-   - test command: jest tests
-   - git repository: es opcional
-   - keywords: []
-   - author: henry
-   - license: viene por default (ISC) Internet Systems Consortium
-
-3. Para finalizar la terminal te mostrará una descripción de toda la configuración que realizaste y te preguntará si todo está ok, en caso de ser así, digita `yes`.
-
-Listoo!!🥳 haz creado el package.json de tu aplicación. Continuemos...
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 2**
-
 ### **Instalar Express**
 
 1. Ahora sí!! ya tenemos creado nuestro package.json por lo que puedes ejecutar el comando en la terminal `npm install express`.
@@ -56,7 +30,7 @@ Listoo!!🥳 haz creado el package.json de tu aplicación. Continuemos...
 
 ---
 
-### **👩‍💻 EJERCICIO 3**
+### **👩‍💻 EJERCICIO 2**
 
 ### **Crear servidor con Express**
 
@@ -77,7 +51,7 @@ const app = express();
 
 ---
 
-### **👩‍💻 EJERCICIO 4**
+### **👩‍💻 EJERCICIO 3**
 
 ### **Crear Rutas**
 
@@ -114,11 +88,13 @@ b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
 
 c. **DELETE/`rickandmorty`/fav**, que elimine el personaje en el arreglo **fav**
 
+> Hint: Recuerda modularizar en tu carpeta controllers como lo aprendiste en la homework 03-Promises con los archivos **getCharById.js** y **getCharDetail.js**
+
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 5**
+### **👩‍💻 EJERCICIO 4**
 
 ### **Iniciar servidor**
 
@@ -128,7 +104,7 @@ Es hora de iniciar el servidor, con el método listen de express, coloca a escuc
 
 ---
 
-### **👩‍💻 EJERCICIO 6**
+### **👩‍💻 EJERCICIO 5**
 
 ### **Conectar rutas con frontend**
 
@@ -136,10 +112,10 @@ Por último, recordemos que en el front habíamos configurado la ruta para que c
 
 Ahora dirígete a la carpeta **front** y haz los siguiente cambios:
 
-- En el componente Detail donde llamamos a la API de Rick & Morty, cambia la ruta get que actualmente llama a la ruta **https://rickandmortyapi.com/api/character/** que está en este momento por esta: ` http://localhost:3001/rickandmorty/detail`
+1. En el componente Detail donde llamamos a la API de Rick & Morty, cambia la ruta get que actualmente llama a la ruta **https://rickandmortyapi.com/api/character/** que está en este momento por esta: ` http://localhost:3001/rickandmorty/detail`
 
-- En la action para agregar favorito, ahora debes enviar los personajes al endpoint **POST/`rickandmorty`/fav**.
+2. En la action para agregar favorito, ahora debes enviar los personajes al endpoint **POST/`rickandmorty`/fav**.
 
-- En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint **DELETE/`rickandmorty`/fav**.
+3. En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint **DELETE/`rickandmorty`/fav**.
 
-✨✨Llegamos al final de esta homework creamos nuestro servidor y dos rutas para nuestro front!! 🚀🚀
+✨✨Llegamos al final de esta homework creamos nuestro servidor y tres rutas para nuestro front!! 🚀🚀

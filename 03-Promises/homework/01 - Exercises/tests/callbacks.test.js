@@ -171,7 +171,7 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
   });
 });
 
-describe("01 | Ejercicios - Callbacks (Poem-two)", () => {
+describe("02 | Ejercicios - Callbacks (Poem-two)", () => {
   afterAll(async () => {
     await new Promise((resolve) => setTimeout(() => resolve(), 250));
   });
