@@ -73,7 +73,7 @@ npm start
 
 📍 Lo que hay que hacer:
 
-1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3000`.
+1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3001`.
 
 2. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
 
@@ -83,7 +83,9 @@ npm start
 console.log(`Server raised in port ${PORT}`);
 ```
 
-4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `127.0.0.1` (para indicarle que el puerto es de nuestra PC).
+4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `localhost` (para indicarle que el puerto es de nuestra PC).
+
+> **[NOTA:]** Este primer ejercicio no lleva testing. De aquí en adelante sí!
 
 ---
 
@@ -123,7 +125,7 @@ Hasta ahora ya creamos nuestra primera ruta que nos responde con un JSON. Para p
 
 1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
 
-2. Dirígete a tu navegador e ingresá a la URL: `http://localhost:3000/api`.
+2. Dirígete a tu navegador e ingresá a la URL: `http://localhost:3001/api`.
 
 3. ¡Listo! Construiste tu primera ruta 😁. Debería quedate algo como esto:
 
@@ -171,7 +173,7 @@ Hasta ahora ya creamos nuestra primera ruta que nos responde con un JSON. Para p
 
 Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
-1. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000/allDogs`.
+1. Dirígete a tu navegador e ingresá a la url: `http://localhost:3001/allDogs`.
 
 2. ¡Listo! Ya puedes ver a todos nuestros amigos doges. Debería quedate algo como esto:
 
@@ -189,7 +191,11 @@ Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
 📍 Lo que hay que hacer:
 
-1. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
+1. Declarar un condicional que verifique si `req.url` es igual "_/picture_".
+
+2. En el caso de que esto sea verdadero, volveremos a utilizar la propiedad _readFile_ del objeto **fs**.
+
+3. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
 
    -  El primero será un string con la ruta donde se encuentran nuestras imágenes. Dentro de `req.url` recibirás el nombre de la imagen que quieres visualizar. Por lo que en este string tendrás que acceder a la carpeta "_**utils/images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_". Te quedaría lo siguiente:
 
@@ -215,7 +221,7 @@ Hasta ahora ya contruiste un endpoint que muestra a nuestro amiguito en el naveg
 
 1. Ejecuta el comando `npm start` en esta carpeta y levanta el servidor.
 
-2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3000`.
+2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3001`.
 
 3. Para ver a nuestro amigo simplemente agrega una barra (`/`) al final de la URL e intenta agregar alguno de estos nombres:
 
