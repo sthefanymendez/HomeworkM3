@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 /* ⚠️ NO MODIFICAR NADA POR ENCIMA DE ESTA LÍNEA ⚠️ */
 /* Aquí debajo puedes escribir tu servidor */
-const PORT = 3000;
+const PORT = 3001;
 
 http
    .createServer(function (req, res) {
@@ -46,4 +46,4 @@ http
          });
       }
    })
-   .listen(PORT, '127.0.0.1');
+   .listen(PORT, 'localhost');
