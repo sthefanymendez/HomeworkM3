@@ -133,11 +133,7 @@ _DATE_ imprimirá la fecha actual de tu máquina.
 _ECHO_ imprimirá el texto que escribas en la consola.
 
 1. Completa la función `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Utiliza la función `print`. Como argumento pásale la función el parámetro `args` aplicándole el siguiente método:
-
-```javascript
-args.join(' ');
-```
+2. Utiliza la función `print`. Como argumento pásale a la función el parámetro `args` 
 
 ---
 
