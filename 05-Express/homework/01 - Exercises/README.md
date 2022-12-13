@@ -216,13 +216,13 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **GET** ruta **/posts/author/:title**
+### **GET** ruta **/posts/${author}/${title}**
 
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/:author/:title`.
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/${author}/${title}`.
 
 📍 Lo que hay que hacer:
 
-1. Si existen publicaciones que coincidan con ambos parámetros, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
+1. Si existen publicaciones que coincidan con ambos queries, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
 
 2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
 
