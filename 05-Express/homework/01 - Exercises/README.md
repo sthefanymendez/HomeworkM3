@@ -10,12 +10,12 @@ x minutos
 
 ## **📌 INTRO**
 
-En esta homework vas a desarrollar una API que permitirá gestionar POST's, utilizando el concepto CRUD similar a un gestor de publicaciones de cualquier red social conocida, vas a realizar las siguientes acciones:
+En esta homework vas a desarrollar una API que permitirá gestionar `publicaciones`, utilizando el concepto CRUD similar a un gestor de publicaciones de cualquier red social conocida, vas a realizar las siguientes acciones:
 
-- Crear nuevos Posts
-- Consultar Posts existentes
-- Actualizar Posts existentes
-- Eliminar Posts existentes
+- Crear nuevas publicaciones
+- Consultar las publicaciones existentes
+- Actualizar las publicaciones existentes
+- Eliminar las publicaciones existentes
 
 ---
 
@@ -23,15 +23,15 @@ En esta homework vas a desarrollar una API que permitirá gestionar POST's, util
 
 ## **📍 CONSIGNA**
 
-En esta homework debes generar una API para gestionar Posts, como no trabajarás con una base de datos, simularemos una en el que los datos serán almacenados en memoria utilizando un array de Javascript denominado `posts`.
+En esta homework debes generar una API para gestionar **publicaciones**, como no trabajarás con una base de datos, simularemos una en el que los datos serán almacenados en memoria utilizando un array de Javascript denominado `publications`.
 
-Cada `Post` debe ser un objeto con la siguiente estructura:
+Cada `Publicacion` debe ser un objeto con la siguiente estructura:
 
 ```js
 {
-  author: "Autor del Post"
-  title: "Titulo del Post",
-  contents: "Contenido del Post"
+  author: "Autor de la publicación"
+  title: "Titulo del publicación",
+  contents: "Contenido de la publicación"
 }
 ```
 
@@ -71,7 +71,7 @@ npm run test:01
 npm run nodemon
 ```
 
-🔹 Una vez esté todo configurado puedes hacer los requests a `http://localhost:3000` que es la URL donde correrá nuestro servidor.
+🔹 Una vez esté todo configurado puedes hacer los requests a `http://localhost:3001` que es la URL donde correrá nuestro servidor.
 
 ---
 
@@ -143,7 +143,7 @@ server.get("/", function (req, res) {
 Otro punto a tener en cuenta es que `req.body` se usa para tener los parámetros que son enviados por el cliente como parte de un request. Entonces, si por ejemplo quisiera acceder a la propiedad name podría utilizar `req.body.name`.
 
 ```javascript
-server.get("/", function (req, res) {
+server.post("/", function (req, res) {
   var obj = {
     saludo: "Hola" + req.body.name,
   };
@@ -169,12 +169,12 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 1. Asegurarse que dentro del body del request existan `author`, `title` y `contents`.
 
-2. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`.
+2. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear la publicación"}`.
 
    > Hint: Verifica que el código de error sea el adecuado.
 
-3. Si los tres campos fueron provistos, crear un nuevo objeto Post con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`.
-4. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
+3. Si los tres campos fueron provistos, crear un nuevo objeto Publicación con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`.
+4. Agregar dicho objeto al array de **publications**. Devolver un JSON con el objeto recientemente creado.
 
 ---
 
@@ -182,21 +182,15 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 2**
 
-### **POST** ruta **/posts/author/:author**
+### **GET** ruta **/posts**
 
-📍 Crea la ruta `/posts/author/:author` cuando se ejecute un request con el método **POST**.
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts`.
 
 📍 Lo que hay que hacer:
 
-1. Asegurarse que dentro del body del request existan tanto `title` como `contents`..
+1. Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellas publicaciones que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
 
-2. Por parámetros viaja el nombre del autor. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear el Post"}`.
-
-   > Hint: Verifica que el código de error sea el adecuado.
-
-3. Si los tres campos fueron provistos, crear un nuevo objeto Post con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`.
-
-4. Agregar dicho objeto al array de posts. Devolver un JSON con el objeto recientemente creado.
+2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
 
 ---
 
@@ -204,15 +198,17 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 3**
 
-### **GET** ruta **/posts**
+### **GET** ruta **/posts/:author**
 
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts`.
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/:author`.
 
 📍 Lo que hay que hacer:
 
-1. Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellos Posts que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
+1. Si existen publicaciones del autor indicado en el parámetro `author`, devolverlos.
 
-2. Caso contrario, devolver todos los Posts que se encuentren almacenados en el array `posts`.
+2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación del autor indicado"}`.
+
+   > Hint: Verifica que el código de error sea el adecuado.
 
 ---
 
@@ -220,15 +216,15 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **GET** ruta **/posts/:author**
+### **GET** ruta **/posts/author/:title**
 
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/:author`.
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/:author/:title`.
 
 📍 Lo que hay que hacer:
 
-1. Si existen Posts del autor indicado en el parámetro `author`, devolverlos.
+1. Si existen publicaciones que coincidan con ambos parámetros, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
 
-2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post del autor indicado"}`.
+2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
 
    > Hint: Verifica que el código de error sea el adecuado.
 
@@ -238,17 +234,23 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 5**
 
-### **GET** ruta **/posts/:author/:title**
+### **PUT** ruta **/posts**
 
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/:author/:title`.
+📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts`.
 
 📍 Lo que hay que hacer:
 
-1. Si existen Posts que coincidan con ambos parámetros, `author` y `title`, devolver aquellos Posts que correspondan con la información provista, es decir que coincidan `author` y `title`.
+1. Asegurarse que reciba por params el `id`.
 
-2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post con dicho titulo y autor indicado"}`.
+2. Asegurarse que dentro del body del request existan `title` y `contents`.
+
+3. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para modificar la publicación"}`.
 
    > Hint: Verifica que el código de error sea el adecuado.
+
+4. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON con un objeto de la forma `{error: "No se recibió el id correcto necesario para modificar la publicación"}`.
+
+5. Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` de la publicación que coincida con dicho `id`. Devolver un JSON con el objeto recientemente actualizado.
 
 ---
 
@@ -256,47 +258,25 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 6**
 
-### **PUT** ruta **/posts**
-
-📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts`.
-
-📍 Lo que hay que hacer:
-
-1. Asegurarse que dentro del body del request existan `id`, `title` y `contents`.
-
-2. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para modificar el Post"}`.
-
-   > Hint: Verifica que el código de error sea el adecuado.
-
-3. En el caso de que el `id` no corresponda a un post válido existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
-
-4. Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` del Post que coincida con dicho `id` . Devolver un JSON con el objeto recientemente actualizado.
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 7**
-
 ### **DELETE** ruta **/posts**
 
 📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/posts`.
 
 📍 Lo que hay que hacer:
 
-1. Asegurarse que dentro del body del request exista un `id` correspondiente a un Post válido. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`.
+1. Asegurarse que reciba por params un `id` correspondiente a una publicación válida. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`.
 
-2. En el caso de que el `id` corresponda a un Post válido, eliminarlo del array de Posts y devolver un JSON con el siguiente objeto: `{ success: true }`.
+2. En el caso de que el `id` corresponda a una publicación válida, eliminarlo del array de publications y devolver un JSON con el siguiente objeto: `{ success: true }`.
 
-3. En el caso de que el `id` no corresponda a un post válido existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
+3. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON con un objeto de la forma `{error: "No se recibió el id correcto necesario para eliminar la publicación"}`.
 
-> Hint: Ver qué método vas a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
+> Hint: Ver qué método vas a utilizar para eliminar una publicación, dependiendo el caso puede que sea necesario modificar el `const publication = []` del comienzo por `let publication = []`
 
 ---
 
 <br />
 
-## **👩‍💻 EJERCICIO 8**
+## **👩‍💻 EJERCICIO 7**
 
 ### **DELETE** ruta **/author**
 
@@ -306,9 +286,9 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 1. Asegurarse que dentro del body del request exista un `author` correspondiente a un autor válido. De no ser así, ya sea por falta del campo `author` o por ser un autor inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`.
 
-2. En el caso de que el `author` corresponda a un autor válido, eliminar del array de Posts todos los Post correspondientes a dicho autor y devolver los posts eliminados.
+2. En el caso de que el `author` corresponda a un autor válido, eliminar del array de publications todas las publicaciones correspondientes a dicho autor y devolver las publicaciones eliminadas.
 
-3. En el caso de que el `id` no corresponda a un post válido existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
+3. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
 
 > Hint: Ver qué método vas a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
 
@@ -316,7 +296,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 9**
+## **👩‍💻 EJERCICIO 8**
 
 ### **POSTMAN**
 
@@ -353,7 +333,7 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
      - PUT
      - DELETE
 
-   - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3000/)
+   - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3001/)
 
 - Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos:
 
