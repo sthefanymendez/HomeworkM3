@@ -185,29 +185,17 @@ Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **ENDPOINTS - DOG (img)**
+### **ENDPOINTS - ERROR**
 
-📍 Seguimos en el archivo `server.js`. Dentro de la función callback que le pasamos a "**_createServer_**" crearemos nuestra última ruta. Esta nos permitirá ver una imagen. Puedes codearla debajo de la anterior.
+📍 Seguimos en el archivo `server.js`. Dentro de la función callback que le pasamos a "**_createServer_**" crearemos nuestra última ruta. Esta nos permitirá avisar que hubo un error en el caso de que no se ingrese a una ruta adecuada.
 
 📍 Lo que hay que hacer:
 
-1. Declarar un condicional que verifique si `req.url` es igual "_/picture_".
+-  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de la función tendrás que crear un condicional.
 
-2. En el caso de que esto sea verdadero, volveremos a utilizar la propiedad _readFile_ del objeto **fs**.
+   -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`image not found`".
 
-3. Llama a la propiedad **readFile** del objeto **fs**. Esta recibirá dos parámetros.
-
-   -  El primero será un string con la ruta donde se encuentran nuestras imágenes. Dentro de `req.url` recibirás el nombre de la imagen que quieres visualizar. Por lo que en este string tendrás que acceder a la carpeta "_**utils/images**_" de esta homework. Luego utilizar "**_req.url_**", y finalmente concatenarle "_.jpg_". Te quedaría lo siguiente:
-
-      ```javascript
-      `./utils/images/${req.url}.jpg`;
-      ```
-
-   -  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de la función tendrás que crear un condicional.
-
-      -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`image not found`".
-
-      -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `image/jpeg`, y finalmente el parámetro **data**.
+   -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `image/jpeg`, y finalmente el parámetro **data**.
 
 ---
 
