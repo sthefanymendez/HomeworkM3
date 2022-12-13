@@ -11,6 +11,19 @@ const nivelDos = (letras) => {
       .join('');
 };
 
-const nivelTres = (a, b) => {};
+const nivelTres = (a, b) => {
+   return a.concat(b).sort();
+};
 
-module.exports = { nivelUno, nivelDos, nivelTres };
+const nivelCuatro = (num) => {
+   let tot = 0;
+   num.toString()
+      .split('')
+      .forEach((n) => {
+         tot += Number(n);
+      });
+   let rev = Number(tot.toString().split('').reverse().join(''));
+   return rev * tot === num;
+};
+
+module.exports = { nivelUno, nivelDos, nivelTres, nivelCuatro };

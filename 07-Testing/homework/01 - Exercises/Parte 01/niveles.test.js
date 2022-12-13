@@ -1,4 +1,4 @@
-const { nivelUno, nivelDos, nivelTres } = require('./niveles');
+const { nivelUno, nivelDos, nivelTres, nivelCuatro } = require('./niveles');
 
 describe('PARTE 01', () => {
    describe('NIVEL 01', () => {
@@ -24,6 +24,28 @@ describe('PARTE 01', () => {
          expect(nivelDos('aaaa')).toBe('aa');
          expect(nivelDos('abgdg')).toBe('agg');
          expect(nivelDos('abbsbbbdl')).toBe('abbbl');
+      });
+   });
+   describe('NIVEL 03', () => {
+      it('Debe devolver un arreglo con los elementos de ambos arreglos unidos y en orden', () => {
+         expect(nivelTres([0], [1])).toStrictEqual([0, 1]);
+         expect(nivelTres([1, 2], [3, 4])).toStrictEqual([1, 2, 3, 4]);
+         expect(nivelTres([1], [2, 3, 4])).toStrictEqual([1, 2, 3, 4]);
+         expect(nivelTres([1, 2, 3], [4])).toStrictEqual([1, 2, 3, 4]);
+         expect(nivelTres([1, 2], [1, 2])).toStrictEqual([1, 1, 2, 2]);
+      });
+   });
+   describe('NIVEL 04', () => {
+      it('Debe devolver True si es un número Henry', () => {
+         expect(nivelCuatro(1729)).toBe(true);
+         expect(nivelCuatro(1)).toBe(true);
+         expect(nivelCuatro(81)).toBe(true);
+         expect(nivelCuatro(1458)).toBe(true);
+      });
+      it('Debe devolver False si NO es un número Henry', () => {
+         expect(nivelCuatro(1997)).toBe(false);
+         expect(nivelCuatro(1998)).toBe(false);
+         expect(nivelCuatro(18)).toBe(false);
       });
    });
 });

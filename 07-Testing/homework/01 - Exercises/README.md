@@ -39,12 +39,16 @@ npm test
 
 ## **ESTRUCTURA**
 
-🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
+Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
--  Una carpeta **excercices**.
-   -  Un archivo **.js** que contendrá funciones.
-   -  Un archivo **.test.js** en el que deberás escribir los test correspondientes.
+-  Una carpeta **Parte 01**.
+   -  Un archivo **nvieles.js** que contendrá los ejercicios.
+   -  Un archivo **niveles.test.js** que contendrá los tests de cada ejercicio.
+-  Una carpeta **Parte 02**.
+   -  aaa
+   -  aaa
 -  Un archivo **package.json**.
+-  Un archivo **.gitignore**.
 -  Un archivo **README.md**.
 
 ---
@@ -53,96 +57,74 @@ npm test
 
 ## **📋 INSTRUCCIONES**
 
-Dentro del archivo **`exercises/exercices.js`** encontrarás una serie de funciones. Tu tarea es crear una descripción y el testing para cada una de estas funciones. Una vez que termines el test, verifica que funcione correctamente con el comando:
+Dentro de la carpeta **`Parte 01`** encontrarás los ejercicios con los que deberás iniciar esta homework. Cada ejercicio tiene mayor complejitud a medida que subes de nivel. Deberás guiarte tanto por este README como por los test para resolver cada ejercicio.
+
+Dentro de la carpeta **`Parte 02`** encontrarás dos archivos. Para resolver esta segunda parte deberás guiarte 100% mediante este README.
+
+---
+
+</br >
+
+## **PARTE 01**
+
+### **👩‍💻 Nivel 01**
+
+Esta función recibe dos números por parámetro. A partir de los test identifica el resultado de qué operación debes devolver.
+
+<br />
+
+### **👩‍💻 Nivel 02**
+
+Esta función recibe string de muchas letras al azar. Identifica el patrón de conversión de las letras a partir de los test, y devuelve el string correcto.
+
+<br />
+
+### **👩‍💻 Nivel 03**
+
+Esta función recibe dos arreglos por parámetros. Deberás unirlos y devolver el nuevo arreglo ordenado. Puedes guiarte a partir de los test.
+
+<br />
+
+### **👩‍💻 Nivel 04**
+
+🥳¡Felicitaciones si haz llegado hasta aquí!🥳
+
+En este ejercicio tendrás que encontrar los **`Números Henry`**. Estos números tienen la particularidad que, si sumamos cada uno de sus dígitos, y luego multiplicamos esa suma por el inverso de sus dígitos, obtendremos el número original. Por ejemplo:
+
+```javascript
+   let henryNumber = 1729;
+   let suma = 1 + 7 + 2 + 9 = 19;
+   let reverse = 91;
+   19 * 91 === 1729 // True
+```
+
+Si el número que recibes cumple esta condición, retorna **True**. Caso contrario, **False**.
+
+<br />
+
+---
+
+## **PARTE 02**
+
+### **👩‍💻 Seguridad Anti Trolls**
+
+Este ejercicio constitirá en dos momentos:
+
+1. Primero deberás crear los **`test`** para este ejercicio. Puedes hacerlo dentro del archivo testing.
+
+   -  Esta función recibe un string por parámetro. Debe retornar el mismo string pero habiendo eliminado todas las vocales de él (no importa si la vocal está en minúscula o en mayúscula).
+
+   -  Deberás crear una descripción para el test.
+
+   -  Debes componer al menos cinco tests individuales distintos para comprobar que funcione correctamente.
+
+2. Luego de haber realizado el test correspondiente, dirígete al archivo donde esta la función y créala desde cero.
+
+3. Una vez finalizado esto, valida que ftu nuevo test esté funcionando con el comando:
 
 ```bash
    npm test
 ```
-
-Recuerda que deberás ejecutar las funciones pasándoles un valor para poder testearlas.
-
-## **👩‍💻 EJERCICIO 1**
-
-### **multiplicar**
-
-1. Dirígete al archivo **`exercises/exercices.js`** y observa la función llamada **multiplicar**.
-
-2. Ahora dirígete al archivo **`exercises/exercices.test.js`**
-
-   -  Crea la descripción del ejercicio (puede ser el nombre del mismo, o algún título).
-
-   -  Tienes que validar:
-      -  Si esta función devuelve un número tres veces mayor del que le ingresas como argumento.
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 2**
-
-### **nuevaPropiedad**
-
-1. Dirígete al archivo **`exercises/exercices.js`** y observa la función llamada **nuevaPropiedad**.
-
-2. Ahora dirígete al archivo **`exercises/exercices.test.js`**
-
-   -  Crea la descripción del ejercicio (puede ser el nombre del mismo, o algún título).
-
-   -  Tienes que validar:
-      -  Que la función devuelva el mismo objeto con una nueva propiedad llamada "_nuevaPropiedad_".
-      -  Que esta propiedad sea igual al string "_Nuevo valor_".
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 3**
-
-### **returnTruth**
-
-1. Dirígete al archivo **`exercises/exercices.js`** y observa la función llamada **returnTruth**.
-
-2. Ahora dirígete al archivo **`exercises/exercices.test.js`**
-
-   -  Crea la descripción del ejercicio (puede ser el nombre del mismo, o algún título).
-
-   -  Tienes que validar:
-      -  Si la función recibe cualquier valor que no sea un boolano debe devolver el string "_No es booleano_".
-      -  Si la función recibe **true** debe devovler el string "_Verdadero_". Caso contrario el string "_Falso_".
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 4**
-
-### **nuevaFrase**
-
-1. Dirígete al archivo **`exercises/exercices.js`** y observa la función llamada **nuevaFrase**.
-
-2. Ahora dirígete al archivo **`exercises/exercices.test.js`**
-
-   -  Crea la descripción del ejercicio (puede ser el nombre del mismo, o algún título).
-
-   -  Tienes que validar:
-      -  Ingresando un **nombre**, **apellido** y **edad**, la función debe retornar el string: _Hola! Mi nombre es **nombre** **apellido**. Tengo **edad** años._
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 5**
-
-### **nuevoArreglo**
-
-1. Dirígete al archivo **`exercises/exercices.js`** y observa la función llamada **nuevoArreglo**.
-
-2. Ahora dirígete al archivo **`exercises/exercices.test.js`**
-
-   -  Crea la descripción del ejercicio (puede ser el nombre del mismo, o algún título).
-
-   -  Tienes que validar:
-      -  Si ingresas un número mayor a 10 debe devolver un arreglo que contenga el string "_**Es mayor**_". Caso contrario, el string "_**Es menor**_".
 
 ---
 
