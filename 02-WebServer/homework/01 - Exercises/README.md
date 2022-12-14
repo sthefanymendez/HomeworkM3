@@ -85,7 +85,7 @@ console.log(`Server raised in port ${PORT}`);
 
 4. A continuación de la propiedad "**_createServer_**" deberás concatenar la propiedad "**_listen_**". Esta recibe dos parámetros. El primero es la constante **PORT** que creaste al comienzo. El segundo es el string: `localhost` (para indicarle que el puerto es de nuestra PC).
 
-> **[NOTA:]** Este primer ejercicio no lleva testing. De aquí en adelante sí!
+> **[NOTA:]** este primer ejercicio lleva un test que **siempre correrá exitosamente**.
 
 ---
 
@@ -191,11 +191,7 @@ Ahora que ya tenemos una nueva ruta, ¡vamos a utilizarla!
 
 📍 Lo que hay que hacer:
 
--  **Callback:** esta función, a su vez, recibe dos parámetros (**err** y **data**). En el cuerpo de la función tendrás que crear un condicional.
-
-   -  Si lo que ocurrió fue un **error** el servidor debe devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`image not found`".
-
-   -  Si el archivo se leyó correctamente el servidor debe devolver una respuesta con status `200`, un Content-Type igual a `image/jpeg`, y finalmente el parámetro **data**.
+-  Luego de todos los condicionales (es decir, al final del **callback**), tendrás que simplemente devolver una respuesta con un status `404`, un Content-Type igual a `text/plain`, y finalmente un mensaje con el string "`Route not found`".
 
 ---
 
@@ -211,20 +207,9 @@ Hasta ahora ya contruiste un endpoint que muestra a nuestro amiguito en el naveg
 
 2. Dirígete a tu navegador e ingresá a la url: `http://localhost:3001`.
 
-3. Para ver a nuestro amigo simplemente agrega una barra (`/`) al final de la URL e intenta agregar alguno de estos nombres:
+3. Para ver si el mensaje de error funciona correctamente, escribe en la URL cualquier texto que no coincida con el de las rutas anteriores.
 
--  arcoiris
--  asiatico
--  badboy
--  code
--  debil
--  musculoso
--  pancito
--  resaca
-
-Deberías ver algo como esto:
-
-<img src="./utils/images/dog.png" alt="" />
+<img src="./utils/images/errorExample.png" alt="" />
 
 ---
 

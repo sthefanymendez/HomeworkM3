@@ -22,17 +22,22 @@ En esta homework construiremos algunos test para validar que nuestro proyecto es
 
 ## **📋 INSTRUCCIONES**
 
-Esta homework estará dividida en dos partes:
+En esta homeword aprenderás a testear las rutas de tu **Back-End**. También te dejaremos información de cómo testear tu **Front-End**, pero esto será un **💪Extra Credit💪**.
 
-1. En la primera parte crearemos el testing para algunas de las rutas que construiste anteriormente en la homework de **Express**.
+1. Asegúrate que en el **`package.json`** de tu proyecto **Back-End**:
 
-2. En la segunda parte, deberás crear algunos tests para los componentes que creaste en tu Front-End cuando utilizaste **React**.
+   1. Tengas instaladas las siguientes librerías:
 
-3. Asegúrate de tener instaladas las siguientes librerías en el **`package.json`** de tu proyecto Back-End:
+      -  jest
+      -  supertest
 
-   -  jest
+   2. Tengas el siguiente **script**:
 
-4. Asegúrate de tener instaladas las siguientes librerías en el **`package.json`** de tu proyecto Front-End:
+      ```bash
+         "test": "jest --detectOpenHandles"
+      ```
+
+1. Asegúrate de tener instaladas las siguientes librerías en el **`package.json`** de tu proyecto **Front-End**:
    -  @testing-library/jest-dom
    -  @testing-library/react
    -  @testing-library/user-event
@@ -41,28 +46,92 @@ Esta homework estará dividida en dos partes:
 
 <br />
 
-## **PRIMERA PARTE**
+## **HOMEWORK | Testing Back-End**
 
-### **👩‍💻 Testing Back-End**
+### **👩‍💻 EJERCICIO 01**
 
-1. Para esto, dirígete al directorio donde guardes el proyecto `Rick & Morty` y ábrelo en tu VSC.
+1. Dirígete al directorio donde guardes el proyecto Back-End de `Rick & Morty`, ábrelo en tu VSC e ingresa a la carpeta **`/src/test`**.
 
-2. En la raíz de tu proyecto crea una carpeta llamada `front`.
+2. Dentro de esta carpeta crea un archivo con el nombre **index.test.js**. Dentro de este archivo debes importar lo siguiente:
 
-3. Todo el contenido trabajado durante el módulo 2, guárdalo dentro de la carpeta **front**
+   ```javascript
+   const app = require('../app');
+   const session = require('supertest');
+   const agent = session(app);
+   ```
 
-4. Crea una segunda carpeta al mismo nivel con el nombre `back`.
+3. Una vez que hayas hecho esto, crea una función **describe** con el mensaje "_Test de RUTAS_".
+
+4. En el callback de este **describe** haremos el testing de todas nuestras rutas! Continua con los siguientes pasos.
 
 <br />
 
 ---
 
-## **SEGUNDA PARTE**
+### **👩‍💻 EJERCICIO 02 | GET rickandmorty/{id}**
 
-### **👩‍💻 Testing Front-End**
+1. Crea un **describe** con el mensaje '**`GET rickandmorty/{id}`**'.
+
+2. En su **callback** tendrás que testear tres cosas:
+
+   1. Primer test:
+
+      -  Crea un **it** con el mensaje '**`Responde con status: 200`**'.
+
+      -  En su **callback** pega el siguiente código:
+
+         ```javascript
+         agent.get('/rickandmorty/1').expect(200);
+         ```
+
+         > [**NOTA**]: esto nos permitirá validar si esta ruta responde con un status **200** cuando la petición se realiza correctamente.
+
+   2. Segundo test:
+
+      -  Crea un **it** con el mensaje '**`Responde un objeto con las propiedades: "id", "name", "species", "gender" e "image"`**'.
+
+      -  Aquí tendrás que volver a copiar el código anterior, pero trabajarás con promesas. Si esta promesa se cumple correctamente tendrás que validar que el resultado contenga (en su propiedad **body**) un objeto con las propiedades correspondientes.
+
+         > [**PISTA**]: podrías obtener las propiedades utilizando el método **keys** de los objetos, y luego hacer una validación individual de cada propiedad con la fución [**`toContain`**](https://jestjs.io/docs/using-matchers#arrays-and-iterables).
+
+   3. Tercer test:
+
+      -  Crea un **it** con el mensaje '**`Si hay un error responde con status: 500`**'.
+
+      -  En su **callback** pega el siguiente código:
+
+         ```javascript
+         agent.get('/rickandmorty/IDqueNoExiste').expect(500);
+         ```
+
+         > [**NOTA**]: presta atención. Esta vez, a la URL, no le hemos pasado un ID existente. Por lo que estamos forzando a que la ruta tenga un error.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 03 | Demás rutas**
+
+Hasta ahora haz aprendido a testar una ruta GET. Te invitamos a que continues con este proceso en las demas rutas y valides que todo funcione como debería!
+
+<br />
+
+---
+
+## **💪 EXTRA CREDIT | Testing Front-End**
+
+1. Dirígete a la carpeta **`/src/test`**.
+
+2. Dentro de esta carpeta crea un archivo con el nombre **`index.test.js`**.
+
+3. Te invitamos a que revises los **`Recursos adicionales`** para investigar como testear un **Front-End** con React y Jest.
+
+## **🔎 Recursos adicionales**
+
+-  Documentación [**MATCHERS FROM JEST**](https://jestjs.io/docs/using-matchers)
 
 </br >
 
 ---
 
-Hemos terminado por ahora!! 🥳 más adelante crearemos más rutas para nuestro frontend. 🚀
+🚀🥳¡FELICITACIONES!🚀🥳 Completaste el M3. Nos vemos en Bases de Datos!
