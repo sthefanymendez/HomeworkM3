@@ -12,10 +12,10 @@ x minutos
 
 En esta homework vas a desarrollar una API que permitirá gestionar `publicaciones`, utilizando el concepto CRUD similar a un gestor de publicaciones de cualquier red social conocida, vas a realizar las siguientes acciones:
 
--  Crear nuevas publicaciones
--  Consultar las publicaciones existentes
--  Actualizar las publicaciones existentes
--  Eliminar las publicaciones existentes
+- Crear nuevas publicaciones
+- Consultar las publicaciones existentes
+- Actualizar las publicaciones existentes
+- Eliminar las publicaciones existentes
 
 ---
 
@@ -47,7 +47,7 @@ Desarrollar las rutas `POST`, `GET`, `PUT` y `DELETE` dentro del archivo `server
 
 🔹 Para poder ejecutar los `test` de esta homework, es necesario que abramos la terminal ubicados dentro de la carpeta `01 - Exercises`.
 
--  Cuando te encuentres en esta carpeta, debes ejecutar el comando
+- Cuando te encuentres en esta carpeta, debes ejecutar el comando
 
 ```bash
 npm install
@@ -81,15 +81,15 @@ npm run nodemon
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
--  Una carpeta llamada `img`.
--  Una carpeta llamada **src**.
--  Un archivo `package.json`
--  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+- Una carpeta llamada `img`.
+- Una carpeta llamada **src**.
+- Un archivo `package.json`
+- Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
 🔹 Dentro de la carpeta `src`, vas a encontrar la siguiente estructura:
 
--  Un archivo llamado `app.js`
--  Un archivo llamado **server.js**
+- Un archivo llamado `app.js`
+- Un archivo llamado **server.js**
 
 ---
 
@@ -107,47 +107,47 @@ server.METHOD(PATH, HANDLER);
 
 Donde:
 
--  server es una instancia de express
--  METHOD es un método de solicitud HTTP
--  PATH es la vía de acceso al servidor
--  HANDLER es la función que se ejecuta cuando se hace el direccionamiento a la ruta, siempre recibe como parámetro dos variables, req por request y res por response.
+- server es una instancia de express
+- METHOD es un método de solicitud HTTP
+- PATH es la vía de acceso al servidor
+- HANDLER es la función que se ejecuta cuando se hace el direccionamiento a la ruta, siempre recibe como parámetro dos variables, req por request y res por response.
 
 Veamos ahora un ejemplo más concreto. El método GET se utiliza para leer la representación de un resource, que puede estar en distintos formatos tales como una imagen, un JSON, un XML, etc. Por lo que utilizando nuestra instancia de express vamos a invocar a get indicando la ruta que queremos para `'/'` y mandar una response con un "Hola mundo!" como texto.
 
 ```javascript
-server.get('/', function (req, res) {
-   //Ruta para un GET a /
-   res.send('Hola mundo!'); // response "Hola mundo!" en la pagina principal
+server.get("/", function (req, res) {
+  //Ruta para un GET a /
+  res.send("Hola mundo!"); // response "Hola mundo!" en la pagina principal
 });
 ```
 
 Si en lugar de texto queremos que se envíe con el formato JSON podríamos hacer lo siguiente:
 
 ```javascript
-server.get('/', function (req, res) {
-   var obj = {
-      saludo: 'Hola mundo!',
-   };
-   res.json(obj);
+server.get("/", function (req, res) {
+  var obj = {
+    saludo: "Hola mundo!",
+  };
+  res.json(obj);
 });
 ```
 
 Ahora supongamos que queremos setear el status de la response como 200 para indicar que la solicitud ha tenido éxito, para eso utilizaremos `res.status()`.
 
 ```javascript
-server.get('/', function (req, res) {
-   res.status(200).send('Hola mundo!');
+server.get("/", function (req, res) {
+  res.status(200).send("Hola mundo!");
 });
 ```
 
 Otro punto a tener en cuenta es que `req.body` se usa para tener los parámetros que son enviados por el cliente como parte de un request. Entonces, si por ejemplo quisiera acceder a la propiedad name podría utilizar `req.body.name`.
 
 ```javascript
-server.post('/', function (req, res) {
-   var obj = {
-      saludo: 'Hola' + req.body.name,
-   };
-   res.json(obj);
+server.post("/", function (req, res) {
+  var obj = {
+    saludo: "Hola" + req.body.name,
+  };
+  res.json(obj);
 });
 ```
 
@@ -182,7 +182,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 2**
 
-### **GET** ruta **/posts**
+### A. **GET** ruta **/posts**
 
 📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts`.
 
@@ -191,6 +191,18 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 1. Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellas publicaciones que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
 
 2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
+
+### B. GET ruta **/posts?author=${author}?title=${title}**
+
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts?author=${author}?title=${title}`.
+
+📍 Lo que hay que hacer:
+
+1. Si existen publicaciones que coincidan con ambos queries, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
+
+2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
+
+   > Hint: Verifica que el código de error sea el adecuado.
 
 ---
 
@@ -216,24 +228,6 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **GET** ruta **/posts/${author}/${title}**
-
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/${author}/${title}`.
-
-📍 Lo que hay que hacer:
-
-1. Si existen publicaciones que coincidan con ambos queries, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
-
-2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
-
-   > Hint: Verifica que el código de error sea el adecuado.
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 5**
-
 ### **PUT** ruta **/posts**
 
 📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts`.
@@ -256,7 +250,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 6**
+## **👩‍💻 EJERCICIO 5**
 
 ### **DELETE** ruta **/posts**
 
@@ -276,7 +270,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 7**
+## **👩‍💻 EJERCICIO 6**
 
 ### **DELETE** ruta **/author**
 
@@ -294,7 +288,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 8**
+## **👩‍💻 EJERCICIO 7**
 
 ### **POSTMAN**
 
@@ -324,20 +318,20 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
 
 3. Ahora en la parte del recuadro rojo tendremos que:
 
-   -  Indicar qué tipo de Request queremos:
+   - Indicar qué tipo de Request queremos:
 
-      -  GET
-      -  POST
-      -  PUT
-      -  DELETE
+     - GET
+     - POST
+     - PUT
+     - DELETE
 
-   -  La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3001/)
+   - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3001/)
 
--  Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos:
+- Incluir los `Params` o el `Body` dependiendo del tipo de Request que hagamos:
 
-   <p align="center">
-     <img src="./img/request-general.png" alt="Img" />
-   </p>
+  <p align="center">
+    <img src="./img/request-general.png" alt="Img" />
+  </p>
 
 Video demostrativo de cómo se utiliza y funcionan algunos request básicos de Postman:
 
@@ -351,13 +345,13 @@ Video demostrativo de cómo se utiliza y funcionan algunos request básicos de P
 
 ## **🧠 Recuerda que...**
 
--  Las rutas son los endpoints definidos en nuestro servidor que realizan solicitudes del cliente.
+- Las rutas son los endpoints definidos en nuestro servidor que realizan solicitudes del cliente.
 
--  Middleware son funciones que determinan el flujo solicitud-respuesta. Los middleware se ejecutan después de cada solicitud entrante.
+- Middleware son funciones que determinan el flujo solicitud-respuesta. Los middleware se ejecutan después de cada solicitud entrante.
 
--  La función que inicia nuestro servidor es app.listen().
+- La función que inicia nuestro servidor es app.listen().
 
--  Cuando una aplicación de nuestro lado (del servidor) responde a una solicitud de cliente (frontend) a un endpoint específico es lo que conocemos como routing. El endpoint está compuesto de un URI y un método HTTP (GET, POST, PUT, DELETE).
+- Cuando una aplicación de nuestro lado (del servidor) responde a una solicitud de cliente (frontend) a un endpoint específico es lo que conocemos como routing. El endpoint está compuesto de un URI y un método HTTP (GET, POST, PUT, DELETE).
 
 ---
 
@@ -365,11 +359,11 @@ Video demostrativo de cómo se utiliza y funcionan algunos request básicos de P
 
 ## **🔎 Recursos adicionales**
 
--  Documentación [**Express**](http://expressjs.com/es/)
+- Documentación [**Express**](http://expressjs.com/es/)
 
--  Info adicional [**Express**](https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction)
+- Info adicional [**Express**](https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction)
 
--  ¿Sabes cuáles son los singificados del [**status**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) de las respuestas HTTP?
+- ¿Sabes cuáles son los singificados del [**status**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) de las respuestas HTTP?
 
 ---
 
