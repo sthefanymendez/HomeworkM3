@@ -26,7 +26,7 @@ server.post("/posts", (req, res) => {
 });
 
 server.get("/posts", (req, res) => {
-  const { term } = req.query;
+  const { term, author, title } = req.query;
   if (term) {
     const filteredPosts = publications.filter(
       (post) => post.title.includes(term) || post.contents.includes(term)
@@ -34,6 +34,15 @@ server.get("/posts", (req, res) => {
     filteredPosts.length > 0
       ? res.status(200).json(filteredPosts)
       : res.status(200).json(publications);
+  } else if (author && title) {
+    const filteredPosts = publications.filter(
+      (post) => post.author === author && post.title === title
+    );
+    filteredPosts.length > 0
+      ? res.status(200).json(filteredPosts)
+      : res
+          .status(404)
+          .json({ error: "No existe ninguna publicación con dicho título y autor indicado" });
   } else {
     return res.status(200).json(publications);
   }

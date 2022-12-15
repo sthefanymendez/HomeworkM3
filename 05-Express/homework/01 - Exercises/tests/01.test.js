@@ -8,7 +8,7 @@ describe("01 | Ejercicios", () => {
   //   });
   let id = 0;
 
-  it("POST a la ruta /posts agrega nueva publicación o un error si faltan datos", async () => {
+  it("1 | POST a la ruta /posts agrega nueva publicación o un error si faltan datos", async () => {
     const newPost = {
       id: ++id,
       author: "Author Test",
@@ -38,7 +38,7 @@ describe("01 | Ejercicios", () => {
     expect(publications).toContainEqual(newPost, newPost2);
   });
 
-  it("GET a la ruta /posts, si existe query devuelve los posts que coincidan con ese query. En caso de que no exista, devuelve todos los posts", async () => {
+  it("2A | GET a la ruta /posts, si existe la query 'term' devuelve los posts que coincidan con ese query. En caso de que no exista, devuelve todos los posts", async () => {
     const response = await api.get("/posts");
     expect(response.status).toBeGreaterThanOrEqual(200);
     expect(response.status).toBeLessThan(300);
@@ -78,6 +78,43 @@ describe("01 | Ejercicios", () => {
     filteredPosts2.length > 0
       ? expect(response4.body).toEqual(filteredPosts2)
       : expect(response4.body).toEqual(publications);
+  });
+
+  it("2B | GET a la ruta /posts, si existen las querys 'author' y 'title', devuelve los posts que coincidan con ambas querys. En caso de que no exista, devuelve un error", async () => {
+    const response = await api
+      .get("/posts")
+      .query({ author: "Author Test", title: "Title Tesasdt" });
+    if (response.body.length > 0) {
+      expect(response.status).toBeGreaterThanOrEqual(200);
+      expect(response.status).toBeLessThan(300);
+      const authorQuery = response.req.path
+        .split("?")[1]
+        .split("&")[0]
+        .split("=")[1]
+        .replace("%20", " ");
+      const titleQuery = response.req.path
+        .split("?")[1]
+        .split("&")[1]
+        .split("=")[1]
+        .replace("%20", " ");
+      const filteredPosts = publications.filter(
+        (post) => post.author === authorQuery && post.title === titleQuery
+      );
+      expect(response.body).toEqual(filteredPosts);
+    } else {
+      console.log(
+        "responseStatus: ",
+        response.status,
+        "responseBody: ",
+        response.body
+      );
+      expect(response.status).toBeGreaterThanOrEqual(400);
+      expect(response.status).toBeLessThan(500);
+      expect(response.body).toEqual({
+        error:
+          "No existe ninguna publicación con dicho título y autor indicado",
+      });
+    }
   });
 
   it("GET a la ruta /posts/:author devuelve un array de posts del autor. En caso de que el autor no tenga posts, devuelve un error", async () => {

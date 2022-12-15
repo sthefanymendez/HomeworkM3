@@ -192,7 +192,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
 
-### B. GET ruta **/posts?author=${author}?title=${title}**
+### B. GET ruta **/posts?author=author?title=title**
 
 📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts?author=${author}?title=${title}`.
 
