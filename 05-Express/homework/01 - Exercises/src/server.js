@@ -40,9 +40,10 @@ server.get("/posts", (req, res) => {
     );
     filteredPosts.length > 0
       ? res.status(200).json(filteredPosts)
-      : res
-          .status(404)
-          .json({ error: "No existe ninguna publicación con dicho título y autor indicado" });
+      : res.status(404).json({
+          error:
+            "No existe ninguna publicación con dicho título y autor indicado",
+        });
   } else {
     return res.status(200).json(publications);
   }
@@ -58,65 +59,57 @@ server.get("/posts/:author", (req, res) => {
         .json({ error: "No existe ningun post del autor indicado" });
 });
 
-server.get("/posts", (req, res) => {
-  const { author, title } = req.params;
-  const filteredPosts = publications.filter(
-    (post) => post.author === author && post.title === title
-  );
-  filteredPosts.length > 0
-    ? res.status(200).json(filteredPosts)
-    : res.status(404).json({
-        error: "No existe ningun post con dicho titulo y autor indicado",
-      });
-});
-
-server.put("/posts", (req, res) => {
-  const { id, author, title, contents } = req.body;
-  if (!id || !author || !title || !contents)
-    res.status(STATUS_USER_ERROR).json({
+server.put("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, contents } = req.body;
+  if (!title || !contents)
+    return res.status(STATUS_USER_ERROR).json({
       error:
-        "No se recibieron los parámetros necesarios para modificar el Post",
+        "No se recibieron los parámetros necesarios para modificar la publicación",
     });
-  const post = { id, author, title, contents };
-  const postIndex = publications.findIndex((post) => post.id === id);
+  const postIndex = publications.findIndex((post) => post.id === Number(id));
   if (postIndex === -1)
-    res
-      .status(STATUS_USER_ERROR)
-      .json({ error: "No existe ningun post con el id indicado" });
+    return res.status(STATUS_USER_ERROR).json({
+      error:
+        "No se recibió el id correcto necesario para modificar la publicación",
+    });
+  const post = { ...publications[postIndex], title, contents };
   publications[postIndex] = post;
   res.status(200).json(post);
 });
 
-server.delete("/posts", (req, res) => {
-  const { id } = req.body;
-  if (!id)
-    res
+server.delete("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res
       .status(STATUS_USER_ERROR)
-      .json({ error: "No se recibió el id del post a eliminar" });
-  const postIndex = publications.findIndex((post) => post.id === id);
+      .json({ error: "No se recibió el id de la publicación a eliminar" });
+  }
+  const postIndex = publications.findIndex((post) => post.id === Number(id));
   if (postIndex === -1)
-    res
-      .status(STATUS_USER_ERROR)
-      .json({ error: "No existe ningun post con el id indicado" });
-  //eliminamos del array de posts el post con el id indicado
-  publications = publications.filter((post) => post.id !== id);
+    return res.status(STATUS_USER_ERROR).json({
+      error:
+        "No se recibió el id correcto necesario para eliminar la publicación",
+    });
+  publications = publications.filter((post) => post.id !== Number(id));
   res.status(200).json({ success: true });
 });
 
-server.delete("/author", (req, res) => {
-  const { author } = req.body;
-  if (!author)
-    res
+server.delete("/author/:name", (req, res) => {
+  const { name } = req.params;
+  if (!name) {
+    return res
       .status(STATUS_USER_ERROR)
-      .json({ error: "No se recibió el autor del post a eliminar" });
-  const postIndex = publications.findIndex((post) => post.author === author);
+      .json({ error: "No se recibió el nombre del autor a eliminar" });
+  }
+  const postIndex = publications.findIndex((post) => post.author === name);
   if (postIndex === -1)
-    res
-      .status(STATUS_USER_ERROR)
-      .json({ error: "No existe ningun post con el autor indicado" });
-  //eliminamos del array de posts TODOS los posts del autor indicado
-  publications = publications.filter((post) => post.author !== author);
-  res.status(200).json({ success: true });
+    return res.status(STATUS_USER_ERROR).json({
+      error:
+        "No se recibió el nombre correcto necesario para eliminar las publicaciones del autor",
+    });
+  publications = publications.filter((post) => post.author === name);
+  res.status(200).json(publications);
 });
 
 //NO MODIFICAR EL CODIGO DE ABAJO. SE USA PARA EXPORTAR EL SERVIDOR Y CORRER LOS TESTS

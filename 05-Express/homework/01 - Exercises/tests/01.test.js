@@ -102,12 +102,6 @@ describe("01 | Ejercicios", () => {
       );
       expect(response.body).toEqual(filteredPosts);
     } else {
-      console.log(
-        "responseStatus: ",
-        response.status,
-        "responseBody: ",
-        response.body
-      );
       expect(response.status).toBeGreaterThanOrEqual(400);
       expect(response.status).toBeLessThan(500);
       expect(response.body).toEqual({
@@ -117,7 +111,7 @@ describe("01 | Ejercicios", () => {
     }
   });
 
-  it("GET a la ruta /posts/:author devuelve un array de posts del autor. En caso de que el autor no tenga posts, devuelve un error", async () => {
+  it("3 | GET a la ruta /posts/:author devuelve un array de posts del autor. En caso de que el autor no tenga posts, devuelve un error", async () => {
     //al request le paso el params author
     const author = "Author Test 3";
     const filteredPosts = publications.filter((post) => post.author === author);
@@ -148,6 +142,75 @@ describe("01 | Ejercicios", () => {
       expect(response2.status).toBeLessThan(500);
       expect(response2.body).toEqual({
         error: "No existe ningun post del autor indicado",
+      });
+    }
+  });
+
+  it("4 | PUT a la ruta /posts/:id, actualiza el post con el id indicado. En caso de que no exista, devuelve un error", async () => {
+    let id = Math.floor(Math.random() * 10) + 1;
+    const post = publications.find((post) => post.id === id);
+    if (post) {
+      const response = await api.put(`/posts/${id}`).send({
+        title: "Title Test 4",
+        contents: "Contents Test 4",
+      });
+      expect(response.status).toBeGreaterThanOrEqual(200);
+      expect(response.status).toBeLessThan(300);
+      expect(response.body).toEqual({
+        id: id,
+        author: post.author,
+        title: "Title Test 4",
+        contents: "Contents Test 4",
+      });
+    } else {
+      //si no existe el post, devuelvo error
+      const response = await api.put(`/posts/${id}`).send({
+        title: "Title Test 4",
+        contents: "Contents Test 4",
+      });
+      expect(response.status).toBeGreaterThanOrEqual(400);
+      expect(response.status).toBeLessThan(500);
+      expect(response.body).toEqual({
+        error:
+          "No se recibió el id correcto necesario para modificar la publicación",
+      });
+    }
+  });
+
+  it("5 | DELETE a la ruta /posts/:id, elimina el post con el id indicado. En caso de que no exista, devuelve un error", async () => {
+    let id = Math.floor(Math.random() * 10) + 1;
+    const post = publications.find((post) => post.id === id);
+    if (post) {
+      const response = await api.delete(`/posts/${id}`);
+      expect(response.status).toBeGreaterThanOrEqual(200);
+      expect(response.status).toBeLessThan(300);
+      expect(response.body).toEqual({ success: true });
+    } else {
+      const response = await api.delete(`/posts/${id}`);
+      expect(response.status).toBeGreaterThanOrEqual(400);
+      expect(response.status).toBeLessThan(500);
+      expect(response.body).toEqual({
+        error:
+          "No se recibió el id correcto necesario para eliminar la publicación",
+      });
+    }
+  });
+
+  it("6 | DELETE a la ruta /author/:name, elimina todos los posts del autor indicado. En caso de que no exista, devuelve un error", async () => {
+    const author = "Author Test 3";
+    const filteredPosts = publications.filter((post) => post.author === author);
+    if (filteredPosts.length > 0) {
+      const response = await api.delete(`/author/${author}`);
+      expect(response.status).toBeGreaterThanOrEqual(200);
+      expect(response.status).toBeLessThan(300);
+      expect(response.body).toEqual(filteredPosts);
+    } else {
+      const response = await api.delete(`/author/${author}`);
+      expect(response.status).toBeGreaterThanOrEqual(400);
+      expect(response.status).toBeLessThan(500);
+      expect(response.body).toEqual({
+        error:
+          "No se recibió el nombre correcto necesario para eliminar las publicaciones del autor",
       });
     }
   });
