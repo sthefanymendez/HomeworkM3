@@ -66,10 +66,11 @@ En el archivo App.js, donde tienes dentro de la función **onSearch**, cambia la
 
 Dentro de tu carpeta **back** debes crear una nueva carpeta con el nombre **src**. Dentro de esta carpeta, a su vez, deberás crear:
 
-- Un archivo llamado `app.js`.
-- Una carpeta llamada `controllers`.
-- Una carpeta llamada `routes`.
-- Una carpeta llamada `utils`.
+-  Un archivo llamado `app.js`.
+-  Una carpeta llamada `controllers`.
+-  Una carpeta llamada `routes`.
+-  Una carpeta llamada `utils`.
+-  Una carpeta llamada `test`.
 
 </br >
 
