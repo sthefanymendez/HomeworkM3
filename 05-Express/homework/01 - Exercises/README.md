@@ -182,7 +182,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 2**
 
-### **GET** ruta **/posts**
+### A. **GET** ruta **/posts**
 
 📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts`.
 
@@ -191,6 +191,18 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 1. Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellas publicaciones que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
 
 2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
+
+### B. GET ruta **/posts?author=${author}?title=${title}**
+
+📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts?author=${author}?title=${title}`.
+
+📍 Lo que hay que hacer:
+
+1. Si existen publicaciones que coincidan con ambos queries, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
+
+2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
+
+   > Hint: Verifica que el código de error sea el adecuado.
 
 ---
 
@@ -216,24 +228,6 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **GET** ruta **/posts/${author}/${title}**
-
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts/${author}/${title}`.
-
-📍 Lo que hay que hacer:
-
-1. Si existen publicaciones que coincidan con ambos queries, `author` y `title`, devolver aquellas publicaciones que correspondan con la información provista, es decir que coincidan `author` y `title`.
-
-2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
-
-   > Hint: Verifica que el código de error sea el adecuado.
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 5**
-
 ### **PUT** ruta **/posts**
 
 📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts`.
@@ -256,7 +250,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 6**
+## **👩‍💻 EJERCICIO 5**
 
 ### **DELETE** ruta **/posts**
 
@@ -276,7 +270,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 <br />
 
-## **👩‍💻 EJERCICIO 7**
+## **👩‍💻 EJERCICIO 6**
 
 ### **DELETE** ruta **/author**
 
@@ -290,13 +284,11 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 3. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
 
-> Hint: Ver qué método vas a utilizar para eliminar un post, dependiendo el caso puede que sea necesario modificar el `const posts = []` del comienzo por `let posts = []`
-
 ---
 
 <br />
 
-## **👩‍💻 EJERCICIO 8**
+## **👩‍💻 EJERCICIO 7**
 
 ### **POSTMAN**
 
@@ -370,6 +362,8 @@ Video demostrativo de cómo se utiliza y funcionan algunos request básicos de P
 - Documentación [**Express**](http://expressjs.com/es/)
 
 - Info adicional [**Express**](https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction)
+
+- ¿Sabes cuáles son los singificados del [**status**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) de las respuestas HTTP?
 
 ---
 
