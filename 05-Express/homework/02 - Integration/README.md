@@ -20,11 +20,20 @@ En base a lo practicado en la homework Exercises, vamos a crear rutas con sus re
 
 ### **👩‍💻 EJERCICIO 1**
 
-### **Instalar Express**
+### **Instalar Express y body-parser**
 
-1. Ahora sí!! ya tenemos creado nuestro package.json por lo que puedes ejecutar el comando en la terminal `npm install express`.
+1. Debes instalar express con `npm install express`.
 
 2. Corrobora que se ha instalado abriendo tu archivo package.json dentro de `dependencies`, sección que se ha creado automáticamente cuando instalaste express o también puedes verla dentro de la carpeta node_modules.
+
+3. Además vas a necesitar instalar body-parser con `npm i body-parser`, esta librería es necesaria para que puedas recibir la información por body.
+
+4. Una vez la tengas instalada copia y pega este snippet de código dentro del archivo app.js:
+
+```javascript
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+app.use(bodyParser.json({ limit: "50mb" }));
+```
 
 <br />
 
@@ -38,7 +47,7 @@ En base a lo practicado en la homework Exercises, vamos a crear rutas con sus re
 
 2. Define una constante que llamada `express` y en ella guarda la función `require` que incluya el módulo **express**, de esta forma podemos usar el paquete **Express** que instalamos.
 
-3. Define una segunda constante llamada `app` en la que guardes la ejecución de express, ello se encarga de manjar las solicitudes y respuestas cliente-servidor.
+3. Define una segunda constante llamada `app` en la que guardes la ejecución de express, ello se encarga de manejar las solicitudes y respuestas cliente-servidor.
 
 ```javascript
 const express = require("express");
@@ -61,7 +70,7 @@ a. En app tenemos los métodos HTTP listos para utilizar, por ende si nesitamos 
 
 b. Ahora, en vez de consumir los datos de **data.js**, lo vamos a hacer de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`
 
-c. Crea la ruta **get/`rickandmorty`/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
+c. Crea la ruta **get/`rickandmorty`/character/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
 
 - id
 - name
@@ -86,7 +95,7 @@ a. **GET/`rickandmorty`/fav**, que obtenga los personajes guardados en el arregl
 
 b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
 
-c. **DELETE/`rickandmorty`/fav**, que elimine el personaje en el arreglo **fav**
+c. **DELETE/`rickandmorty`/fav/${id}**, que elimine el personaje en el arreglo **fav** a partir del **id** que recibe por parámetro.
 
 > Hint: Recuerda modularizar en tu carpeta controllers como lo aprendiste en la homework 03-Promises con los archivos **getCharById.js** y **getCharDetail.js**
 
@@ -98,7 +107,11 @@ c. **DELETE/`rickandmorty`/fav**, que elimine el personaje en el arreglo **fav**
 
 ### **Iniciar servidor**
 
-Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
+1. Crea un archivo llamado **start.js** en el que importes el servidor que se encuentra configurado en el archivo **app.js**, desde este archivo levantaremos el servidor.
+
+2. El al archivo **package.json** debes cambiar el script `start` donde su valor sea `start.js`
+
+3. Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
 
 <br />
 
