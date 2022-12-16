@@ -1,13 +1,12 @@
 "use strict";
 
-var fs = require("fs");
-// var Promise = require('bluebird');
-var chalk = require("chalk");
+let fs = require("fs");
+let chalk = require("chalk");
 
-var utils = {};
+let utils = {};
 
 utils.readFile = function (filename, callback) {
-  var randExtraTime = Math.random() * 200;
+  let randExtraTime = Math.random() * 200;
   setTimeout(function () {
     fs.readFile(filename, function (err, buffer) {
       if (err) callback(err);

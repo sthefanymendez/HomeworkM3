@@ -1,8 +1,8 @@
 "use strict";
 
-var exerciseUtils = require("./utils");
+let exerciseUtils = require("./utils");
 
-var args = process.argv.slice(2).map(function (st) {
+let args = process.argv.slice(2).map(function (st) {
   return st.toUpperCase();
 });
 
@@ -17,7 +17,7 @@ module.exports = {
 
 // corre cada problema dado como un argumento del command-line para procesar
 args.forEach(function (arg) {
-  var problem = module.exports["problem" + arg];
+  let problem = module.exports["problem" + arg];
   if (problem) problem();
 });
 

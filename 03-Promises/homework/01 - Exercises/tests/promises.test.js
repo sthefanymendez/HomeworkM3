@@ -43,7 +43,6 @@ let stanzasTwo = fs
 describe("01 | Ejercicios - Promises (poem-one)", () => {
   afterAll(async () => {
     await new Promise((resolve, reject) => setTimeout(() => resolve(), 250));
-    // .catch(reason => console.log(reason.message))
   });
 
   afterEach(() => {
