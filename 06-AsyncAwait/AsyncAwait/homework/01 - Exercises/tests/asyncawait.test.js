@@ -112,7 +112,6 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     try {
       if(blue.mock.calls.length) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasOne[3]);
         promisifiedReadFileSpy.mockRestore();
         blue.mockRestore();
       }
@@ -134,9 +133,7 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     try {
       if(blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        expect(blue.mock.calls[1][0]).toEqual(stanzasOne[3]);
         promisifiedReadFileSpy.mockRestore();
         blue.mockRestore();
       }
@@ -159,9 +156,7 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     try {
       if(blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        expect(blue.mock.calls[1][0]).toEqual(stanzasOne[3]);
         promisifiedReadFileSpy.mockRestore();
         blue.mockRestore();
       }
@@ -193,9 +188,7 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
     try {
       if(blue.mock.calls.length > 1){
         expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasTwo[0]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        expect(blue.mock.calls[1][0]).toEqual(stanzasTwo[1]);
         blue.mockRestore();
         promisifiedReadFileSpy.mockRestore();
       }
@@ -211,32 +204,24 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     await problemBx();
     if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemA | No se llamo a promisifiedReadFile");
+      throw new Error("problemB | No se llamo a promisifiedReadFile");
     try {
       if(blue.mock.calls.length > 1){
         expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasTwo[0]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        expect(blue.mock.calls[1][0]).toEqual(stanzasTwo[1]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-        expect(blue.mock.calls[2][0]).toEqual(stanzasTwo[2]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-        expect(blue.mock.calls[3][0]).toEqual(stanzasTwo[3]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-        expect(blue.mock.calls[4][0]).toEqual(stanzasTwo[4]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-        expect(blue.mock.calls[5][0]).toEqual(stanzasTwo[5]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-        expect(blue.mock.calls[6][0]).toEqual(stanzasTwo[6]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-        expect(blue.mock.calls[7][0]).toEqual(stanzasTwo[7]);
         blue.mockRestore();
         promisifiedReadFileSpy.mockRestore();
       }
     } catch (error) {
       blue.mockRestore();
       promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemA | No se llamó a la stanza correcta");
+      throw new Error("problemB | No se llamó a la stanza correcta");
     };
   });
 
@@ -245,32 +230,24 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     await problemCx();
     if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemA | No se llamo a promisifiedReadFile");
+      throw new Error("problemC | No se llamo a promisifiedReadFile");
     try {
       if(blue.mock.calls.length > 1){
         expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue.mock.calls[0][0]).toEqual(stanzasTwo[0]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        expect(blue.mock.calls[1][0]).toEqual(stanzasTwo[1]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-        expect(blue.mock.calls[2][0]).toEqual(stanzasTwo[2]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-        expect(blue.mock.calls[3][0]).toEqual(stanzasTwo[3]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-        expect(blue.mock.calls[4][0]).toEqual(stanzasTwo[4]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-        expect(blue.mock.calls[5][0]).toEqual(stanzasTwo[5]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-        expect(blue.mock.calls[6][0]).toEqual(stanzasTwo[6]);
         expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-        expect(blue.mock.calls[7][0]).toEqual(stanzasTwo[7]);
         blue.mockRestore();
         promisifiedReadFileSpy.mockRestore();
       }
     } catch (error) {
       blue.mockRestore();
       promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemA | No se llamó a la stanza correcta");
+      throw new Error("problemC | No se llamó a la stanza correcta");
     };
   });
 
@@ -283,21 +260,13 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
       throw new Error("problemD | No se llamo a promisifiedReadFile");
     try {
       expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-      expect(blue.mock.calls[0][0]).toEqual(stanzasTwo[0]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-      expect(blue.mock.calls[1][0]).toEqual(stanzasTwo[1]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-      expect(blue.mock.calls[2][0]).toEqual(stanzasTwo[2]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-      expect(blue.mock.calls[3][0]).toEqual(stanzasTwo[3]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-      expect(blue.mock.calls[4][0]).toEqual(stanzasTwo[4]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-      expect(blue.mock.calls[5][0]).toEqual(stanzasTwo[5]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-      expect(blue.mock.calls[6][0]).toEqual(stanzasTwo[6]);
       expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-      expect(blue.mock.calls[7][0]).toEqual(stanzasTwo[7]);
       blue.mockRestore();
       promisifiedReadFileSpy.mockRestore();
     } catch (error) {
