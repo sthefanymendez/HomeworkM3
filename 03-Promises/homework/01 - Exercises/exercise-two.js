@@ -22,10 +22,10 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+  exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
   });
-  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza) {
+  exerciseUtils.readFile("poem-two/stanza-02.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
   });
 
