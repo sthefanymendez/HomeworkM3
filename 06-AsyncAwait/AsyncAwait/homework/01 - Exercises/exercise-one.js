@@ -95,12 +95,11 @@ async function problemD() {
     const stanza = await exerciseUtils.promisifiedReadFile('poem-one/wrong-file-name.txt')
     exerciseUtils.blue(stanza)
   } catch (error) {
-    console.log('Problem: ', error);
-    exerciseUtils.magenta(error)
+    exerciseUtils.magenta(new Error(error))
   }
 }
 
-function problemE() {
+async function problemE() {
   // callback version
   // exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
   //   console.log("-- E. callback version (stanza three) --");
@@ -114,25 +113,43 @@ function problemE() {
   // });
 
   // AsyncAwait version
+  try {
+    const stanza3 = await exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
+    exerciseUtils.blue(stanza3)
+    const stanza4 = await exerciseUtils.promisifiedReadFile('poem-one/wrong-file-name.txt')
+    exerciseUtils.blue(stanza4)
+  } catch (error) {
+    exerciseUtils.magenta(error)
+  }
 }
 
-function problemF() {
+async function problemF() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-    console.log("-- F. callback version (stanza three) --");
-    if (err) {
-      if (err) exerciseUtils.magenta(new Error(err));
-      console.log("-- F. callback version done --");
-      return;
-    }
-    exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
-      console.log("-- F. callback version (stanza four) --");
-      if (err2) exerciseUtils.magenta(new Error(err2));
-      else exerciseUtils.blue(stanza4);
-      console.log("-- F. callback version done --");
-    });
-  });
+  // exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+  //   console.log("-- F. callback version (stanza three) --");
+  //   if (err) {
+  //     if (err) exerciseUtils.magenta(new Error(err));
+  //     console.log("-- F. callback version done --");
+  //     return;
+  //   }
+  //   exerciseUtils.blue(stanza3);
+  //   exerciseUtils.readFile("poem-one/wrong-file-name.txt", function (err2, stanza4) {
+  //     console.log("-- F. callback version (stanza four) --");
+  //     if (err2) exerciseUtils.magenta(new Error(err2));
+  //     else exerciseUtils.blue(stanza4);
+  //     console.log("-- F. callback version done --");
+  //   });
+  // });
 
   // AsyncAwait version
+  try {
+    const stanza3 = await exerciseUtils.promisifiedReadFile('poem-one/stanza-03.txt')
+    const stanza4 = await exerciseUtils.promisifiedReadFile('poem-one/wrong-file-name.txt')
+    exerciseUtils.blue(stanza3)
+    exerciseUtils.blue(stanza4)
+  } catch (error) {
+    exerciseUtils.magenta(error)
+  } finally {
+    console.log('done');
+  }
 }
