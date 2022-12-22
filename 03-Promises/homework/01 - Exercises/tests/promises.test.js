@@ -215,7 +215,6 @@ describe("01 | Ejercicios - Promises (poem-one)", () => {
 describe("02 | Ejercicios - Promises (poem-two)", () => {
   afterAll(async () => {
     await new Promise((resolve, reject) => setTimeout(() => resolve(), 250));
-    // .catch(reason => console.log(reason.message))
   });
 
   afterEach(() => {
