@@ -40,7 +40,7 @@ let stanzasTwo = fs
     return fs.readFileSync(path.join(dirpathTwo, filename)).toString();
   });
 
-describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
+describe("01 | Ejercicios - Callbacks (poem-one)", () => {
   afterAll(async () => {
     await new Promise((resolve) => setTimeout(() => resolve(), 250));
   });
@@ -171,7 +171,7 @@ describe("01 | Ejercicios - Callbacks (Poem-one)", () => {
   });
 });
 
-describe("02 | Ejercicios - Callbacks (Poem-two)", () => {
+describe("02 | Ejercicios - Callbacks (poem-two)", () => {
   afterAll(async () => {
     await new Promise((resolve) => setTimeout(() => resolve(), 250));
   });
@@ -245,7 +245,7 @@ describe("02 | Ejercicios - Callbacks (Poem-two)", () => {
     problemCx();
     if (readFileSpy.mock.calls.length === 0)
       return done(new Error("problemC | No se llamo a readFile"));
-      console.log(readFileSpy.mock.calls[0]);
+    console.log(readFileSpy.mock.calls[0]);
     const readFileCallback = readFileSpy.mock.calls[0][1];
     const readFileCallbackTwo = readFileSpy.mock.calls[1][1];
     const readFileCallbackThree = readFileSpy.mock.calls[2][1];
