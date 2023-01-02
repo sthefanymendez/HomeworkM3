@@ -53,7 +53,7 @@ function problemC() {
     });
   });
 
-  // promise version (hint: don't need to nest `then` calls)
+  // promise version
   // Tu código acá:
 }
 
