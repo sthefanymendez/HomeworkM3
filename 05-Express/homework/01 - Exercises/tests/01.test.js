@@ -3,9 +3,6 @@ const request = require("supertest");
 const api = request(server);
 
 describe("01 | Ejercicios", () => {
-  //   it("TEST PASA SOLO, PRUEBA", () => {
-  //     expect(1).toBe(1);
-  //   });
   let id = 0;
 
   it("1 | POST a la ruta /posts agrega nueva publicación o un error si faltan datos", async () => {
@@ -16,16 +13,13 @@ describe("01 | Ejercicios", () => {
       contents: "Content Test",
     };
     const response = await api.post("/posts").send(newPost);
-    //status debe estar entre 200 y 299
     expect(response.status).toBeGreaterThanOrEqual(200);
     expect(response.status).toBeLessThan(300);
     expect(publications).toContainEqual(newPost);
-    //si el request falla, el status debe estar entre 400 y 499 y no debe agregar el post
     const response2 = await api.post("/posts").send({});
     expect(response2.status).toBeGreaterThanOrEqual(400);
     expect(response2.status).toBeLessThan(500);
     expect(publications).not.toContainEqual({});
-    //valido enviando otro nuevo post
     const newPost2 = {
       id: ++id,
       author: "Author Test 2",
@@ -55,7 +49,6 @@ describe("01 | Ejercicios", () => {
     expect(response2.status).toBeGreaterThanOrEqual(200);
     expect(response2.status).toBeLessThan(300);
     expect(response2.body).toEqual(publications);
-    //Si existe el parámetro term, devuelve un array de posts que contengan el término en el título o contenido, y sino devuelve todos los
     const response3 = await api.get("/posts").query({ term: "Testing" });
     expect(response3.status).toBeGreaterThanOrEqual(200);
     expect(response3.status).toBeLessThan(300);
@@ -116,7 +109,6 @@ describe("01 | Ejercicios", () => {
     const author = "Author Test 3";
     const filteredPosts = publications.filter((post) => post.author === author);
     const response = await api.get(`/posts/${author}`);
-    //valido que el array de posts del autor sea igual al array de posts del autor
     if (filteredPosts.length > 0) {
       expect(response.status).toBeGreaterThanOrEqual(200);
       expect(response.status).toBeLessThan(300);

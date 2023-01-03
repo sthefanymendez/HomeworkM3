@@ -73,7 +73,7 @@ npm start
 
 📍 Lo que hay que hacer:
 
-1. Al comienzo del archivo crea una constante llamada `PORT` que será igual al número `3001`.
+1. Al comienzo del archivo modifica la constante llamada `PORT` ya que debe ser igual al número `3001`.
 
 2. Para levantar un servidor tendrás que utilizar el objeto **http** y acceder a su propiedad "**_createServer_**". Esta propidad recibe un callback como argumento.
 

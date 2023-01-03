@@ -39,7 +39,7 @@ function problemA() {
     exerciseUtils.blue(stanza);
   });
 
-  // AsyncAwait version}
+  // AsyncAwait version
 }
 
 function problemB() {

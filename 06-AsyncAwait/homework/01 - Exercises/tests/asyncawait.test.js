@@ -91,7 +91,7 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
       expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
     } catch (error) {
       throw new Error("problemC | No se llamó a la stanza correcta");
-    };
+    }
   });
 
   it("Problem D | Consologuea la cuarta stanza versión Async Await o un error", async () => {
@@ -106,7 +106,8 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
       }
     } catch (error) {
-      if(blue.mock.calls[0][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta")
+      if (blue.mock.calls[0][0] !== stanzasOne[3])
+        throw new Error("problemD | No se llamó a la stanza correcta");
       expect(magenta).toHaveBeenCalledWith(new Error(error));
     };
   });
@@ -119,12 +120,16 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     if (promisifiedReadFileSpy.mock.calls.length === 0)
       throw new Error("problemD | No se llamo a promisifiedReadFile");
     try {
-      if(blue.mock.calls.length > 1) {
+      if (blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
       }
     } catch (error) {
-      if(blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2] || blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta");
+      if (
+        (blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2]) ||
+        (blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3])
+      )
+        throw new Error("problemD | No se llamó a la stanza correcta");
       expect(magenta).toHaveBeenCalledWith(new Error(error));
     };
   });
@@ -137,12 +142,16 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     if (promisifiedReadFileSpy.mock.calls.length === 0)
       throw new Error("problemD | No se llamo a promisifiedReadFile");
     try {
-      if(blue.mock.calls.length > 1) {
+      if (blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
       }
     } catch (error) {
-      if(blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2] || blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta");
+      if (
+        (blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2]) ||
+        (blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3])
+      )
+        throw new Error("problemD | No se llamó a la stanza correcta");
       expect(magenta).toHaveBeenCalledWith(new Error(error));
     };
   });
@@ -154,7 +163,7 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
   });
 
   afterEach(() => {
-      jest.restoreAllMocks();
+    jest.restoreAllMocks();
   });
 
   it("Problem A | Consologuea la primer y segunda stanza versión Async Await", async () => {
