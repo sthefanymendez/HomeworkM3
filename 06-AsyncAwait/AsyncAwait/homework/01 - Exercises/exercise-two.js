@@ -19,70 +19,52 @@ args.forEach(function (arg) {
   if (problem) problem();
 });
 
-async function problemA() {
+function problemA() {
   // callback version
-  // exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
-  //   exerciseUtils.blue(stanza);
-  // });
-  // exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza) {
-  //   exerciseUtils.blue(stanza);
-  // });
+  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+    exerciseUtils.blue(stanza);
+  });
+  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza) {
+    exerciseUtils.blue(stanza);
+  });
 
   // async await version
   // Tu código acá:
-  const stanzas = await Promise.all([
-    exerciseUtils.promisifiedReadFile('poem-two/stanza-01.txt'),
-    exerciseUtils.promisifiedReadFile('poem-two/stanza-02.txt'),
-  ])
-
-  stanzas.forEach(stanza => exerciseUtils.blue(stanza))
-
-  console.log('done');
 }
 
-async function problemB() {
+function problemB() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
   // // callback version logeamos todos los versos
-  // filenames.forEach((filename) => {
-  //   exerciseUtils.readFile(filename, function (err, stanza) {
-  //     exerciseUtils.blue(stanza);
-  //   });
-  // });
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+    });
+  });
 
   // async await version
-  // Tu código acá:
-  const promises = filenames.map(file => exerciseUtils.promisifiedReadFile(file))
-
-  const stanzas = await Promise.all(promises)
-  stanzas.forEach(file => exerciseUtils.blue(file))
-  console.log('done');
+  // Tu código acá:}
 }
 
-async function problemC() {
+function problemC() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
   // callback version
-  // filenames.forEach((filename) => {
-  //   exerciseUtils.readFile(filename, function (err, stanza) {
-  //     exerciseUtils.blue(stanza);
-  //   });
-  // });
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+    });
+  });
 
   // async await version
   // Tu código acá:
-  const promises = filenames.map(file => exerciseUtils.promisifiedReadFile(file))
-
-  const stanzas = await Promise.all(promises)
-  stanzas.forEach(file => exerciseUtils.blue(file))
-  console.log('done');
 }
 
-async function problemD() {
+function problemD() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
@@ -90,24 +72,13 @@ async function problemD() {
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
-  // filenames.forEach((filename) => {
-  //   exerciseUtils.readFile(filename, function (err, stanza) {
-  //     exerciseUtils.blue(stanza);
-  //     if (err) exerciseUtils.magenta(new Error(err));
-  //   });
-  // });
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+      if (err) exerciseUtils.magenta(new Error(err));
+    });
+  });
 
   // async await version
   // Tu código acá:
-  // console.log(filenames);
-  try {
-    const promises = filenames.map(file => exerciseUtils.promisifiedReadFile(file))
-    const stanzas = await Promise.all(promises)
-    console.log(stanzas);
-    stanzas.forEach(stanza => exerciseUtils.blue(stanza))
-  } catch (error) {
-    exerciseUtils.magenta(error)
-  } finally {
-    console.log('done');
-  }
 }

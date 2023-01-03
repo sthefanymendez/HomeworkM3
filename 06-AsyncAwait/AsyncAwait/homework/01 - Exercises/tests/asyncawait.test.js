@@ -42,28 +42,28 @@ let stanzasTwo = fs
 
 describe("01 | Ejercicios - Async Await (poem-one)", () => {
   afterAll(async () => {
-      await new Promise((resolve, reject) => setTimeout(() => resolve(), 250));
+    await new Promise((resolve, reject) => setTimeout(() => resolve(), 250));
   });
 
   afterEach(() => {
-      jest.restoreAllMocks();
+    jest.restoreAllMocks();
   });
 
   it("Problem A | Consologuea la primer stanza versión Async Await", async () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     await problemA();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemA | No se llamo a promisifiedReadFile");
     try{
       expect(blue).toHaveBeenCalledWith(stanzasOne[0]);
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
     } catch(error) {
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemA | No se llamó a la stanza correcta")
-    };
+      expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemA | No se llamó a promisifiedReadFile
+    } finally {
+      blue.mock.calls.forEach(
+        (call, index) => { 
+          expect(call[0]).toBe(stanzasOne[index]) // problemA | No se llamó a la stanza correcta
+        }
+      );
+    };;
   });
 
   it("Problem B | Consologuea la segunda y tercer stanza versión Async Await", async () => {
@@ -71,16 +71,12 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
     await problemB();
     if (promisifiedReadFileSpy.mock.calls.length === 0)
-        throw new Error("problemB | No se llamo a promisifiedReadFile");
+      throw new Error("problemB | No se llamo a promisifiedReadFile");
     try {
-        expect(blue).toHaveBeenCalledWith(stanzasOne[1]);
-        expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
-        blue.mockRestore();
-        promisifiedReadFileSpy.mockRestore();
+      expect(blue).toHaveBeenCalledWith(stanzasOne[1]);
+      expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
     } catch (error) {
-        blue.mockRestore();
-        promisifiedReadFileSpy.mockRestore();
-        throw new Error("problemB | No se llamó a la stanza correcta");
+      throw new Error("problemB | No se llamó a la stanza correcta");
     };
   });
 
@@ -93,11 +89,7 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     try {
       expect(blue).toHaveBeenCalledWith(stanzasOne[1]);
       expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
     } catch (error) {
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
       throw new Error("problemC | No se llamó a la stanza correcta");
     };
   });
@@ -106,20 +98,16 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    await problemD();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemD | No se llamo a promisifiedReadFile");
     try {
+      await problemD();
+      if (promisifiedReadFileSpy.mock.calls.length === 0)
+        throw new Error("problemD | No se llamo a promisifiedReadFile");
       if(blue.mock.calls.length) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        promisifiedReadFileSpy.mockRestore();
-        blue.mockRestore();
       }
     } catch (error) {
       if(blue.mock.calls[0][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta")
       expect(magenta).toHaveBeenCalledWith(new Error(error));
-      promisifiedReadFileSpy.mockRestore();
-      magenta.mockRestore();
     };
   });
 
@@ -134,15 +122,10 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
       if(blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        promisifiedReadFileSpy.mockRestore();
-        blue.mockRestore();
       }
     } catch (error) {
       if(blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2] || blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta");
       expect(magenta).toHaveBeenCalledWith(new Error(error));
-      promisifiedReadFileSpy.mockRestore();
-      magenta.mockRestore();
-      blue.mockRestore();
     };
   });
 
@@ -157,15 +140,10 @@ describe("01 | Ejercicios - Async Await (poem-one)", () => {
       if(blue.mock.calls.length > 1) {
         expect(blue).toHaveBeenCalledWith(stanzasOne[2]);
         expect(blue).toHaveBeenCalledWith(stanzasOne[3]);
-        promisifiedReadFileSpy.mockRestore();
-        blue.mockRestore();
       }
     } catch (error) {
       if(blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[2] || blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[3]) throw new Error("problemD | No se llamó a la stanza correcta");
       expect(magenta).toHaveBeenCalledWith(new Error(error));
-      promisifiedReadFileSpy.mockRestore();
-      magenta.mockRestore();
-      blue.mockRestore();
     };
   });
 });
@@ -182,72 +160,63 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
   it("Problem A | Consologuea la primer y segunda stanza versión Async Await", async () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    await problemAx();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemA | No se llamo a promisifiedReadFile");
+
     try {
-      if(blue.mock.calls.length > 1){
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        blue.mockRestore();
-        promisifiedReadFileSpy.mockRestore();
-      }
+      await problemAx();
+
+      stanzasTwo.forEach(
+        stanza =>{ expect(blue).toHaveBeenCalledWith(stanza) }
+      )
     } catch (error) {
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemA | No se llamó a la stanza correcta");
+      expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemA | No se llamó a promisifiedReadFile
+    } finally {
+      blue.mock.calls.forEach(
+        (call, index) => { 
+          expect(call[0]).toBe(stanzasTwo[index]) // problemA | No se llamó a la stanza correcta
+        }
+      );
     };
   });
 
   it("Problem B | Consologuea todas las stanzas de poem-two en cualquier orden, versión Async Await", async () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    await problemBx();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemB | No se llamo a promisifiedReadFile");
+
     try {
-      if(blue.mock.calls.length > 1){
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-        blue.mockRestore();
-        promisifiedReadFileSpy.mockRestore();
-      }
+      await problemBx();
+      
+      stanzasTwo.forEach(
+        stanza =>{ expect(blue).toHaveBeenCalledWith(stanza) }
+      )
     } catch (error) {
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemB | No se llamó a la stanza correcta");
+      expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemB | No se llamó a promisifiedReadFile
+    } finally {
+      blue.mock.calls.forEach(
+        (call, index) => { 
+          expect(call[0]).toBe(stanzasTwo[index]) // problemB | No se llamó a la stanza correcta
+        }
+      );
     };
   });
 
   it("Problem C | Consologuea todas las stanzas de poem-two en orden, versión Async Await", async () => {
     const blue = jest.spyOn(utils, "blue");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    await problemCx();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemC | No se llamo a promisifiedReadFile");
+
     try {
-      if(blue.mock.calls.length > 1){
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-        expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-        blue.mockRestore();
-        promisifiedReadFileSpy.mockRestore();
-      }
+      await problemCx();
+      
+      stanzasTwo.forEach(
+        stanza =>{ expect(blue).toHaveBeenCalledWith(stanza) }
+      )
     } catch (error) {
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
-      throw new Error("problemC | No se llamó a la stanza correcta");
+      expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemC | No se llamó a promisifiedReadFile
+    } finally {
+      blue.mock.calls.forEach(
+        (call, index) => { 
+          expect(call[0]).toBe(stanzasTwo[index]) // problemC | No se llamó a la stanza correcta
+        }
+      );
     };
   });
 
@@ -255,35 +224,22 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
-    await problemDx();
-    if (promisifiedReadFileSpy.mock.calls.length === 0)
-      throw new Error("problemD | No se llamo a promisifiedReadFile");
+
     try {
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[0]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[1]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[2]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[3]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[4]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[5]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[6]);
-      expect(blue).toHaveBeenCalledWith(stanzasTwo[7]);
-      blue.mockRestore();
-      promisifiedReadFileSpy.mockRestore();
+      await problemDx();
+
+      stanzasTwo.forEach(
+        stanza => { expect(blue).toHaveBeenCalledWith(stanza) }
+      )
     } catch (error) {
-      if(blue.mock.calls[0] && blue.mock.calls[0][0] !== stanzasOne[0]
-        || blue.mock.calls[1] && blue.mock.calls[1][0] !== stanzasOne[1]
-        || blue.mock.calls[2] && blue.mock.calls[2][0] !== stanzasOne[2]
-        || blue.mock.calls[3] && blue.mock.calls[3][0] !== stanzasOne[3]
-        || blue.mock.calls[4] &&blue.mock.calls[4][0] !== stanzasOne[4]
-        || blue.mock.calls[5] && blue.mock.calls[5][0] !== stanzasOne[5]
-        || blue.mock.calls[6] && blue.mock.calls[6][0] !== stanzasOne[6]
-        || blue.mock.calls[7] && blue.mock.calls[7][0] !== stanzasOne[7]) 
-        throw new Error("problemD | No se llamó a la stanza correcta");
-      expect(magenta.mock.calls.length).toBe(1);
-      // expect(magenta).toHaveBeenCalledWith(new Error(error));
-      promisifiedReadFileSpy.mockRestore();
-      magenta.mockRestore();
-      blue.mockRestore();
+      expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemD | No se llamó a promisifiedReadFile
+      expect(magenta).toHaveBeenCalled();
+    } finally {
+      blue.mock.calls.forEach(
+        (call, index) => { 
+          expect(call[0]).toBe(stanzasTwo[index]) // problemD | No se llamó a la stanza correcta
+        }
+      );
     };
   });
 });
