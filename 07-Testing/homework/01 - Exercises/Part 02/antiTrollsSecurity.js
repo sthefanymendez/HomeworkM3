@@ -1,4 +1,4 @@
-const seguridadAntiTrolls = (string) => {
+const antiTrollsSecurity = (string) => {
    return string
       .split('')
       .filter((l) => {
@@ -7,4 +7,4 @@ const seguridadAntiTrolls = (string) => {
       .join('');
 };
 
-module.exports = seguridadAntiTrolls;
+module.exports = antiTrollsSecurity;
