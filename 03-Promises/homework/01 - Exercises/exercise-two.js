@@ -11,7 +11,6 @@ module.exports = {
   problemBx: problemB,
   problemCx: problemC,
   problemDx: problemD,
-  problemEx: problemE,
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
@@ -38,22 +37,6 @@ function problemB() {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
-  // callback version logeamos todos los versos
-  filenames.forEach((filename) => {
-    exerciseUtils.readFile(filename, function (err, stanza) {
-      exerciseUtils.blue(stanza);
-    });
-  });
-
-  // promise version
-  // Tu código acá:
-}
-
-function problemC() {
-  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
-    return "poem-two/" + "stanza-0" + n + ".txt";
-  });
-
   // callback version
   filenames.forEach((filename) => {
     exerciseUtils.readFile(filename, function (err, stanza) {
@@ -65,7 +48,7 @@ function problemC() {
   // Tu código acá:
 }
 
-function problemD() {
+function problemC() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
@@ -84,7 +67,7 @@ function problemD() {
   // Tu código acá:
 }
 
-function problemE() {
+function problemD() {
   let fs = require("fs");
   function promisifiedWriteFile(filename, str) {
     // tu código acá:
