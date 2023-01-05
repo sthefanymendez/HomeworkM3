@@ -41,12 +41,12 @@ npm test
 
 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
--  Una carpeta **Parte 01**.
-   -  Un archivo **nvieles.js** que contendrá los ejercicios.
-   -  Un archivo **niveles.test.js** que contendrá los tests de cada ejercicio.
--  Una carpeta **Parte 02**.
-   -  aaa
-   -  aaa
+-  Una carpeta **Part 01**.
+   -  Un archivo **levels.js** que contendrá los ejercicios.
+   -  Un archivo **levels.test.js** que contendrá los tests de cada ejercicio.
+-  Una carpeta **Part 02**.
+   -  Un archivo **antiTrollsSecurity.js** que contendrá el ejercicio.
+   -  Un archivo **antiTrollsSecurity.test.js** que contendrá el test del ejercicio.
 -  Un archivo **package.json**.
 -  Un archivo **.gitignore**.
 -  Un archivo **README.md**.
@@ -57,35 +57,35 @@ Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
 ## **📋 INSTRUCCIONES**
 
-Dentro de la carpeta **`Parte 01`** encontrarás los ejercicios con los que deberás iniciar esta homework. Cada ejercicio tiene mayor complejitud a medida que subes de nivel. Deberás guiarte tanto por este README como por los test para resolver cada ejercicio.
+Dentro de la carpeta **`Part 01`** encontrarás los ejercicios con los que deberás iniciar esta homework. Cada ejercicio tiene mayor complejitud a medida que subes de nivel. Deberás guiarte tanto por este README como por los test para resolver cada ejercicio.
 
-Dentro de la carpeta **`Parte 02`** encontrarás dos archivos. Para resolver esta segunda parte deberás guiarte 100% mediante este README.
+Dentro de la carpeta **`Part 02`** encontrarás dos archivos. Para resolver esta segunda parte deberás guiarte 100% mediante este README.
 
 ---
 
 </br >
 
-## **PARTE 01**
+## **PART 01**
 
-### **👩‍💻 Nivel 01**
+### **👩‍💻 Level 01**
 
 Esta función recibe dos números por parámetro. A partir de los test identifica el resultado de qué operación debes devolver.
 
 <br />
 
-### **👩‍💻 Nivel 02**
+### **👩‍💻 Level 02**
 
 Esta función recibe string de muchas letras al azar. Identifica el patrón de conversión de las letras a partir de los test, y devuelve el string correcto.
 
 <br />
 
-### **👩‍💻 Nivel 03**
+### **👩‍💻 Level 03**
 
 Esta función recibe dos arreglos por parámetros. Deberás unirlos y devolver el nuevo arreglo ordenado. Puedes guiarte a partir de los test.
 
 <br />
 
-### **👩‍💻 Nivel 04**
+### **👩‍💻 Level 04**
 
 🥳¡Felicitaciones si haz llegado hasta aquí!🥳
 
@@ -104,9 +104,9 @@ Si el número que recibes cumple esta condición, retorna **True**. Caso contrar
 
 ---
 
-## **PARTE 02**
+## **PART 02**
 
-### **👩‍💻 Seguridad Anti Trolls**
+### **👩‍💻 Anti Trolls Security**
 
 Este ejercicio constitirá en dos momentos:
 

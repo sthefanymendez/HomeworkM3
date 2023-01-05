@@ -171,10 +171,10 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 2. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para crear la publicación"}`.
 
-   > Hint: Verifica que el código de error sea el adecuado.
-
 3. Si los tres campos fueron provistos, crear un nuevo objeto Publicación con los valores indicados para `author`, `title` y `contents` y asignándole un valor numérico único como propiedad `id`.
 4. Agregar dicho objeto al array de **publications**. Devolver un JSON con el objeto recientemente creado.
+
+> Hint: Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 
@@ -192,7 +192,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
 
-### B. GET ruta **/posts?author=${author}?title=${title}**
+### B. GET ruta **/posts?author=author?title=title**
 
 📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts?author=${author}?title=${title}`.
 
@@ -202,7 +202,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación con dicho título y autor indicado"}`.
 
-   > Hint: Verifica que el código de error sea el adecuado.
+> Hint: Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 
@@ -220,7 +220,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 2. Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ninguna publicación del autor indicado"}`.
 
-   > Hint: Verifica que el código de error sea el adecuado.
+ > Hint: Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 
@@ -228,9 +228,9 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 4**
 
-### **PUT** ruta **/posts**
+### **PUT** ruta **/posts/:id**
 
-📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts`.
+📍 Cuando se ejecute un request con el método **PUT** en la ruta `/posts/:id`.
 
 📍 Lo que hay que hacer:
 
@@ -240,11 +240,11 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 3. En el caso de que alguno de ellos no se encuentre, devolver un JSON con un objeto de la forma `{error: "No se recibieron los parámetros necesarios para modificar la publicación"}`.
 
-   > Hint: Verifica que el código de error sea el adecuado.
-
 4. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON con un objeto de la forma `{error: "No se recibió el id correcto necesario para modificar la publicación"}`.
 
 5. Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` de la publicación que coincida con dicho `id`. Devolver un JSON con el objeto recientemente actualizado.
+
+> Hint: Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 
@@ -252,19 +252,19 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 5**
 
-### **DELETE** ruta **/posts**
+### **DELETE** ruta **/posts/:id**
 
-📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/posts`.
+📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/posts/:id`.
 
 📍 Lo que hay que hacer:
 
-1. Asegurarse que reciba por params un `id` correspondiente a una publicación válida. De no ser así, ya sea por falta del campo `id` o por ser un id inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`.
+1. Asegurarse que reciba por params un `id`. De no ser así, devolver un JSON con un objeto con un mensaje correspondiente manteniendo la forma de siempre: `{error: "No se recibió el id de la publicación a eliminar"}`.
 
 2. En el caso de que el `id` corresponda a una publicación válida, eliminarlo del array de publications y devolver un JSON con el siguiente objeto: `{ success: true }`.
 
 3. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON con un objeto de la forma `{error: "No se recibió el id correcto necesario para eliminar la publicación"}`.
 
-> Hint: Ver qué método vas a utilizar para eliminar una publicación, dependiendo el caso puede que sea necesario modificar el `const publication = []` del comienzo por `let publication = []`
+> Hint: Ver qué método vas a utilizar para eliminar una publicación, dependiendo el caso puede que sea necesario modificar el `const publication = []` del comienzo por `let publication = []`. Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 
@@ -272,17 +272,19 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 6**
 
-### **DELETE** ruta **/author**
+### **DELETE** ruta **/author/:name**
 
-📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/author`.
+📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/author/:name`.
 
 📍 Lo que hay que hacer:
 
-1. Asegurarse que dentro del body del request exista un `author` correspondiente a un autor válido. De no ser así, ya sea por falta del campo `author` o por ser un autor inválido, devolver un JSON con un objeto con un mensaje correspondiente en cada caso manteniendo la forma de siempre: `{error: "Mensaje de error"}`.
+1. Asegurarse que reciba por params un `name`. De no ser así, devolver un JSON con un objeto con un mensaje correspondiente manteniendo la forma de siempre: `{error: "No se recibió el nombre del autor"}`.
 
-2. En el caso de que el `author` corresponda a un autor válido, eliminar del array de publications todas las publicaciones correspondientes a dicho autor y devolver las publicaciones eliminadas.
+2. En el caso de que el `name` corresponda a un autor válido, eliminar del array de publications todas las publicaciones correspondientes a dicho autor y devolver las publicaciones eliminadas.
 
-3. En el caso de que el `id` no corresponda a una publicación válida existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
+3. En el caso de que el `name` no corresponda a un autor válido existente, devolver un JSON similar al anterior modificando el mensaje de error de la forma: `{error: "No se recibió el nombre correcto necesario para eliminar las publicaciones del autor"}`.
+
+   > Hint: Verifica que el código de error sea el adecuado en todos los casos.
 
 ---
 

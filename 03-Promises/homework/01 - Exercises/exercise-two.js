@@ -1,8 +1,8 @@
 "use strict";
 
-var exerciseUtils = require("./utils");
+let exerciseUtils = require("./utils");
 
-var args = process.argv.slice(2).map(function (st) {
+let args = process.argv.slice(2).map(function (st) {
   return st.toUpperCase();
 });
 
@@ -16,16 +16,16 @@ module.exports = {
 
 // corre cada problema dado como un argumento del command-line para procesar
 args.forEach(function (arg) {
-  var problem = module.exports["problem" + arg];
+  let problem = module.exports["problem" + arg];
   if (problem) problem();
 });
 
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+  exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
   });
-  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza) {
+  exerciseUtils.readFile("poem-two/stanza-02.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
   });
 
@@ -34,7 +34,7 @@ function problemA() {
 }
 
 function problemB() {
-  var filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
+  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
@@ -50,7 +50,7 @@ function problemB() {
 }
 
 function problemC() {
-  var filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
+  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
 
@@ -66,10 +66,10 @@ function problemC() {
 }
 
 function problemD() {
-  var filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
+  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
-  var randIdx = Math.floor(Math.random() * filenames.length);
+  let randIdx = Math.floor(Math.random() * filenames.length);
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
@@ -85,7 +85,7 @@ function problemD() {
 }
 
 function problemE() {
-  var fs = require("fs");
+  let fs = require("fs");
   function promisifiedWriteFile(filename, str) {
     // tu código acá:
   }

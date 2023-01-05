@@ -1,3 +1,14 @@
+/*********** Yo explico `exerciseUtils` ********
+ *
+ * excersiceUtils es una variable que viene de un archivo en este repo
+ * El archivo `./utils` esta en este nivel y se llama `utils.js`
+ *
+ * Este archivo crea un `promisifiedReadFile` - FIJATE EN ÉL!!!
+ *
+ * Las funciones `blue` y `magenta` para mantener tu código DRY
+ *
+ ***********************************************/
+
 "use strict";
 
 let exerciseUtils = require("./utils");
@@ -17,92 +28,108 @@ module.exports = {
 
 // corre cada problema dado como un argumento del command-line para procesar
 args.forEach(function (arg) {
-  let problem = module.exports["problem" + arg];
+  var problem = module.exports["problem" + arg];
   if (problem) problem();
 });
 
-function problemA() {
+async function problemA() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
+    console.log("-- A. callback version --");
     exerciseUtils.blue(stanza);
   });
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }
 
-function problemB() {
+async function problemB() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
+    console.log("-- B. callback version (stanza two) --");
     exerciseUtils.blue(stanza2);
   });
   exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+    console.log("-- B. callback version (stanza three) --");
     exerciseUtils.blue(stanza3);
   });
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }
 
-function problemC() {
+async function problemC() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
+    console.log("-- C. callback version (stanza two) --");
     exerciseUtils.blue(stanza2);
     exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+      console.log("-- C. callback version (stanza three) --");
       exerciseUtils.blue(stanza3);
+      console.log("-- C. callback version done --");
     });
   });
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }
 
-function problemD() {
+async function problemD() {
   // callback version
   exerciseUtils.readFile(
     "poem-one/wrong-file-name.txt",
     function (err, stanza4) {
+      console.log("-- D. callback version (stanza four) --");
       if (err) exerciseUtils.magenta(new Error(err));
       else exerciseUtils.blue(stanza4);
     }
   );
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }
 
-function problemE() {
+async function problemE() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+    console.log("-- E. callback version (stanza three) --");
     if (err) return exerciseUtils.magenta(new Error(err));
     exerciseUtils.blue(stanza3);
     exerciseUtils.readFile(
       "poem-one/wrong-file-name.txt",
       function (err2, stanza4) {
-        if (err2) return exerciseUtils.magenta(new Error(err2));
+        console.log("-- E. callback version (stanza four) --");
+        if (err2) return exerciseUtils.magenta(err2);
         exerciseUtils.blue(stanza4);
       }
     );
   });
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }
 
-function problemF() {
+async function problemF() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-    if (err) exerciseUtils.magenta(new Error(err));
+    console.log("-- F. callback version (stanza three) --");
+    if (err) {
+      if (err) exerciseUtils.magenta(new Error(err));
+      console.log("-- F. callback version done --");
+      return;
+    }
     exerciseUtils.blue(stanza3);
     exerciseUtils.readFile(
       "poem-one/wrong-file-name.txt",
       function (err2, stanza4) {
+        console.log("-- F. callback version (stanza four) --");
         if (err2) exerciseUtils.magenta(new Error(err2));
         else exerciseUtils.blue(stanza4);
+        console.log("-- F. callback version done --");
       }
     );
   });
 
-  // promise version
+  // asyncawait version
   // Tu código acá:
 }

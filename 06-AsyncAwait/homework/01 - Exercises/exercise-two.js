@@ -19,7 +19,7 @@ args.forEach(function (arg) {
   if (problem) problem();
 });
 
-function problemA() {
+async function problemA() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
@@ -32,23 +32,7 @@ function problemA() {
   // Tu código acá:
 }
 
-function problemB() {
-  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
-    return "poem-two/" + "stanza-0" + n + ".txt";
-  });
-
-  // // callback version logeamos todos los versos
-  filenames.forEach((filename) => {
-    exerciseUtils.readFile(filename, function (err, stanza) {
-      exerciseUtils.blue(stanza);
-    });
-  });
-
-  // async await version
-  // Tu código acá:}
-}
-
-function problemC() {
+async function problemB() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });
@@ -64,7 +48,23 @@ function problemC() {
   // Tu código acá:
 }
 
-function problemD() {
+async function problemC() {
+  let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
+    return "poem-two/" + "stanza-0" + n + ".txt";
+  });
+
+  // callback version
+  filenames.forEach((filename) => {
+    exerciseUtils.readFile(filename, function (err, stanza) {
+      exerciseUtils.blue(stanza);
+    });
+  });
+
+  // async await version
+  // Tu código acá:
+}
+
+async function problemD() {
   let filenames = [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) {
     return "poem-two/" + "stanza-0" + n + ".txt";
   });

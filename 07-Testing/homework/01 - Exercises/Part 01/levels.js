@@ -1,8 +1,8 @@
-const nivelUno = (a, b) => {
+const levelOne = (a, b) => {
    return a + b;
 };
 
-const nivelDos = (letras) => {
+const levelTwo = (letras) => {
    return letras
       .split('')
       .filter((l, i) => {
@@ -11,11 +11,11 @@ const nivelDos = (letras) => {
       .join('');
 };
 
-const nivelTres = (a, b) => {
+const levelThree = (a, b) => {
    return a.concat(b).sort();
 };
 
-const nivelCuatro = (num) => {
+const levelFour = (num) => {
    let tot = 0;
    num.toString()
       .split('')
@@ -26,4 +26,4 @@ const nivelCuatro = (num) => {
    return rev * tot === num;
 };
 
-module.exports = { nivelUno, nivelDos, nivelTres, nivelCuatro };
+module.exports = { levelOne, levelTwo, levelThree, levelFour };

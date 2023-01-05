@@ -128,7 +128,9 @@ Hasta ahora haz aprendido a testar una ruta GET. Te invitamos a que continues co
 
 ## **🔎 Recursos adicionales**
 
--  Documentación [**MATCHERS FROM JEST**](https://jestjs.io/docs/using-matchers)
+-  Documentación [**Matchers From Jest**](https://jestjs.io/docs/using-matchers)
+-  Documentación [**React-Jest Testing**](https://testing-library.com/docs/react-testing-library/intro/)
+-  Documentación [**Jest - Enzyme**](https://enzymejs.github.io/enzyme/docs/guides/jest.html)
 
 </br >
 
