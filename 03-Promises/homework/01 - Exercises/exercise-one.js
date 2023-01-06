@@ -10,8 +10,6 @@ module.exports = {
   problemA: problemA,
   problemB: problemB,
   problemC: problemC,
-  problemD: problemD,
-  problemE: problemE,
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
@@ -21,16 +19,6 @@ args.forEach(function (arg) {
 });
 
 function problemA() {
-  // callback version
-  exerciseUtils.readFile("poem-one/stanza-01.txt", function (err, stanza) {
-    exerciseUtils.blue(stanza);
-  });
-
-  // promise version
-  // Tu código acá:
-}
-
-function problemB() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
     exerciseUtils.blue(stanza2);
@@ -43,7 +31,7 @@ function problemB() {
   // Tu código acá:
 }
 
-function problemC() {
+function problemB() {
   // callback version
   exerciseUtils.readFile(
     "poem-one/wrong-file-name.txt",
@@ -57,7 +45,7 @@ function problemC() {
   // Tu código acá:
 }
 
-function problemD() {
+function problemC() {
   // callback version
   exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
     if (err) return exerciseUtils.magenta(new Error(err));
@@ -67,24 +55,6 @@ function problemD() {
       function (err2, stanza4) {
         if (err2) return exerciseUtils.magenta(new Error(err2));
         exerciseUtils.blue(stanza4);
-      }
-    );
-  });
-
-  // promise version
-  // Tu código acá:
-}
-
-function problemE() {
-  // callback version
-  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
-    if (err) exerciseUtils.magenta(new Error(err));
-    exerciseUtils.blue(stanza3);
-    exerciseUtils.readFile(
-      "poem-one/wrong-file-name.txt",
-      function (err2, stanza4) {
-        if (err2) exerciseUtils.magenta(new Error(err2));
-        else exerciseUtils.blue(stanza4);
       }
     );
   });
