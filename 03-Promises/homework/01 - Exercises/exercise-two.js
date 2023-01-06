@@ -9,8 +9,7 @@ let args = process.argv.slice(2).map(function (st) {
 module.exports = {
   problemAx: problemA,
   problemBx: problemB,
-  problemCx: problemC,
-  problemDx: problemD,
+  problemCx: problemC
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
