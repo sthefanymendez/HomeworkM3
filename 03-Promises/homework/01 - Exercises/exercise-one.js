@@ -11,7 +11,7 @@ module.exports = {
   problemB: problemB,
   problemC: problemC,
   problemD: problemD,
-  problemE: problemE,
+  problemE: problemE
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
