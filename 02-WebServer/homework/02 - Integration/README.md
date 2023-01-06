@@ -42,7 +42,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
    - Una carpeta llamada `utils`.
    - Una carpeta llamada `test`.
 
-7. Pasa el archivo `data.js` que se encuentra en **front/src** a la carpeta **back/src/utils**.
+7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
    <br />
 
 ---
