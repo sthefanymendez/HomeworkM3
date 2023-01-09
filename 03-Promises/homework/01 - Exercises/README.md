@@ -56,12 +56,11 @@ npm run test:promises
 
 - Una carpeta llamada `poem-one`.
 - Una carpeta llamada `poem-two`.
-- Una carpeta llamada `tests`
-- Un archivo `demo-poem.txt`.
-- Un archivo `demo.js`.
-- Un archivo `exercise-one.js`
-- Un archivo `exercise-two.js`
-- Un archivo `utils.js`
+- Una carpeta llamada `tests`.
+- Una carpeta llamada `demo`.
+- Un archivo `exercise-one.js`.
+- Un archivo `exercise-two.js`.
+- Un archivo `utils.js`.
 - Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
 ---
