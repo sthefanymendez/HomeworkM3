@@ -81,10 +81,18 @@ npm run nodemon
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
+<<<<<<< HEAD
 -  Una carpeta llamada `img`.
 -  Una carpeta llamada **src**.
 -  Un archivo `package.json`
 -  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+=======
+- Una carpeta llamada `img`.
+- Una carpeta llamada **src**.
+- Una carpeta llamada **tests**.
+- Un archivo `package.json`
+- Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+>>>>>>> d382f78c66263e83b7c0b2df38a2e5321944ee4d
 
 🔹 Dentro de la carpeta `src`, vas a encontrar la siguiente estructura:
 
