@@ -34,8 +34,6 @@ Crearemos una ruta para manejar las funcionalidades:
 
 1. Dirígete a tu carpeta `controllers` y crea un archivo llamado `getCharById.js`. Dentro de este archivo deberás:
 
-   -  Importar la función **`toJSON`**.
-
    -  Declarar una variable con el nombre "_getCharById_" y exportarla. Esta variable será una función que recibe dos parámetros: **res** y **id**.
 
    -  Dentro de la función deberás hacer una petición (_código asincrónico_) a la URL `https://rickandmortyapi.com/api/character/`. Debes utilizar promesas para realizar esto. Recuerda que debes agregar el ID recibido por parámetro al final de esta URL.
