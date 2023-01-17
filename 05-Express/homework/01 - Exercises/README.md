@@ -81,18 +81,11 @@ npm run nodemon
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-<<<<<<< HEAD
--  Una carpeta llamada `img`.
--  Una carpeta llamada **src**.
--  Un archivo `package.json`
--  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
-=======
 - Una carpeta llamada `img`.
 - Una carpeta llamada **src**.
 - Una carpeta llamada **tests**.
 - Un archivo `package.json`
 - Y el archivo **README.md** que ahora mismo estás leyendo. 😙
->>>>>>> d382f78c66263e83b7c0b2df38a2e5321944ee4d
 
 🔹 Dentro de la carpeta `src`, vas a encontrar la siguiente estructura:
 
@@ -190,17 +183,7 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 
 ## **👩‍💻 EJERCICIO 2**
 
-### A. **GET** ruta **/posts**
-
-📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts`.
-
-📍 Lo que hay que hacer:
-
-1. Si existe el parámetro `term` dentro de la URL (query-string parameter) devolver aquellas publicaciones que contengan el valor del parámetro `term` en su título o en su contenido (o en ambos).
-
-2. Caso contrario, devolver todos las publicaciones que se encuentren almacenadas en el array `publications`.
-
-### B. GET ruta **/posts?author=author?title=title**
+### **GET** ruta **/posts?author=author?title=title**
 
 📍 Cuando se ejecute un request con el método **GET** en la ruta `/posts?author=${author}?title=${title}`.
 
@@ -279,26 +262,6 @@ Para finalizar si queremos acceder a los parámetros de una consulta utilizaremo
 <br />
 
 ## **👩‍💻 EJERCICIO 6**
-
-### **DELETE** ruta **/author/:name**
-
-📍 Cuando se ejecute un request con el método **DELETE** en la ruta `/author/:name`.
-
-📍 Lo que hay que hacer:
-
-1. Asegurarse que reciba por params un `name`. De no ser así, devolver un JSON con un objeto con un mensaje correspondiente manteniendo la forma de siempre: `{error: "No se recibió el nombre del autor"}`.
-
-2. En el caso de que el `name` corresponda a un autor válido, eliminar del array de publications todas las publicaciones correspondientes a dicho autor y devolver las publicaciones eliminadas.
-
-3. En el caso de que el `name` no corresponda a un autor válido existente, devolver un JSON similar al anterior modificando el mensaje de error de la forma: `{error: "No se recibió el nombre correcto necesario para eliminar las publicaciones del autor"}`.
-
-   > Hint: Verifica que el código de error sea el adecuado en todos los casos.
-
----
-
-<br />
-
-## **👩‍💻 EJERCICIO 7**
 
 ### **POSTMAN**
 
