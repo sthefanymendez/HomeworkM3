@@ -32,9 +32,7 @@ Crearemos una ruta para manejar las funcionalidades:
 
 ### **GET Search**
 
-1. Si observas, dentro de la carpeta **02- Integration** hay un archivo llamado [**toJSON.js**](./toJSON.js). Este archivo contiene una función que te permitirá convertir un objeto de JavaScript a formato JSON. Copia este archivo y pégalo dentro de la carpeta `utils` en tu proyecto Back-End.
-
-2. Dirígete a tu carpeta `controllers` y crea un archivo llamado `getCharById.js`. Dentro de este archivo deberás:
+1. Dirígete a tu carpeta `controllers` y crea un archivo llamado `getCharById.js`. Dentro de este archivo deberás:
 
    -  Importar la función **`toJSON`**.
 
@@ -44,29 +42,39 @@ Crearemos una ruta para manejar las funcionalidades:
 
    -  Una vez que tienes la respuesta de la petición, crea un objeto en el que guardarás las propidades **image**, **name**, **gender** y **species** que recibiste como respuesta (todos los datos de la petición se encuentran dentro de una propiedad llamada **data**).
 
-   -  Una vez creado el objeto, deberás devolver una respuesta con status `200`, un Content-Type igual a `application/json`, y finalmente responde el objeto que create pasado como parámetro por la función **`toJSON`**. Te dejamos un ejemplo:
+   -  Una vez creado el objeto, deberás devolver una respuesta con status `200`, un Content-Type igual a `application/json`, y finalmente responde el objeto que creaste convertido en JSON:
 
       ```javascript
-      res.end(toJSON(objeto));
+      res.end(JSON.stringify(objeto));
       ```
 
    -  En el caso de que la promesa tenga algún fallo es importante que concatenes un `.catch` al final de la promesa para poder manejar el error. Dentro del catch deberás devolver una respuesta con status `500`, un Content-Type igual a `text/plain`, y finalmente responde con la propiedad **message** del error.
 
 > **[NOTA]:** puedes utilizar axios o fetch. ¡Como más gustes!
 
-3. ¡Listo! Ya tenemos nuestro primer controlador. Ahora lo vamos a utilizar en nuestra ruta. Para esto, dirígete al archivo llamado **`src/routes/server.js`**. **Elimina** todo el contenido de este archivo.
+2. ¡Listo! Ya tenemos nuestro primer controlador. Ahora lo vamos a utilizar en nuestra ruta. Para esto, dirígete al archivo llamado **`src/routes/server.js`**. **Elimina** todo el contenido de este archivo.
 
-4. Dentro de este archvio tendrás que:
+3. Dentro de este archvio tendrás que:
 
    -  Importar **http** y el controlador que creaste.
 
-   -  Crear y levantar un servidor en el puerto **3000**.
+   -  Crear y levantar un servidor en el puerto **3001**.
 
-   -  Dentro del callback del servidor debes crear un condicional que pregunte si la **url** incluye el string "_**onsearch**_". En el caso de que si lo incluya deberás ejecutar el controlador pasándole como argumentos:
+   -  Dentro del callback del servidor debes:
 
-      -  El parámetro **`res`**.
+      -  copiar y pegar la siguiente línea:
 
-      -  El segundo parámetro debe ser el ID del personaje que recibes mediante la URL.
+      ```javascript
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      ```
+
+      > **[NOTA]**: esta línea permitirá contectar tu FRONT con el SERVIDOR sin que haya problemas de CORS.
+
+      -  crear un condicional que pregunte si la **url** incluye el string "_**onsearch**_". En el caso de que si lo incluya deberás ejecutar el controlador pasándole como argumentos:
+
+         -  El parámetro **`res`**.
+
+         -  El segundo parámetro debe ser el ID del personaje que recibes mediante la URL.
 
       > **[PISTA]:** dentro del parámetro **`req.url`** está el id del personaje. Puedes utilizar el método split() para obtenerlo...
 
@@ -81,8 +89,6 @@ Crearemos una ruta para manejar las funcionalidades:
 Ahora crearemos la ruta para obtener el detalle de un personaje.
 
 1. Dirígete a tu carpeta `controllers` y crea un archivo llamado `getCharDetail.js`. Dentro de este archivo deberás:
-
-   -  Importar la función **`toJSON`**.
 
    -  Declarar una variable con el nombre "_getCharDetail_" y exportarla. Esta variable será una función que recibe dos parámetros: **res** y **id**.
 
