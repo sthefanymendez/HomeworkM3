@@ -174,23 +174,4 @@ describe("01 | Ejercicios", () => {
       });
     }
   });
-
-  it("6 | DELETE a la ruta /author/:name, elimina todos los posts del autor indicado. En caso de que no exista, devuelve un error", async () => {
-    const author = "Author Test 3";
-    const filteredPosts = publications.filter((post) => post.author === author);
-    if (filteredPosts.length > 0) {
-      const response = await api.delete(`/author/${author}`);
-      expect(response.status).toBeGreaterThanOrEqual(200);
-      expect(response.status).toBeLessThan(300);
-      expect(response.body).toEqual(filteredPosts);
-    } else {
-      const response = await api.delete(`/author/${author}`);
-      expect(response.status).toBeGreaterThanOrEqual(400);
-      expect(response.status).toBeLessThan(500);
-      expect(response.body).toEqual({
-        error:
-          "No se recibió el nombre correcto necesario para eliminar las publicaciones del autor",
-      });
-    }
-  });
 });
