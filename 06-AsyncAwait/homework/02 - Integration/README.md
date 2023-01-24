@@ -38,7 +38,7 @@ Las rutas que tenemos creadas hasta el momento son:
 
    - Dentro del bloque `try` inyecta el código donde haces el llamado y la lógica antes realizada.
 
-   - Dentro del bloque `catch`, éste debe recibir como parámetro el `error` y devuelve una respuesta con status `500`y enviar un mensaje de error y/o con la propiedad **message** del error que recibe el catch como parámetro.
+   - Dentro del bloque `catch`, éste debe recibir como parámetro el `error` y devuelve una respuesta con status `500` y enviar un mensaje de error y/o con la propiedad **message** del error que recibe el catch como parámetro.
 
 <br />
 
