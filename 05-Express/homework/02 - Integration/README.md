@@ -66,36 +66,36 @@ const app = express();
 
 1. Anteriormente habíamos creado una ruta get que obtiene el personaje de Rick and Morty por **id** mediante un archivo que tenemos llamado `data.js`, bien vamos a modificarlo:
 
-a. En app tenemos los métodos HTTP listos para utilizar, por ende si nesitamos conseguir la data, necesitamos el método get, este método recibe dos parámetros: el objeto `request` de ahora en más **req** y el objeto `response` de ahora en más **res**.
+    a. En app tenemos los métodos HTTP listos para utilizar, por ende si nesitamos conseguir la data, necesitamos el método get, este método recibe dos parámetros: el objeto `request` de ahora en más **req** y el objeto `response` de ahora en más **res**.
 
-b. Ahora, en vez de consumir los datos de **data.js**, lo vamos a hacer de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`
+    b. Ahora, en vez de consumir los datos de **data.js**, lo vamos a hacer de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`
 
-c. Crea la ruta **get/`rickandmorty`/character/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
+    c. Crea la ruta **get/`rickandmorty`/character/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
 
-- id
-- name
-- species
-- gender
-- image
+    - id
+    - name
+    - species
+    - gender
+    - image
 
 2. Crea una segunda ruta **get/`rickandmorty`/detail/{detailId}**, obtén los datos de la API https://rickandmortyapi.com/api/character/{detailId} y envíalo al componente Detail.jsx:
 
-- name
-- status
-- species
-- gender
-- origin
-- image
+    - name
+    - status
+    - species
+    - gender
+    - origin
+    - image
 
 > Hint: Recuerda que los llamados a la API son asíncronos.
 
 3. Define una constante llamada `fav` que sea un arreglo vacío y crea las siguientes rutas:
 
-a. **GET/`rickandmorty`/fav**, que obtenga los personajes guardados en el arreglo **fav**.
+    a. **GET/`rickandmorty`/fav**, que obtenga los personajes guardados en el arreglo **fav**.
 
-b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
+    b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
 
-c. **DELETE/`rickandmorty`/fav/${id}**, que elimine el personaje en el arreglo **fav** a partir del **id** que recibe por parámetro.
+    c. **DELETE/`rickandmorty`/fav/${id}**, que elimine el personaje en el arreglo **fav** a partir del **id** que recibe por parámetro.
 
 > Hint: Recuerda modularizar en tu carpeta controllers como lo aprendiste en la homework 03-Promises con los archivos **getCharById.js** y **getCharDetail.js**
 
