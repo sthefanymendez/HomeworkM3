@@ -133,7 +133,7 @@ _DATE_ imprimirá la fecha actual de tu máquina.
 _ECHO_ imprimirá el texto que escribas en la consola.
 
 1. Completa la función `echo`. Esta recibirá por parámetro dos valores: "print" y "args".
-2. Utiliza la función `print`. Como argumento pásale a la función el parámetro `args` 
+2. Utiliza la función `print`. Como argumento pásale a la función el parámetro `args`
 
 ---
 
@@ -183,7 +183,7 @@ descritos en la función de _CAT_ para utilizarlo correctamente.
 1. Completa la función `head`. Esta recibirá por parámetro dos valores: "print" y "args".
 2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
 
--  `args` (El parámetro que recibes en la función `cat`)
+-  `args` (El parámetro que recibes en la función `head`)
 -  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
 -  Un callback con los parámetros `error` y `data`
 
@@ -198,10 +198,10 @@ descritos en la función de _CAT_ para utilizarlo correctamente.
 
 _TAIL_ Permitirá imprimir la última línea de cualquier archivo que indiques, ten en cuenta las mismas anotaciones descritas en el ejercicio de _CAT_ para utilizarlo correctamente.
 
-1. Completa la función `head`. Esta recibirá por parámetros dos valores: "print" y "args".
+1. Completa la función `tail`. Esta recibirá por parámetros dos valores: "print" y "args".
 2. Invoca el método `fs.readFile` y pásale los siguientes argumentos:
 
--  `args` (El parámetro que recibes en la función `cat`)
+-  `args` (El parámetro que recibes en la función `tail`)
 -  Un string `'utf-8'` (El formato Unicode que deberá tener el texto)
 -  Un callback con los parámetros `error` y `data`
 
