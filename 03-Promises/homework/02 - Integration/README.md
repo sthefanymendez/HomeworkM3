@@ -122,7 +122,7 @@ Ve del lado del Front-End de tu proyecto, y busca la función **onSearch**. En e
 
 ### **DETAIL**
 
-Ahora queda que vallas a tu componente **Detail.jsx** y reemplaces la URL de la API con esta nueva URL de tu servidor: **`http://localhost:3000/rickandmorty/detail/`**. Ahora podrás ingresar al detalle de cualquier personaje sin problemas.
+Ahora queda que vayas a tu componente **Detail.jsx** y reemplaces la URL de la API con esta nueva URL de tu servidor: **`http://localhost:3000/rickandmorty/detail/`**. Ahora podrás ingresar al detalle de cualquier personaje sin problemas.
 
 ---
 
