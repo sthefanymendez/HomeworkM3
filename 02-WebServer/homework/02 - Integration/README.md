@@ -36,14 +36,13 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 6. Dentro de la carpeta **src** debes crear lo siguiente:
 
-   - Un archivo llamado `app.js`.
-   - Una carpeta llamada `controllers`.
-   - Una carpeta llamada `routes`.
-   - Una carpeta llamada `utils`.
-   - Una carpeta llamada `test`.
+   -  Un archivo llamado `app.js`.
+   -  Una carpeta llamada `controllers`.
+   -  Una carpeta llamada `routes`.
+   -  Una carpeta llamada `utils`.
+   -  Una carpeta llamada `test`.
 
-7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
-   <br />
+7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**. <br />
 
 ---
 
@@ -57,7 +56,15 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 3. Crea y levanta el servidor en el puerto **3001**.
 
-4. Dentro del callback del servidor debes crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js**.
+4. Dentro del callback del servidor debes:
+
+   -  copiar y pegar la siguiente línea:
+
+      ```JAVASCRIPT
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      ```
+
+   -  crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js**.
 
 5. Envía como respuesta un JSON con toda la información del personaje.
 
