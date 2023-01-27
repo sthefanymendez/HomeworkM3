@@ -116,13 +116,13 @@ Una vez levantado, verifica lo siguiente:
 
 ### **ON SEARCH**
 
-Ve del lado del Front-End de tu proyecto, y busca la función **onSearch**. En ella deberás eliminar la URL de la API de Rick&Morty y pegar la nueva URL de tu servidor: **`http://localhost:3000/rickandmorty/onsearch/`**. Si levantas tu proyecto deberías de poder utilizar tu search-bar normalmente.
+Ve del lado del Front-End de tu proyecto, y busca la función **onSearch**. En ella deberás eliminar la URL de la API de Rick&Morty y pegar la nueva URL de tu servidor: **`http://localhost:3001/rickandmorty/onsearch/`**. Si levantas tu proyecto deberías de poder utilizar tu search-bar normalmente.
 
 </br >
 
 ### **DETAIL**
 
-Ahora queda que vayas a tu componente **Detail.jsx** y reemplaces la URL de la API con esta nueva URL de tu servidor: **`http://localhost:3000/rickandmorty/detail/`**. Ahora podrás ingresar al detalle de cualquier personaje sin problemas.
+Ahora queda que vayas a tu componente **Detail.jsx** y reemplaces la URL de la API con esta nueva URL de tu servidor: **`http://localhost:3001/rickandmorty/detail/`**. Ahora podrás ingresar al detalle de cualquier personaje sin problemas.
 
 ---
 
