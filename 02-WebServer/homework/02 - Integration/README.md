@@ -36,14 +36,13 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 6. Dentro de la carpeta **src** debes crear lo siguiente:
 
-   - Un archivo llamado `app.js`.
-   - Una carpeta llamada `controllers`.
-   - Una carpeta llamada `routes`.
-   - Una carpeta llamada `utils`.
-   - Una carpeta llamada `test`.
+   -  Un archivo llamado `app.js`.
+   -  Una carpeta llamada `controllers`.
+   -  Una carpeta llamada `routes`.
+   -  Una carpeta llamada `utils`.
+   -  Una carpeta llamada `test`.
 
-7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
-   <br />
+7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**. <br />
 
 ---
 
@@ -57,7 +56,15 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 3. Crea y levanta el servidor en el puerto **3001**.
 
-4. Dentro del callback del servidor debes crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js**.
+4. Dentro del callback del servidor debes:
+
+   -  copiar y pegar la siguiente línea:
+
+      ```JAVASCRIPT
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      ```
+
+   -  crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js**.
 
 5. Envía como respuesta un JSON con toda la información del personaje.
 
@@ -73,9 +80,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 1. Abre tu proyecto en la carpeta **front** para poder hacer un pequeño cambio.
 
-2. Dentro del archivo **app.js** tienes una función llamada `onSearch`. La URL a la que le haces la petición es
-
-En el archivo App.js, donde tienes dentro de la función **onSearch**, cambia la ruta get que actualmente llama **<https://rickandmortyapi.com/api/character/>**. Tienes que reemplazarla por esta nueva URL: `http://localhost:3001/rickandmorty`.
+2. Dentro del archivo **app.js** tienes una función llamada `onSearch`. La URL a la que le haces la petición es, **<https://rickandmortyapi.com/api/character/>**. Tienes que reemplazarla por esta nueva URL: `http://localhost:3001/rickandmorty`.
 
 > **[NOTA]:** recuerda agregar a la ruta el id.
 
