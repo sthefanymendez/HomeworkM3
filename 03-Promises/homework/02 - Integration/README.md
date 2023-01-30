@@ -36,9 +36,9 @@ Crearemos una ruta para manejar las funcionalidades:
 
    -  Declarar una variable con el nombre "_getCharById_" y exportarla. Esta variable será una función que recibe dos parámetros: **res** y **id**.
 
-   -  Dentro de la función deberás hacer una petición (_código asincrónico_) a la URL `https://rickandmortyapi.com/api/character/`. Debes utilizar promesas para realizar esto. Recuerda que debes agregar el ID recibido por parámetro al final de esta URL.
+   -  Dentro de la función deberás hacer una petición (_código asincrónico_) a la URL `https://rickandmortyapi.com/api/character/:id`. Debes utilizar promesas para realizar esto. Recuerda que debes agregar el ID recibido por parámetro al final de esta URL.
 
-   -  Una vez que tienes la respuesta de la petición, crea un objeto en el que guardarás las propidades **image**, **name**, **gender** y **species** que recibiste como respuesta (todos los datos de la petición se encuentran dentro de una propiedad llamada **data**).
+   -  Una vez que tienes la respuesta de la petición, crea un objeto en el que guardarás las propidades **id**, **image**, **name**, **gender** y **species** que recibiste como respuesta (todos los datos de la petición se encuentran dentro de una propiedad llamada **data**).
 
    -  Una vez creado el objeto, deberás devolver una respuesta con status `200`, un Content-Type igual a `application/json`, y finalmente responde el objeto que creaste convertido en JSON:
 
