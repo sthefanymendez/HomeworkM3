@@ -22,7 +22,8 @@ describe("01 | Ejercicios", () => {
     expect(publications).not.toContainEqual({});
     // en este caso debe devolver un json con el error
     expect(response2.body).toEqual({
-      error: "No existe ninguna publicación con dicho título y autor indicado",
+      error:
+        "No se recibieron los parámetros necesarios para crear la publicación",
     });
     const newPost2 = {
       id: ++id,
