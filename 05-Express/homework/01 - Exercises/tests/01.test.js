@@ -109,7 +109,7 @@ describe("01 | Ejercicios", () => {
       expect(response.status).toBeGreaterThanOrEqual(400);
       expect(response.status).toBeLessThan(500);
       expect(response.body).toEqual({
-        error: "No existe ningun post del autor indicado",
+        error: "No existe ninguna publicación del autor indicado",
       });
     }
     const author2 = "Not Found";
@@ -125,7 +125,7 @@ describe("01 | Ejercicios", () => {
       expect(response2.status).toBeGreaterThanOrEqual(400);
       expect(response2.status).toBeLessThan(500);
       expect(response2.body).toEqual({
-        error: "No existe ningun post del autor indicado",
+        error: "No existe ninguna publicación del autor indicado",
       });
     }
   });
