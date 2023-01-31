@@ -20,20 +20,11 @@ En base a lo practicado en la homework Exercises, vamos a crear rutas con sus re
 
 ### **👩‍💻 EJERCICIO 1**
 
-### **Instalar Express y body-parser**
+### **Instalar Express**
 
 1. Debes instalar express con `npm install express`.
 
 2. Corrobora que se ha instalado abriendo tu archivo package.json dentro de `dependencies`, sección que se ha creado automáticamente cuando instalaste express o también puedes verla dentro de la carpeta node_modules.
-
-3. Además vas a necesitar instalar body-parser con `npm i body-parser`, esta librería es necesaria para que puedas recibir la información por body.
-
-4. Una vez la tengas instalada copia y pega este snippet de código dentro del archivo app.js:
-
-```javascript
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-app.use(bodyParser.json({ limit: "50mb" }));
-```
 
 <br />
 
