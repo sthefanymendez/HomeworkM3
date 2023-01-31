@@ -20,6 +20,10 @@ describe("01 | Ejercicios", () => {
     expect(response2.status).toBeGreaterThanOrEqual(400);
     expect(response2.status).toBeLessThan(500);
     expect(publications).not.toContainEqual({});
+    // en este caso debe devolver un json con el error
+    expect(response2.body).toEqual({
+      error: "No existe ninguna publicación con dicho título y autor indicado",
+    });
     const newPost2 = {
       id: ++id,
       author: "Author Test 2",
