@@ -2,7 +2,7 @@
 
 ## **🕒 Duración estimada**
 
-x minutos
+90 minutos
 
 <br />
 
@@ -21,7 +21,6 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 ---
 
 ### **👩‍💻 EJERCICIO 1**
-
 ### **Estructuración de Proyecto**
 
 1. Dirígete al directorio donde tienes el proyecto `Rick & Morty` y ábrelo en tu VSC.
@@ -42,11 +41,40 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
    -  Una carpeta llamada `utils`.
    -  Una carpeta llamada `test`.
 
-7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**. <br />
+7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**. 
+
+
+</br >
 
 ---
 
 ### **👩‍💻 EJERCICIO 2**
+
+En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
+
+```bash
+    npm init
+```
+
+De esta manera crearás un archivo `package.json`.
+
+En este sólo deberás instalarle las librerías **axios** y **nodemon** de la siguiente manera:
+
+```bash
+    npm install axios nodemon
+```
+
+Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
+
+```javascript
+    "start": "nodemon ./src/routes/server.js",
+```
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 3**
 
 ### **Crea tu primer server**
 
@@ -74,7 +102,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 ---
 
-### **👩‍💻 EJERCICIO 3**
+### **👩‍💻 EJERCICIO 4**
 
 ### **Conectar front - back**
 
@@ -85,32 +113,6 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 > **[NOTA]:** recuerda agregar a la ruta el id.
 
 <br />
-
----
-
-### **👩‍💻 EJERCICIO 4**
-
-En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
-
-```bash
-    npm init
-```
-
-De esta manera crearás un archivo `package.json`.
-
-En este sólo deberás instalarle las librerías **axios** y **nodemon** de la siguiente manera:
-
-```bash
-    npm install axios nodemon
-```
-
-Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
-
-```javascript
-    "start": "nodemon ./src/routes/server.js",
-```
-
-</br >
 
 ---
 
