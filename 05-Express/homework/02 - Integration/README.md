@@ -34,7 +34,7 @@ En base a lo practicado en la homework Exercises, vamos a crear rutas con sus re
 
 ### **Crear servidor con Express**
 
-1. Anteriormente habías creado tu servidor con node puro en el archivo app.js, ahora lo cambiaremos para utilizar directamente el framework Express.
+1. Anteriormente habías creado tu servidor con node puro en el archivo server.js, ahora lo cambiaremos para utilizar directamente el framework Express.
 
 2. Define una constante que llamada `express` y en ella guarda la función `require` que incluya el módulo **express**, de esta forma podemos usar el paquete **Express** que instalamos.
 
@@ -55,13 +55,16 @@ const app = express();
 
 ### **Crear Rutas**
 
-1. Anteriormente habíamos creado una ruta get que obtiene el personaje de Rick and Morty por **id** mediante un archivo que tenemos llamado `data.js`, bien vamos a modificarlo:
+En la constante **app** ahora tenemos acceso a los métodos HTTP, vamos a necesitar para este ejercicio el método `get` y traer información, este método recibe dos argumentos: el endpoint (path) y una función callback.
+Esta función callback recibe dos parámetros: el objeto `request`, por convención conocido como `req` y el objeto `response` por convención conocido como `res`. 
 
-    a. En app tenemos los métodos HTTP listos para utilizar, por ende si nesitamos conseguir la data, necesitamos el método get, este método recibe dos parámetros: el objeto `request` de ahora en más **req** y el objeto `response` de ahora en más **res**.
+🔹 Lo que hay que hacer:
 
-    b. Ahora, en vez de consumir los datos de **data.js**, lo vamos a hacer de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`
+1. Anteriormente, en la homework de **Web Server** habíamos creado una ruta get que obtiene el personaje de Rick & Morty por **id** mediante un archivo que tenemos llamado `data.js`, ahora traeremos esa información directamente de la API de Rick & Morty con la url `https://rickandmortyapi.com/api/character`. Para ello, hagamos los siguientes cambios:
+    
+    a. Borremos o comentemos la ruta get anteriormente creada en la homework **Web server**.
 
-    c. Crea la ruta **get/`rickandmorty`/character/{id}** y obtén solo los datos de la API https://rickandmortyapi.com/api/character/{detailId} que precisamos para el componente Card.jsx en el front, estos datos son:
+    b. Crea la ruta **get/`rickandmorty`/character/:id**, dentro de la ruta aplica la lógica y trae la información de la API de Rick & Morty: https://rickandmortyapi.com/api/character/{id}  para traer solo los datos que precisa el componente **Card.jsx** en el front, envía estos datos como respuesta:
 
     - id
     - name
@@ -69,7 +72,8 @@ const app = express();
     - gender
     - image
 
-2. Crea una segunda ruta **get/`rickandmorty`/detail/{detailId}**, obtén los datos de la API https://rickandmortyapi.com/api/character/{detailId} y envíalo al componente Detail.jsx:
+2. Crea una segunda ruta **get/`rickandmorty`/detail/:detailId**, 
+dentro de la ruta aplica la lógica y trae la información de la API de Rick & Morty: https://rickandmortyapi.com/api/character/{detailId} para traer los datos que precisa el componente **Detail.jsx** en el front, envía estos datos como respuesta:
 
     - name
     - status
@@ -80,13 +84,13 @@ const app = express();
 
 > Hint: Recuerda que los llamados a la API son asíncronos.
 
-3. Define una constante llamada `fav` que sea un arreglo vacío y crea las siguientes rutas:
+3. Define una constante llamada `fav` que sea un arreglo vacío y luego crea las siguientes rutas:
 
     a. **GET/`rickandmorty`/fav**, que obtenga los personajes guardados en el arreglo **fav**.
 
     b. **POST/`rickandmorty`/fav**, que guarde los personajes en el arreglo **fav**.
 
-    c. **DELETE/`rickandmorty`/fav/${id}**, que elimine el personaje en el arreglo **fav** a partir del **id** que recibe por parámetro.
+    c. **DELETE/`rickandmorty`/fav/:id**, que elimine el personaje en el arreglo **fav** a partir del **id** que recibe por parámetro.
 
 > Hint: Recuerda modularizar en tu carpeta controllers como lo aprendiste en la homework 03-Promises con los archivos **getCharById.js** y **getCharDetail.js**
 
@@ -98,9 +102,13 @@ const app = express();
 
 ### **Iniciar servidor**
 
-1. Crea un archivo llamado **start.js** en el que importes el servidor que se encuentra configurado en el archivo **app.js**, desde este archivo levantaremos el servidor.
+1. Crea un archivo llamado **start.js** en el que importes el servidor que se encuentra configurado en el archivo **server.js**, desde este archivo levantaremos el servidor.
 
-2. El al archivo **package.json** debes cambiar el script `start` donde su valor sea `start.js`
+2. En el archivo **package.json** debes cambiar el script `start` donde su valor sea `"nodemon ./src/routes/start.js"`
+
+```javascript
+    "start": "nodemon ./src/routes/start.js",
+```
 
 3. Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
 
@@ -114,12 +122,12 @@ const app = express();
 
 Por último, recordemos que en el front habíamos configurado la ruta para que consuma los datos desde nuestro servidor.
 
-Ahora dirígete a la carpeta **front** y haz los siguiente cambios:
+Ahora dirígete a la carpeta **front** y haz los siguientes cambios:
 
-1. En el componente Detail donde llamamos a la API de Rick & Morty, cambia la ruta get que actualmente llama a la ruta **https://rickandmortyapi.com/api/character/** que está en este momento por esta: ` http://localhost:3001/rickandmorty/detail`
+1. En el componente Detail donde llamamos a la API de Rick & Morty en la ruta **https://rickandmortyapi.com/api/character/** cámbiala por la ruta que creamos en el back: ` http://localhost:3001/rickandmorty/detail`
 
-2. En la action para agregar favorito, ahora debes enviar los personajes al endpoint **POST/`rickandmorty`/fav**.
+2. En la action para agregar favorito, ahora debes enviar los personajes al endpoint **http://localhost:3001/rickandmorty/fav** con el método `post`.
 
-3. En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint **DELETE/`rickandmorty`/fav**.
+3. En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint **http://localhost:3001/rickandmorty/fav** con el método `delete`.
 
 ✨✨Llegamos al final de esta homework creamos nuestro servidor y tres rutas para nuestro front!! 🚀🚀
