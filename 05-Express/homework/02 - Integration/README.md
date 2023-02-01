@@ -53,6 +53,24 @@ const app = express();
 
 ### **👩‍💻 EJERCICIO 3**
 
+### **Iniciar servidor**
+
+1. Crea un archivo llamado **start.js** en el que importes el servidor que se encuentra configurado en el archivo **server.js**, desde este archivo levantaremos el servidor.
+
+2. En el archivo **package.json** debes cambiar el script `start` donde su valor sea `"nodemon ./src/routes/start.js"`
+
+```javascript
+    "start": "nodemon ./src/routes/start.js",
+```
+
+3. Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 4**
+
 ### **Crear Rutas**
 
 En la constante **app** ahora tenemos acceso a los métodos HTTP, vamos a necesitar para este ejercicio el método `get` y traer información, este método recibe dos argumentos: el endpoint (path) y una función callback.
@@ -94,23 +112,6 @@ dentro de la ruta aplica la lógica y trae la información de la API de Rick & M
 
 > Hint: Recuerda modularizar en tu carpeta controllers como lo aprendiste en la homework 03-Promises con los archivos **getCharById.js** y **getCharDetail.js**
 
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 4**
-
-### **Iniciar servidor**
-
-1. Crea un archivo llamado **start.js** en el que importes el servidor que se encuentra configurado en el archivo **server.js**, desde este archivo levantaremos el servidor.
-
-2. En el archivo **package.json** debes cambiar el script `start` donde su valor sea `"nodemon ./src/routes/start.js"`
-
-```javascript
-    "start": "nodemon ./src/routes/start.js",
-```
-
-3. Es hora de iniciar el servidor, con el método listen de express, coloca a escuchar el servidor en el puerto 3001.
 
 <br />
 
