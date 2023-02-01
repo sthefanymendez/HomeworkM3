@@ -124,7 +124,7 @@ Por último, recordemos que en el front habíamos configurado la ruta para que c
 
 Ahora dirígete a la carpeta **front** y haz los siguientes cambios:
 
-1. En el componente Detail donde llamamos a la API de Rick & Morty en la ruta **https://rickandmortyapi.com/api/character/** cámbiala por la ruta que creamos en el back: ` http://localhost:3001/rickandmorty/detail`
+1. En el componente Detail donde llamamos a la API de Rick & Morty en la ruta **https://rickandmortyapi.com/api/character/** cámbiala por la ruta que creamos en el back: **http://localhost:3001/rickandmorty/detail**
 
 2. En la action para agregar favorito, ahora debes enviar los personajes al endpoint **http://localhost:3001/rickandmorty/fav** con el método `post`.
 
