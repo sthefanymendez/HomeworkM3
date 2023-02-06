@@ -16,11 +16,11 @@ En esta homework vamos a seguir trabajando en nuetra App de Rick & Morty del lad
 
 Las rutas que tenemos creadas hasta el momento son:
 
-- GET onSearch
-- GET Detail
-- GET favorites
-- POST favorites
-- DELETE favorites
+-  GET onSearch
+-  GET Detail
+-  GET favorites
+-  POST favorites
+-  DELETE favorites
 
 <br />
 
@@ -32,13 +32,9 @@ Las rutas que tenemos creadas hasta el momento son:
 
 ### **GET Search**
 
-1. Dirígete a tu carpeta `controllers` y en el archivo llamado `getCharById.js`, en la función llamada _getCharById_ ya estás haciendo una petición (_código asincrónico_) a la URL `https://rickandmortyapi.com/api/character/`. Así que sólo debes cambiar de promesas a `async await`.
+1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`** de modo tal que utilices async/await y no promesas.
 
-2. Para el manejo de errores, en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch:
-
-   - Dentro del bloque `try` inyecta el código donde haces el llamado y la lógica antes realizada.
-
-   - Dentro del bloque `catch`, éste debe recibir como parámetro el `error` y devuelve una respuesta con status `500` y enviar un mensaje de error y/o con la propiedad **message** del error que recibe el catch como parámetro.
+2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
 
 <br />
 
@@ -48,45 +44,9 @@ Las rutas que tenemos creadas hasta el momento son:
 
 ### **GET Detail**
 
-Ahora modificaremos la ruta de detalle de promesas a async await.
+1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharDetail`** de modo tal que utilices async/await y no promesas.
 
-1. Dirígete a tu carpeta `controllers`, en el archivo llamado `getCharDetail.js`, en la función llamada _getCharDetail_ implementa los mismos pasos del ejercicio anterior.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 3**
-
-### **GET Favorites**
-
-Ahora trabajaremos en la ruta de favoritos, en el método get creada en la **homework 05-Express** y la pasaremos de promesas a async await.
-
-1. Dirígete a tu carpeta `controllers`, en el archivo llamado `getFavorites.js`, en la función llamada _getFavorites_ implementa los mismos pasos del ejercicio anterior.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 4**
-
-### **POST Favorites**
-
-Ahora trabajaremos en la ruta de favoritos, en el método post creada en la **homework 05-Express** y la pasaremos de promesas a async await.
-
-1. Dirígete a tu carpeta `controllers`, en el archivo llamado `postFavorites.js`, en la función llamada _postFavorites_ implementa los mismos pasos del ejercicio anterior.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 5**
-
-### **DELETE Favorites**
-
-Ahora trabajaremos en la ruta de favoritos, en el método delete creada en la **homework 05-Express** y la pasaremos de promesas a async await.
-
-1. Dirígete a tu carpeta `controllers`, en el archivo llamado `deleteFavorites.js`, en la función llamada _deleteFavorites_ implementa los mismos pasos del ejercicio anterior.
+2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
 
 <br />
 
@@ -112,7 +72,7 @@ Haremos un par de cambios en el lado frontend:
 
 1. La action `addFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que envíe el personaje favorito al endpoint con el método POST **http://localhost:3001/rickandmorty/fav**.
 
-2. La action `removeFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que elimine el personaje favorito con el método DELETE al endpoint **http://localhost:3001/rickandmorty/fav**.
+2. La action `removeFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que elimine el personaje favorito con el método DELETE al endpoint **http://localhost:3001/rickandmorty/fav/:id**.
 
 3. Crea una action `getFavorites`, debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que solicite el personaje favorito con el método GET al endpoint **http://localhost:3001/rickandmorty/fav**.
 

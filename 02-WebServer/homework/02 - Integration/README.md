@@ -2,7 +2,7 @@
 
 ## **🕒 Duración estimada**
 
-x minutos
+90 minutos
 
 <br />
 
@@ -36,21 +36,49 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 6. Dentro de la carpeta **src** debes crear lo siguiente:
 
-   -  Un archivo llamado `app.js`.
+   -  Un archivo llamado `server.js`.
    -  Una carpeta llamada `controllers`.
    -  Una carpeta llamada `routes`.
    -  Una carpeta llamada `utils`.
    -  Una carpeta llamada `test`.
 
-7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**. <br />
+7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
+
+</br >
 
 ---
 
 ### **👩‍💻 EJERCICIO 2**
 
+En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
+
+```bash
+    npm init
+```
+
+De esta manera crearás un archivo `package.json`.
+
+En este sólo deberás instalar la librería **nodemon** de la siguiente manera:
+
+```bash
+    npm install nodemon
+```
+
+Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
+
+```javascript
+    "start": "nodemon ./src/server.js",
+```
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 3**
+
 ### **Crea tu primer server**
 
-1. Crea un archivo llamado `server.js` dentro de la carpeta **back/src/routes**.
+1. Dírigete al archivo llamado **`server.js`**.
 
 2. Importa **http** desde el módulo `http`.
 
@@ -64,7 +92,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
       res.setHeader('Access-Control-Allow-Origin', '*');
       ```
 
-   -  crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js**.
+   -  crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js** (deberás importar este archivo).
 
 5. Envía como respuesta un JSON con toda la información del personaje.
 
@@ -74,7 +102,7 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 ---
 
-### **👩‍💻 EJERCICIO 3**
+### **👩‍💻 EJERCICIO 4**
 
 ### **Conectar front - back**
 
@@ -85,32 +113,6 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 > **[NOTA]:** recuerda agregar a la ruta el id.
 
 <br />
-
----
-
-### **👩‍💻 EJERCICIO 4**
-
-En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
-
-```bash
-    npm init
-```
-
-De esta manera crearás un archivo `package.json`.
-
-En este sólo deberás instalarle las librerías **axios** y **nodemon** de la siguiente manera:
-
-```bash
-    npm install axios nodemon
-```
-
-Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
-
-```javascript
-    "start": "nodemon ./src/routes/server.js",
-```
-
-</br >
 
 ---
 
