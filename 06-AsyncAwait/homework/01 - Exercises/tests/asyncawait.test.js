@@ -202,7 +202,7 @@ describe("02 | Ejercicios - Async Await (poem-two)", () => {
     expect(promisifiedReadFileSpy).toHaveBeenCalled(); // problemC | No se llamó a promisifiedReadFile
   });
 
-  it.only("Problem D | Consologuea todas las stanzas de poem-two en orden o un error, versión Async Await", async () => {
+  it("Problem D | Consologuea todas las stanzas de poem-two en orden o un error, versión Async Await", async () => {
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
     const promisifiedReadFileSpy = jest.spyOn(utils, "promisifiedReadFile");
