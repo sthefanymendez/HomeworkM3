@@ -1,9 +1,9 @@
-# Módulo 3 Back End | Async Await
+# **Módulo 3 Back End | Async Await**
 
 ## **📌 Temas de la homework**
 
-- Async Await
-- Try Catch
+-  Async Await
+-  Try Catch
 
 <br />
 
@@ -21,9 +21,9 @@ x minutos
 
 Al finalizar esta homework habrás:
 
-- Aprendido otra forma de manejar las promesas.
-- Las ventajas que tiene async await respecto a las promesas.
-- Manejar try/catch para el manejo de errores.
+-  Aprendido otra forma de manejar las promesas.
+-  Las ventajas que tiene async await respecto a las promesas.
+-  Manejar try/catch para el manejo de errores.
 
 <br />
 

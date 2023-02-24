@@ -1,4 +1,4 @@
-# HW 02: WebServer | Integración
+# **HW 02 WebServer | Integración**
 
 ## **🕒 Duración estimada**
 

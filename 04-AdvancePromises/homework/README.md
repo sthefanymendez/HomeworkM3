@@ -1,8 +1,8 @@
-# Módulo 3 Back End | Advances Promises
+# **Módulo 3 Back End | Advances Promises**
 
 ## **📌 Temas de la homework**
 
-- Promesas avanzadas
+-  Promesas avanzadas
 
 <br />
 
@@ -20,8 +20,8 @@ x minutos
 
 Al finalizar esta homework habrás:
 
-- Aprendido a crear una librería de promesas similar a ES6.
-- Aprendido a encadenar promesas.
+-  Aprendido a crear una librería de promesas similar a ES6.
+-  Aprendido a encadenar promesas.
 
 <br />
 

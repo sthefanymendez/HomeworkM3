@@ -1,4 +1,4 @@
-# HW 06: AsyncAwait | Integración
+# **HW 06 Async Await | Integración**
 
 ## **🕒 Duración estimada**
 
