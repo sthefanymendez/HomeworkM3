@@ -1,4 +1,4 @@
-# HW 07: Testing | Integración
+# **HW 07 Testing | Integración**
 
 ## **🕒 Duración estimada**
 

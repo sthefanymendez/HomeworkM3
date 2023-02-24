@@ -1,4 +1,4 @@
-# Módulo 3 Back End | Node
+# **Módulo 3 Back End | Node**
 
 ## **📌 Temas de la homework**
 
@@ -34,7 +34,9 @@ Esta homework está estructurada en una sola carpeta:
 
 1. Puedes enfocarte en realizar los ejercicios de la carpeta [**01- Exercises**](./01%20-%20Exercises/README.md).
 
-<br/ >
+2. Ten en cuenta que, si bien la homework de hoy no está alineada de forma directa con lo visto en la lecture, nos servirá como instrumento para poder profundizar en los conceptos y objetivos preparados para esta lección.
+
+</br >
 
 ---
 

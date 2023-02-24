@@ -1,8 +1,8 @@
-# Módulo 3 Back End | Promises
+# **Módulo 3 Back End | Promises**
 
 ## **📌 Temas de la homework**
 
-- Promesas
+-  Promesas
 
 <br />
 
@@ -20,10 +20,10 @@ x minutos
 
 Al finalizar esta homework habrás:
 
-- Aprendido a crear una promesa en Javascript.
-- Aprendido a encadenar promesas.
-- Aprendido a crear generadores de funciones.
-- Manejar errores en las promesas.
+-  Aprendido a crear una promesa en Javascript.
+-  Aprendido a encadenar promesas.
+-  Aprendido a crear generadores de funciones.
+-  Manejar errores en las promesas.
 
 <br />
 

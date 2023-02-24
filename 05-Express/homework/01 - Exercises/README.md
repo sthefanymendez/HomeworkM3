@@ -1,4 +1,4 @@
-# HW 05: Express | Ejercicios
+# **HW 05 Express | Ejercicios**
 
 ## **🕒 Duración estimada**
 
@@ -81,11 +81,11 @@ npm run nodemon
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-- Una carpeta llamada `img`.
-- Una carpeta llamada **src**.
-- Una carpeta llamada **tests**.
-- Un archivo `package.json`
-- Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+-  Una carpeta llamada `img`.
+-  Una carpeta llamada **src**.
+-  Una carpeta llamada **tests**.
+-  Un archivo `package.json`
+-  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
 🔹 Dentro de la carpeta `src`, vas a encontrar la siguiente estructura:
 
