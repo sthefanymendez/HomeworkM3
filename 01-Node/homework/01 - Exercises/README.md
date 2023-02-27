@@ -16,6 +16,20 @@ En esta homework vas a implementar comandos bash comunes usando Node.js.
 
 <br />
 
+## **⛔️ ATENCIÓN ⛔️**
+
+Creemos que es importante que sepas que **`no`** encontrarás una relación directa entre lo que has visto en la lecture y lo que harás en esta homework.
+
+**👀 What? Why?**
+
+¡Esta es una decisión hecha a propósito! Creemos que con todo lo que sabes hasta este momento es suficiente para que realices esta homework. El nivel de dificultad fue testeado y es acorde para el momento en el que te encuentras.
+
+Si los ejercicios no salen a la primera, o a la segunda, no te preocupes, es normal. Pero una vez que entiendas cómo hacer el primer ejercicio, verás que todos son muy similares y que no era taaaan complicado xD!😉
+
+---
+
+<br />
+
 ## **📖 CONSIGNA**
 
 Lee atentamente este **README** y realiza cada uno de los ejercicios.
