@@ -135,7 +135,7 @@ npm run test:promises
 
    > Hint: Puedes usar el método promise.all()
 
-3. Función problemB:
+2. Función problemB:
 
    a. Con el método **exerciseUtils.promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
 
@@ -147,7 +147,9 @@ npm run test:promises
 
    e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
 
-4. Función problemC: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **exerciseUtils.promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
+**EJERCICIO EXTRA**
+
+Función problemC: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **exerciseUtils.promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
 
    a. Retorna una instancia de `Promise`, la cual recibe una función.
 

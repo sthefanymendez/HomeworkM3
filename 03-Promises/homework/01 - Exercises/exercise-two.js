@@ -49,6 +49,7 @@ function problemB() {
   // Tu código acá:
 }
 
+// EJERCICIO EXTRA
 function problemC() {
   let fs = require("fs");
   function promisifiedWriteFile(filename, str) {
