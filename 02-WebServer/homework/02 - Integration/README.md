@@ -32,15 +32,14 @@ En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer ser
 
 4. Crea una segunda carpeta al mismo nivel de la carpeta **front** con el nombre `back`.
 
-5. Dentro de la carpeta **back** crea una nueva carpeta con el nombre de **src**.
+5. Dentro de la carpeta **back** crea una nueva carpeta con el nombre **src** y otra con el nombre **test**.
 
-6. Dentro de la carpeta **src** debes crear lo siguiente:
+6. Crea las siguientes carpetas y archivos dentro de **src**:
 
    -  Un archivo llamado `server.js`.
    -  Una carpeta llamada `controllers`.
    -  Una carpeta llamada `routes`.
    -  Una carpeta llamada `utils`.
-   -  Una carpeta llamada `test`.
 
 7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
 
