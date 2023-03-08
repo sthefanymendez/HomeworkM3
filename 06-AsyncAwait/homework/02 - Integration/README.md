@@ -74,9 +74,7 @@ Haremos un par de cambios en el lado frontend:
 
 2. La action `removeFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que elimine el personaje favorito con el método DELETE al endpoint **http://localhost:3001/rickandmorty/fav/:id**.
 
-3. Crea una action `getFavorites`, debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que solicite el personaje favorito con el método GET al endpoint **http://localhost:3001/rickandmorty/fav**.
-
-4. Levanta también tu aplicación en **http://localhost:3000** para ver tu aplicación Rick & Morty funcionando completamente.
+3. Levanta también tu aplicación en **http://localhost:3000** para ver tu aplicación Rick & Morty funcionando completamente.
 
 ---
 

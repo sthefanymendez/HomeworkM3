@@ -33,7 +33,7 @@ const express = require('express');
 const server = express();
 const PORT = 3001;
 
-server.lister(PORT, () => {
+server.listen(PORT, () => {
    console.log('Server raised in port ' + PORT);
 });
 ```
@@ -104,7 +104,7 @@ const router = Router();
 
 ---
 
-### **👩‍💻 EJERCICIO 3**
+### **👩‍💻 EJERCICIO 4**
 
 ## **Ruta Fav**
 
@@ -120,7 +120,7 @@ Dentro de tu carpeta **`util`** simularemos una base de datos, que en este caso 
 
 ---
 
-### **👩‍💻 EJERCICIO 4**
+### **👩‍💻 EJERCICIO 5**
 
 ### **Conectar rutas con frontend**
 
