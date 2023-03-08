@@ -34,7 +34,7 @@ Dirígete al directorio en el que tienes tu proyecto **`Rick & Morty`** y ábrel
 
 3. Dentro de la carpeta **src** crea lo siguiente:
 
-   -  Un archivo llamado **`server.js`**.
+   -  Un archivo llamado **`index.js`**.
    -  Una carpeta llamada **`controllers`**.
    -  Una carpeta llamada **`routes`**.
    -  Una carpeta llamada **`utils`**.
@@ -62,7 +62,7 @@ De esta manera crearás un archivo **`package.json`**. En este solo deberás ins
 Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
 
 ```json
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/index.js"
 ```
 
 <br />
@@ -71,7 +71,7 @@ Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`
 
 ### **👩‍💻 EJERCICIO 3 | Servidor**
 
-Dírigete al archivo llamado **`server.js`** que creaste en el ejercicio 1. Dentro de este deberás:
+Dírigete al archivo llamado **`index.js`** que creaste en el ejercicio 1. Dentro de este deberás:
 
 1. Importar **http** desde el módulo **`http`**.
 
