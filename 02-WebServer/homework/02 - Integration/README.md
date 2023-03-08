@@ -24,6 +24,8 @@ En esta homework vamos a estructurar nuestro proyecto por el lado del Back-End, 
 
 ---
 
+## **📋 INSTRUCCIONES**
+
 ### **👩‍💻 EJERCICIO 1 | Estructuración**
 
 Dirígete al directorio en el que tienes tu proyecto **`Rick & Morty`** y ábrelo en tu VSC.
@@ -99,13 +101,13 @@ Dírigete al archivo llamado **`index.js`** que creaste en el ejercicio 1. Dentr
 
 2. Busca tu función **`onSearch`**. Deberás reemplazar la url a la que se le está haciendo la petición:
 
-   -  **URL anitgua**: _https://rickandmortyapi.com/api/character/${id}_.
-   -  **URL por la que debes reemplazar**: _http://localhost:3001/rickandmorty/character/${id}_.
+   -  **URL anitgua**: "**https://rickandmortyapi.com/api/character/${id}**".
+   -  **URL por la que debes reemplazar**: "**http://localhost:3001/rickandmorty/character/${id}**".
 
 3. Ahora dirígete a tu componente **`Detail`** . Aquí tienes un **`useEffect`** que también está haciendo una petición a la API, por lo que debemos hacer el mismo cambio que antes:
 
-   -  **URL anitgua**: _https://rickandmortyapi.com/api/character/${id}_.
-   -  **URL por la que debes reemplazar**: _http://localhost:3001/rickandmorty/character/${id}_.
+   -  **URL anitgua**: "**https://rickandmortyapi.com/api/character/${id}**".
+   -  **URL por la que debes reemplazar**: "**http://localhost:3001/rickandmorty/character/${id}**".
 
 > **[NOTA]:** recuerda agregar el **id** como parámetro al final.
 
