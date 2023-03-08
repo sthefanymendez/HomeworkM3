@@ -122,3 +122,7 @@ Ahora comprobaremos que todo funciona correctamente. Para esto:
 2. Una vez que todo esté arriba, intenta utilizar tu aplicación. Trae personajes e ingresa a sus detalles para chequear que no haya ningún error.
 
 > [**NOTA**]: solo podrás buscar a los personajes con id **1**, **2**, **3**, **4** y **5**, ya que estos son los que tienes guardados en tu archivo **`data.js`**.
+
+</br >
+
+<img src="./img/example.gif" alt="" />
