@@ -1,26 +1,31 @@
-# **HW 06 Async Await | Integración**
+# **💪 HW6 | Async Await - Integration**
 
-## **🕒 Duración estimada**
+## **🕒 DURACIÓN ESTIMADA**
 
-x minutos
+XX minutos
 
 <br />
 
 ---
 
-## **💻 Rick & Morty App**
+<div align="center">
 
-### **📝 INTRO**
+## **💻 RICK AND MORTY APP 💻**
 
-En esta homework vamos a seguir trabajando en nuetra App de Rick & Morty del lado del servidor. En base a las rutas asincrónicas ya creadas, vamos a pasarlas de promesas a AsyncAwait.
+</div>
 
-Las rutas que tenemos creadas hasta el momento son:
+## **📝 INTRODUCCIÓN**
 
--  GET onSearch
--  GET Detail
--  GET favorites
--  POST favorites
--  DELETE favorites
+En esta homework vamos a continuar trabajando sobre las rutas que construimos en la homework anterior:
+
+-  **`GET` getCharById**
+-  **`GET` login**
+-  **`POST` postFav**
+-  **`DELETE` deleteFav**
+
+Nuestro objetivo será transformar todas las funciones que utilicen promesas, en funciones gestionadas por **`async await`**.
+
+🤓 ¿Preparad@? 🤓
 
 <br />
 
@@ -28,25 +33,41 @@ Las rutas que tenemos creadas hasta el momento son:
 
 ## **📋 INSTRUCCIONES**
 
-### **👩‍💻 EJERCICIO 1**
+### **👩‍💻 EJERCICIO 1 | GET getCharById**
 
-### **GET Search**
+Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`** de modo tal que utilices **async/await** y no promesas.
 
-1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`** de modo tal que utilices async/await y no promesas.
-
-2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
+2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 2**
+### **👩‍💻 EJERCICIO 2 | GET login**
 
-### **GET Detail**
+Dirígete a tu carpeta **`controllers`** y modifica la función **`login`** de modo tal que utilices **async/await** y no promesas.
 
-1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharDetail`** de modo tal que utilices async/await y no promesas.
+2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
 
-2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 3 | POST postFav**
+
+Dirígete a tu carpeta **`controllers`** y modifica la función **`postFav`** de modo tal que utilices **async/await** y no promesas.
+
+2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 4 | DELETE deleteFav**
+
+Dirígete a tu carpeta **`controllers`** y modifica la función **`deleteFav`** de modo tal que utilices **async/await** y no promesas.
+
+2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
 
 <br />
 
@@ -54,38 +75,31 @@ Las rutas que tenemos creadas hasta el momento son:
 
 ### **👀 COMPROBEMOS...**
 
-Levanta el servidor con el comando:
+Levanta el servidor y tu proyecto Front-End. Revisa que todo aún funcione correctamente:
 
-```bash
-    npm start
-```
-
-Una vez levantado, verifica lo siguiente:
-
-</br >
-
-### **FRONTEND**
-
-### **ACTIONS**
-
-Haremos un par de cambios en el lado frontend:
-
-1. La action `addFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que envíe el personaje favorito al endpoint con el método POST **http://localhost:3001/rickandmorty/fav**.
-
-2. La action `removeFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que elimine el personaje favorito con el método DELETE al endpoint **http://localhost:3001/rickandmorty/fav/:id**.
-
-3. Levanta también tu aplicación en **http://localhost:3000** para ver tu aplicación Rick & Morty funcionando completamente.
-
----
-
-</br >
-
-## **🚨 A TENER EN CUENTA**
-
-Si tu servidor no está levantado, o si los links no fueron bien escritos, tu aplicación no funcionará correctamente.
+1. Que puedas traer cualquier personaje por su **id** desde la Search Bar.
+2. Que puedas ingresar al detalle de cualquier personaje que hayas encontrado.
+3. Que puedas agregar todos los personajes que quieras a tus favoritos.
+4. Que puedas eliminar a todos los personajes que quieras de tus favoritos.
 
 </br >
 
 ---
 
-¡Felicitaciones! Ahora tienes una comunicación front-back completa!🥳🥳
+## **📌 EXTRA CREDIT**
+
+Ahora te desafiamos a que transformes las siguientes funciones de tu front en a **`async await`**:
+
+1. **`App.js`**: en este archivo deberás transformar dos funciones:
+
+   -  **onSearch**
+   -  **login**
+
+2. **`/redux/actions.js`**: en este archivo deberás transformar dos funciones:
+
+   -  **addFav**
+   -  **removeFav**
+
+3. **`/components/Detail.jsx`**: aquí solo debes transformar:
+
+   -  **useEffect**.

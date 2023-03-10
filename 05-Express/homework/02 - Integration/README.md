@@ -14,7 +14,7 @@ XX minutos
 
 </div>
 
-## **📝 INTRO**
+## **📝 INTRODUCCIÓN**
 
 En esta homework crearemos un servidor con la librería de express. A su vez crearemos distintas rutas, y también simularemos una base de datos apra nuestros personajes favoritos.
 
@@ -197,7 +197,7 @@ Llegó el momento para conectar nuestro nuevo servidor con nuestro Front-End. Pa
                payload: data,
             });
          });
-      }; 
+      };
    };
 
    // REDUCER | ADD_FAV

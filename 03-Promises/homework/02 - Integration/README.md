@@ -14,7 +14,7 @@ XX minutos
 
 </div>
 
-## **📝 INTRO**
+## **📝 INTRODUCCIÓN**
 
 En esta homework crearemos una ruta GET que realizará una peticion asincrónica a la API de Rick & Morty. De esta manera podremos obtener un personaje por **id**, y podremos enviar esta información a nuestro Front-End.
 
