@@ -67,7 +67,7 @@ En este ejercicio construiremos la nueva versión de este controlador para que n
 
 4. En el caso de que todo salga OK y se encuentre a un personaje, devuelve un JSON con las propiedades: **id**, **status**, **name**, **species**, **origin**, **image** y **gender**.
 
-5. En el caso de que todo salga OK pero no se encuentre a un personaje, devuelve un JSON con **status 404** y un mensaje que diga _Not fount_.
+5. En el caso de que todo salga OK pero no se encuentre a un personaje, devuelve un mensaje con **status 404** que diga _Not fount_.
 
 6. Si hay un error debes responder con un status 500, y un texto con la propiedad **`message`** de **error**.
 
@@ -87,7 +87,7 @@ module.exports = [{email: /*Tu email*/, password: /*Tu password*/}];
 
 2. Deberás obtener los datos **email** y **password** que recibes mediante **`Query`**. Una vez hecho esto, importa tu arreglo de usuarios y verifica si dentro de ese arreglo hay un usuario que coincida tanto su email y su contraseña con los que recibes por **`Query`**.
 
-3. En el caso de que haya un usuario que cumpla esa condición, entonces debes devolver una respuesta con **status 200**, y, en formato JSON, un objeto con una propiedad **access: `true`**. Caso contrario devuelve lo mismo pero con la propiedad **access: `false`**. .
+3. En el caso de que haya un usuario que cumpla esa condición, entonces debes devolver una respuesta con **status 200**, y, en formato JSON, un objeto con una propiedad **access: `true`**. Caso contrario devuelve lo mismo pero con la propiedad **access: `false`**.
 
 <br />
 
@@ -158,7 +158,7 @@ Dirígete al archivo **`index.js`** en el que tienes tu servidor. Aquí deberás
 
 3. Crea un middleware que ejecute a **`express.json()`**.
 
-4. Crea un middleware que agregue el string **`/rickandmorty`** antes de cada una de tus rutas.
+4. Crea un middleware que agregue el string "**`/rickandmorty`**" antes de cada una de tus rutas.
 
 <br />
 
@@ -185,6 +185,8 @@ Llegó el momento para conectar nuestro nuevo servidor con nuestro Front-End. Pa
 2. Ahora conectaremos nuestra ruta **postFav**. Para esto dirígete a tu archivo **`actions.js`** y reemplaza tu función addFav. Luego dirígete a tu **`reducer`** y reemplaza tu caso "ADD_FAV".
 
    ```js
+   import axios from "axios";
+
    // ACTION | addFav
    export const addFav = (character) => {
       const endpoint = 'http://localhost:3001/rickandmorty/fav';
@@ -202,6 +204,8 @@ Llegó el momento para conectar nuestro nuevo servidor con nuestro Front-End. Pa
    case 'ADD_FAV':
          return { ...state, myFavorites: payload, allCharacters: payload };
    ```
+
+> [**NOTA**]: debes importar **axios**.
 
 3. Por último nos queda conectar nuestra ruta **deleteFav**. Para esto dirígete a tu archivo **`actions.js`** y reemplaza tu función removeFav. Luego dirígete a tu **`reducer`** y reemplaza tu caso "REMOVE_FAV".
 
