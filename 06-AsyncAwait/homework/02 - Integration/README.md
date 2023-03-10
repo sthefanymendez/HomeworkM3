@@ -16,14 +16,7 @@ XX minutos
 
 ## **📝 INTRODUCCIÓN**
 
-En esta homework vamos a continuar trabajando sobre las rutas que construimos en la homework anterior:
-
--  **`GET` getCharById**
--  **`GET` login**
--  **`POST` postFav**
--  **`DELETE` deleteFav**
-
-Nuestro objetivo será transformar todas las funciones que utilicen promesas, en funciones gestionadas por **`async await`**.
+En esta homework vamos a transformar todas nuestras funciones asincrónicas que utilizan promesas a **`async await`**.
 
 🤓 ¿Preparad@? 🤓
 
@@ -31,7 +24,15 @@ Nuestro objetivo será transformar todas las funciones que utilicen promesas, en
 
 ---
 
-## **📋 INSTRUCCIONES**
+<div align="center">
+
+## **📋 INSTRUCCIONES 📋**
+
+</div>
+
+## **🚀 PARTE 1 | Server 🚀**
+
+<br />
 
 ### **👩‍💻 EJERCICIO 1 | GET getCharById**
 
@@ -43,31 +44,41 @@ Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`*
 
 ---
 
-### **👩‍💻 EJERCICIO 2 | GET login**
+## **🚀 PARTE 2 | Client 🚀**
 
-Dirígete a tu carpeta **`controllers`** y modifica la función **`login`** de modo tal que utilices **async/await** y no promesas.
+<br />
 
-2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
+### **👩‍💻 EJERCICIO 2 | APP**
+
+Dirígete a tu archivo **`App.js`** y modifica:
+
+1. La función **`onSearch`** de modo tal que utilices **async/await** y no promesas.
+
+2. La función **`login`** de modo tal que utilices **async/await** y no promesas.
+
+3. Para manejar correctamente el error envuelve el contenido de ambas funciones en un **try-catch**.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 3 | POST postFav**
+### **👩‍💻 EJERCICIO 3 | ACTIONS**
 
-Dirígete a tu carpeta **`controllers`** y modifica la función **`postFav`** de modo tal que utilices **async/await** y no promesas.
+Dirígete a tu archivo **`/redux/actions.js`** y modifica:
 
-2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
+1. La función **`addFav`** de modo tal que utilices **async/await** y no promesas.
+
+2. La función **`removeFav`** de modo tal que utilices **async/await** y no promesas.
+
+3. Para manejar correctamente el error envuelve el contenido de ambas funciones en un **try-catch**.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 4 | DELETE deleteFav**
+<br />
 
-Dirígete a tu carpeta **`controllers`** y modifica la función **`deleteFav`** de modo tal que utilices **async/await** y no promesas.
-
-2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
+> [**NOTA**]: no modificaremos el archivo **`Detail.jsx`** porque suele ser más conveniente utilizar promesas en los **useEffect** que utilizar async/await.
 
 <br />
 
@@ -81,25 +92,3 @@ Levanta el servidor y tu proyecto Front-End. Revisa que todo aún funcione corre
 2. Que puedas ingresar al detalle de cualquier personaje que hayas encontrado.
 3. Que puedas agregar todos los personajes que quieras a tus favoritos.
 4. Que puedas eliminar a todos los personajes que quieras de tus favoritos.
-
-</br >
-
----
-
-## **📌 EXTRA CREDIT**
-
-Ahora te desafiamos a que transformes las siguientes funciones de tu front en a **`async await`**:
-
-1. **`App.js`**: en este archivo deberás transformar dos funciones:
-
-   -  **onSearch**
-   -  **login**
-
-2. **`/redux/actions.js`**: en este archivo deberás transformar dos funciones:
-
-   -  **addFav**
-   -  **removeFav**
-
-3. **`/components/Detail.jsx`**: aquí solo debes transformar:
-
-   -  **useEffect**.
