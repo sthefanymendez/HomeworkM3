@@ -197,7 +197,7 @@ Llegó el momento para conectar nuestro nuevo servidor con nuestro Front-End. Pa
                payload: data,
             });
          });
-      };
+      }; 
    };
 
    // REDUCER | ADD_FAV
