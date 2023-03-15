@@ -61,7 +61,7 @@ En este ejercicio construiremos la nueva versión de este controlador para que n
 
 2. Crea una función con el nombre **`getCharById`** y expórtala. Recibe por parámetro a los objetos **`req`** y **`res`**.
 
-3. Dentro de la función has una petición a la API a partir del **id** que recibes por **`Params`**.
+3. Dentro de la función haz una petición a la API a partir del **id** que recibes por **`Params`**.
 
 > [**NOTA**]: no olvides importar **`axios`**.
 
