@@ -45,3 +45,11 @@ Esta homework está estructurada en una sola carpeta:
 Si aún no tienes instalado **NodeJS** o tienes dudas de la versión que estás utilizando, te sugerimos que sigas estas instrucciones para asegurarte que no tendrás problemas.
 
 [**INSTRUCCIONES**](https://rise.articulate.com/share/O0SjmUFcjx_3AXSA2lizESbHitgJIOpq#/lessons/KSire0WgNTOeIoTA2xlNr2A9136cqQvP)
+
+</br >
+
+---
+
+## **✅ FEEDBACK**
+
+### Usa este [**formulario**](https://docs.google.com/forms/d/e/1FAIpQLSe1MybH_Y-xcp1RP0jKPLndLdJYg8cwyHkSb9MwSrEjoxyzWg/viewform) para reportar tus observaciones de mejora o errores. Tu feedback es muy importante para seguir mejorando el modelo educativo.

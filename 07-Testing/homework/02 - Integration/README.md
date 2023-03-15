@@ -1,18 +1,20 @@
-# **HW 07 Testing | Integración**
+# **💪 HW7 | Testing - Integration**
 
-## **🕒 Duración estimada**
+## **🕒 DURACIÓN ESTIMADA**
 
-x minutos
+XX minutos
 
 <br />
 
 ---
 
-## **😛 Rick & Morty App**
+<div align="center">
 
-### **📌 INTRO**
+## **💻 RICK AND MORTY APP 💻**
 
-🤓 **¡Bienvenido a la última homework del Módulo 3!** 🥳
+</div>
+
+## **📝 INTRODUCCIÓN**
 
 En esta homework construiremos algunos test para validar que nuestro proyecto esté funcionando correctamente. Te enseñaremos a construir algunos, pero tu puedes crear todos los que gustes.
 
