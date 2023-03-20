@@ -1,6 +1,6 @@
-# **HW 02 WebServer | Integración**
+# **💪 HW2 | Web Server - Integration**
 
-## **🕒 Duración estimada**
+## **🕒 DURACIÓN ESTIMADA**
 
 90 minutos
 
@@ -8,46 +8,46 @@
 
 ---
 
-## **😛 Rick & Morty App**
+<div align="center">
 
-### **📌 INTRO**
+## **💻 RICK AND MORTY APP 💻**
 
-Hasta el momento hemos trabajado en nuestra app Rick and Morty en el lado frontend. A partir de ahora continuaremos con nuestra app desde el lado backend.
+</div>
 
-En esta homework, vamos a estructurar nuestro proyecto, crear nuestro primer server y conectar front con back.
+## **📝 INTRODUCCIÓN**
+
+Hasta este momento hemos construido una Single Page Aplication por el lado del Front-End. Ahora llego la hora de construir un servidor que nos permita realizar acciones y comunicar información a nuestra App.
+
+En esta homework vamos a estructurar nuestro proyecto por el lado del Back-End, crear nuestro primer servidor y conectar Front-End con este.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 1**
+## **📋 INSTRUCCIONES**
 
-### **Estructuración de Proyecto**
+### **👩‍💻 EJERCICIO 1 | Estructuración**
 
-1. Dirígete al directorio donde tienes el proyecto `Rick & Morty` y ábrelo en tu VSC.
+Dirígete al directorio en el que tienes tu proyecto **`Rick & Morty`** y ábrelo en tu VSC.
 
-2. En la raíz de tu proyecto crea una carpeta llamada `front`.
+1. En la raíz de tu proyecto crea una carpeta llamada **`Client`**. Todo el contenido trabajado durante el Módulo 2 guárdalo dentro de esta carpeta.
 
-3. Todo el contenido trabajado durante el módulo 2, guárdalo dentro de la carpeta **front**
+2. Crea una segunda carpeta al mismo nivel **`Server`**. Dentro de esta crea una carpeta con el nombre **src** y otra con el nombre **test**.
 
-4. Crea una segunda carpeta al mismo nivel de la carpeta **front** con el nombre `back`.
+3. Dentro de la carpeta **src** crea lo siguiente:
 
-5. Dentro de la carpeta **back** crea una nueva carpeta con el nombre **src** y otra con el nombre **test**.
+   -  Un archivo llamado **`index.js`**.
+   -  Una carpeta llamada **`controllers`**.
+   -  Una carpeta llamada **`routes`**.
+   -  Una carpeta llamada **`utils`**.
 
-6. Crea las siguientes carpetas y archivos dentro de **src**:
-
-   -  Un archivo llamado `server.js`.
-   -  Una carpeta llamada `controllers`.
-   -  Una carpeta llamada `routes`.
-   -  Una carpeta llamada `utils`.
-
-7. Pasa el archivo `data.js` que se encuentra en la carpeta **02 - Integration** a tu carpeta **back/src/utils**.
+4. Copia el archivo [**data.js**](./data.js) que se encuentra en esta carpeta y pégalo dentro de tu pryecto en la carpeta **utils**.
 
 </br >
 
 ---
 
-### **👩‍💻 EJERCICIO 2**
+### **👩‍💻 EJERCICIO 2 | Configuración**
 
 En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
 
@@ -55,9 +55,7 @@ En la carpeta raíz de tu Back-End tendrás que ejecutar el comando:
     npm init
 ```
 
-De esta manera crearás un archivo `package.json`.
-
-En este sólo deberás instalar la librería **nodemon** de la siguiente manera:
+De esta manera crearás un archivo **`package.json`**. En este solo deberás instalar la librería **nodemon** de la siguiente manera:
 
 ```bash
     npm install nodemon
@@ -65,54 +63,68 @@ En este sólo deberás instalar la librería **nodemon** de la siguiente manera:
 
 Una vez hecho esto, dentro del objeto **scripts** tienes que dejar el script **`start`** de la siguiente manera:
 
-```javascript
-    "start": "nodemon ./src/server.js",
+```json
+    "start": "nodemon ./src/index.js"
 ```
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 3**
+### **👩‍💻 EJERCICIO 3 | Servidor**
 
-### **Crea tu primer server**
+Dírigete al archivo llamado **`index.js`** que creaste en el ejercicio 1. Dentro de este deberás:
 
-1. Dírigete al archivo llamado **`server.js`**.
+1. Importar **http** desde el módulo **`http`**.
 
-2. Importa **http** desde el módulo `http`.
+2. A partir de **http** crea y levanta un servidor en el puerto **3001**.
 
-3. Crea y levanta el servidor en el puerto **3001**.
+3. Copia y pega la siguiente línea dentro del callback de tu servidor
 
-4. Dentro del callback del servidor debes:
+   ```js
+   res.setHeader('Access-Control-Allow-Origin', '*');
+   ```
 
-   -  copiar y pegar la siguiente línea:
+4. Crea un condicional que verfique si la **url** incluye el string "**`/rickandmorty/character`**". En el caso de que si lo haga deberás obtener el **id** del personaje que te llega por la **url**. Luego de obtener el **id**, búscalo dentro del archivo **`data.js`** (deberás importar el archivo). Ten en cuenta que el **id** de la url es un string, y los **id** de los personajes son números.
 
-      ```JAVASCRIPT
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      ```
+> [**NOTA**]: la url te llegará con la siguiente estructura. Ejemplo: **`/rickandmorty/character/:id`**. Piensa en una lógica que te permita obtener el **id** del final.
 
-   -  crear un condicional que pregunte si la **url** incluye el string `rickandmorty/character`. En caso de que si lo incluya, obtén el personaje por id que llega por **req.url** y que coincida con el personaje en el archivo **data.js** (deberás importar este archivo).
-
-5. Envía como respuesta un JSON con toda la información del personaje.
-
-   > **[PISTA]:** dentro del parámetro **`req.url`** está el id del personaje. Puedes utilizar el método split() para obtenerlo...
+5. Envía como respuesta un JSON que contenga al personaje.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 4**
+### **👩‍💻 EJERCICIO 4 | Front & Back**
 
-### **Conectar front - back**
+1. Abre tu proyecto en la carpeta **`Client`** y dirígete al archivo **`App.js`** en el que realizarás un pequeño cambio.
 
-1. Abre tu proyecto en la carpeta **front** para poder hacer un pequeño cambio.
+2. Busca tu función **`onSearch`**. Deberás reemplazar la url a la que se le está haciendo la petición:
 
-2. Dentro del archivo **app.js** tienes una función llamada `onSearch`. La URL a la que le haces la petición es, **<https://rickandmortyapi.com/api/character/>**. Tienes que reemplazarla por esta nueva URL: `http://localhost:3001/rickandmorty`.
+   -  **URL anitgua**: "**https://rickandmortyapi.com/api/character/${id}**".
+   -  **URL por la que debes reemplazar**: "**http://localhost:3001/rickandmorty/character/${id}**".
 
-> **[NOTA]:** recuerda agregar a la ruta el id.
+3. Ahora dirígete a tu componente **`Detail`** . Aquí tienes un **`useEffect`** que también está haciendo una petición a la API, por lo que debemos hacer el mismo cambio que antes:
+
+   -  **URL anitgua**: "**https://rickandmortyapi.com/api/character/${id}**".
+   -  **URL por la que debes reemplazar**: "**http://localhost:3001/rickandmorty/character/${id}**".
+
+> **[NOTA]:** recuerda agregar el **id** como parámetro al final.
 
 <br />
 
 ---
 
-Hemos terminado por ahora!! 🥳 más adelante crearemos más rutas para nuestro frontend. 🚀
+### **👀 ¡COMPROBEMOS NUESTRO TRABAJO!**
+
+Ahora comprobaremos que todo funciona correctamente. Para esto:
+
+1. Abre dos terminales. En una deberás levantar tu proyecto del lado Front-End, y en la otra levantar tu proyecto en el lado Back-End.
+
+2. Una vez que todo esté arriba, intenta utilizar tu aplicación. Trae personajes e ingresa a sus detalles para chequear que no haya ningún error.
+
+> [**NOTA**]: solo podrás buscar a los personajes con id **1**, **2**, **3**, **4** y **5**, ya que estos son los que tienes guardados en tu archivo **`data.js`**.
+
+</br >
+
+<img src="./img/example.gif" alt="" />

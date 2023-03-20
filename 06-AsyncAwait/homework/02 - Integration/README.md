@@ -1,52 +1,84 @@
-# **HW 06 Async Await | Integración**
+# **💪 HW6 | Async Await - Integration**
 
-## **🕒 Duración estimada**
+## **🕒 DURACIÓN ESTIMADA**
 
-x minutos
-
-<br />
-
----
-
-## **💻 Rick & Morty App**
-
-### **📝 INTRO**
-
-En esta homework vamos a seguir trabajando en nuetra App de Rick & Morty del lado del servidor. En base a las rutas asincrónicas ya creadas, vamos a pasarlas de promesas a AsyncAwait.
-
-Las rutas que tenemos creadas hasta el momento son:
-
--  GET onSearch
--  GET Detail
--  GET favorites
--  POST favorites
--  DELETE favorites
+XX minutos
 
 <br />
 
 ---
 
-## **📋 INSTRUCCIONES**
+<div align="center">
 
-### **👩‍💻 EJERCICIO 1**
+## **💻 RICK AND MORTY APP 💻**
 
-### **GET Search**
+</div>
 
-1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`** de modo tal que utilices async/await y no promesas.
+## **📝 INTRODUCCIÓN**
 
-2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
+En esta homework vamos a transformar todas nuestras funciones asincrónicas que utilizan promesas a **`async await`**.
+
+🤓 ¿Preparad@? 🤓
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 2**
+<div align="center">
 
-### **GET Detail**
+## **📋 INSTRUCCIONES 📋**
 
-1. Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharDetail`** de modo tal que utilices async/await y no promesas.
+</div>
 
-2. Para manejar correctamente el error, envuelve el contenido de esta función en un **try-catch** en el caso de que la promesa falle, envuelve el código dentro del bloque try-catch.
+## **🚀 PARTE 1 | Server 🚀**
+
+<br />
+
+### **👩‍💻 EJERCICIO 1 | GET getCharById**
+
+Dirígete a tu carpeta **`controllers`** y modifica la función **`getCharById`** de modo tal que utilices **async/await** y no promesas.
+
+2. Para manejar correctamente el error envuelve el contenido de esta función en un **try-catch**.
+
+<br />
+
+---
+
+## **🚀 PARTE 2 | Client 🚀**
+
+<br />
+
+### **👩‍💻 EJERCICIO 2 | APP**
+
+Dirígete a tu archivo **`App.js`** y modifica:
+
+1. La función **`onSearch`** de modo tal que utilices **async/await** y no promesas.
+
+2. La función **`login`** de modo tal que utilices **async/await** y no promesas.
+
+3. Para manejar correctamente el error envuelve el contenido de ambas funciones en un **try-catch**.
+
+<br />
+
+---
+
+### **👩‍💻 EJERCICIO 3 | ACTIONS**
+
+Dirígete a tu archivo **`/redux/actions.js`** y modifica:
+
+1. La función **`addFav`** de modo tal que utilices **async/await** y no promesas.
+
+2. La función **`removeFav`** de modo tal que utilices **async/await** y no promesas.
+
+3. Para manejar correctamente el error envuelve el contenido de ambas funciones en un **try-catch**.
+
+<br />
+
+---
+
+<br />
+
+> [**NOTA**]: no modificaremos el archivo **`Detail.jsx`** porque suele ser más conveniente utilizar promesas en los **useEffect** que utilizar async/await.
 
 <br />
 
@@ -54,40 +86,9 @@ Las rutas que tenemos creadas hasta el momento son:
 
 ### **👀 COMPROBEMOS...**
 
-Levanta el servidor con el comando:
+Levanta el servidor y tu proyecto Front-End. Revisa que todo aún funcione correctamente:
 
-```bash
-    npm start
-```
-
-Una vez levantado, verifica lo siguiente:
-
-</br >
-
-### **FRONTEND**
-
-### **ACTIONS**
-
-Haremos un par de cambios en el lado frontend:
-
-1. La action `addFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que envíe el personaje favorito al endpoint con el método POST **http://localhost:3001/rickandmorty/fav**.
-
-2. La action `removeFavorites`, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que elimine el personaje favorito con el método DELETE al endpoint **http://localhost:3001/rickandmorty/fav/:id**.
-
-3. Crea una action `getFavorites`, debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que solicite el personaje favorito con el método GET al endpoint **http://localhost:3001/rickandmorty/fav**.
-
-4. Levanta también tu aplicación en **http://localhost:3000** para ver tu aplicación Rick & Morty funcionando completamente.
-
----
-
-</br >
-
-## **🚨 A TENER EN CUENTA**
-
-Si tu servidor no está levantado, o si los links no fueron bien escritos, tu aplicación no funcionará correctamente.
-
-</br >
-
----
-
-¡Felicitaciones! Ahora tienes una comunicación front-back completa!🥳🥳
+1. Que puedas traer cualquier personaje por su **id** desde la Search Bar.
+2. Que puedas ingresar al detalle de cualquier personaje que hayas encontrado.
+3. Que puedas agregar todos los personajes que quieras a tus favoritos.
+4. Que puedas eliminar a todos los personajes que quieras de tus favoritos.
