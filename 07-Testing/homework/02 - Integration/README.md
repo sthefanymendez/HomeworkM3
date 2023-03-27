@@ -28,7 +28,7 @@ Finalmente te brindaremos información para que aprendas a testear tu Front-End.
 
 ## **📋 INSTRUCCIONES**
 
-### **👩‍💻 EJERCICIO 01**
+### **👩‍💻 EJERCICIO 01 | Dependencias**
 
 Instala las siguientes dependencias en el **`package.json`** de tu servidor:
 
@@ -45,7 +45,7 @@ Además, dentro del **`package.json`** deberás agregar el siguiente script:
 
 ---
 
-### **👩‍💻 EJERCICIO 02**
+### **👩‍💻 EJERCICIO 02 | Modularizar el Server**
 
 1. Dentro de la carpeta **src** debes crear un archivo llamado **`app.js`**.
 
@@ -59,7 +59,7 @@ Además, dentro del **`package.json`** deberás agregar el siguiente script:
 
 ---
 
-### **👩‍💻 EJERCICIO 03**
+### **👩‍💻 EJERCICIO 03 | Testing Template**
 
 Dirígete a la carpeta **test**. En esta crea un archivo llamado **`index.test.js`**. Aquí desarrollaremos el testing.
 
