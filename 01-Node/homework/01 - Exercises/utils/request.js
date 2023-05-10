@@ -4,7 +4,7 @@ function request (url, callback) {
   try {
     axios.get(url)
       .then((response) => {
-        callback(null, response);
+        callback(null, response.data);
       })
       .catch(error => {
         throw error
